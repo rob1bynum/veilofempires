@@ -1,0 +1,768 @@
+.charsheet {
+  background: #0d1b25;
+}
+
+.voe-sheet {
+  --ink: #22201c;
+  --paper: #f3efe5;
+  --paper-deep: #e9e1d2;
+  --navy: #0c202d;
+  --navy-2: #153747;
+  --gold: #bb8b37;
+  --gold-light: #dec587;
+  --red: #9b3529;
+  --green: #687b34;
+  color: var(--ink);
+  min-width: 900px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at 50% 0, rgba(255,255,255,.86), rgba(244,238,224,.96) 55%, rgba(225,214,193,.98)),
+    linear-gradient(90deg, rgba(187,139,55,.07) 1px, transparent 1px),
+    linear-gradient(rgba(187,139,55,.05) 1px, transparent 1px);
+  background-size: auto, 24px 24px, 24px 24px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 0 4px var(--navy), 0 8px 28px rgba(0,0,0,.45);
+  box-sizing: border-box;
+}
+
+.voe-sheet * { box-sizing: border-box; }
+.voe-sheet input, .voe-sheet textarea, .voe-sheet select, .voe-sheet button { font-family: inherit; }
+.voe-sheet input[type="text"], .voe-sheet input[type="number"], .voe-sheet textarea, .voe-sheet select {
+  width: 100%;
+  min-height: 28px;
+  border: 1px solid rgba(89,70,42,.42);
+  border-radius: 2px;
+  background: rgba(255,255,255,.6);
+  color: var(--ink);
+  padding: 4px 6px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.08);
+}
+.voe-sheet textarea { resize: vertical; min-height: 54px; }
+.voe-sheet input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--gold); }
+.voe-sheet label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+
+.voe-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1536 / 570;
+  min-height: 185px;
+  max-height: 390px;
+  overflow: hidden;
+  border: 1px solid var(--gold);
+  border-bottom: 0;
+  background-color: #f8f5ed;
+  background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Veil%20of%20Empires/assets/voe-character-sheet-banner.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+
+.voe-header {
+  display: grid;
+  grid-template-columns: 1.05fr 2fr .7fr;
+  gap: 14px;
+  align-items: start;
+  padding: 13px 16px;
+  color: #f6ecd2;
+  background: linear-gradient(135deg, #07131d, var(--navy) 58%, #102b39);
+  border: 1px solid var(--gold);
+}
+.voe-brand { align-self: stretch; min-width: 0; }
+.voe-portrait-frame {
+  position: relative;
+  min-height: 300px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--gold);
+  background:
+    radial-gradient(circle at 50% 30%, rgba(99,66,145,.28), transparent 42%),
+    linear-gradient(145deg, #0b1620, #111a22 60%, #2b1e35);
+  box-shadow: inset 0 0 0 3px rgba(8,12,17,.82);
+}
+.voe-character-portrait {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  max-height: none;
+  object-fit: contain;
+  object-position: center center;
+  background: transparent;
+}
+.voe-portrait-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  text-align: center;
+  color: #ddc792;
+  pointer-events: none;
+}
+.voe-portrait-placeholder strong {
+  color: var(--gold-light);
+  font-size: 16px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.voe-portrait-placeholder span {
+  max-width: 230px;
+  font-size: 10px;
+  line-height: 1.35;
+  color: #cbbd9c;
+}
+.voe-character-portrait[src]:not([src=""]) + .voe-portrait-placeholder { display: none; }
+.voe-identity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 12px; }
+.voe-header label { color: #f2e7cc; }
+.voe-header input { margin-top: 3px; border: 0; border-bottom: 1px solid rgba(222,197,135,.55); background: rgba(255,255,255,.05); color: white; }
+.voe-inline-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.voe-xp { padding: 7px 10px; border: 1px solid rgba(222,197,135,.4); background: rgba(0,0,0,.18); }
+.voe-xp strong { display: block; margin-bottom: 7px; text-transform: uppercase; letter-spacing: .15em; color: var(--gold-light); }
+.voe-xp label { margin-top: 4px; }
+
+.voe-tabs { display: flex; gap: 2px; margin: 8px 0; }
+.voe-tabs label {
+  flex: 1;
+  cursor: pointer;
+  padding: 8px 10px;
+  text-align: center;
+  color: #eee4cc;
+  background: var(--navy);
+  border: 1px solid var(--gold);
+  transition: background .15s ease;
+}
+.voe-tabs label:hover { background: var(--navy-2); }
+.voe-tab-input { position: absolute; left: -10000px; }
+.voe-page { display: none; }
+.voe-tab-input[value="agent"]:checked ~ .voe-tabs label[for="voe-tab-agent"],
+.voe-tab-input[value="protocols"]:checked ~ .voe-tabs label[for="voe-tab-protocols"],
+.voe-tab-input[value="gear"]:checked ~ .voe-tabs label[for="voe-tab-gear"],
+.voe-tab-input[value="notes"]:checked ~ .voe-tabs label[for="voe-tab-notes"],
+.voe-tab-input[value="rules"]:checked ~ .voe-tabs label[for="voe-tab-rules"] { background: var(--gold); color: #111; }
+.voe-tab-input[value="agent"]:checked ~ .voe-page-agent,
+.voe-tab-input[value="protocols"]:checked ~ .voe-page-protocols,
+.voe-tab-input[value="gear"]:checked ~ .voe-page-gear,
+.voe-tab-input[value="notes"]:checked ~ .voe-page-notes,
+.voe-tab-input[value="rules"]:checked ~ .voe-page-rules { display: grid; }
+
+.voe-page-agent { grid-template-columns: .9fr 1.65fr .9fr; gap: 8px; }
+.voe-column { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.voe-panel {
+  padding: 8px;
+  border: 1px solid #9d8865;
+  background: rgba(255,255,255,.36);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.4);
+}
+.voe-panel h2 {
+  margin: -2px -2px 8px;
+  padding: 5px 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  border-bottom: 1px solid #ad9872;
+}
+.voe-help { margin: 0 0 7px; text-align: center; font-size: 11px; font-style: italic; color: #5d5447; }
+
+.voe-attribute-list { display: grid; gap: 4px; }
+.voe-stat { display: grid; grid-template-columns: 46px 1fr 55px; gap: 5px; align-items: center; border-bottom: 1px solid rgba(100,80,50,.18); padding-bottom: 3px; }
+.voe-stat button, .voe-skill button, .voe-quick-rolls button, .voe-primary-roll, .voe-repeat-row button {
+  cursor: pointer;
+  border: 1px solid #7b5b24;
+  border-radius: 2px;
+  background: linear-gradient(#d4b266, #a97827);
+  color: #18120a;
+  font-weight: bold;
+  text-shadow: 0 1px rgba(255,255,255,.25);
+}
+.voe-stat button { height: 28px; }
+.voe-stat span { font-size: 12px; }
+.voe-stat input { text-align: center; }
+
+.voe-defense-grid, .voe-combat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+.voe-defense-grid label, .voe-combat-grid label, .voe-resource-row label, .voe-tempo-display label { text-align: center; }
+.voe-defense-grid input, .voe-combat-grid input, .voe-resource-row input, .voe-tempo-display input { margin-top: 3px; text-align: center; }
+.voe-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; }
+.voe-check-grid label { display: flex; align-items: center; gap: 5px; text-transform: none; letter-spacing: 0; font-size: 12px; }
+.voe-resource-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin-bottom: 7px; }
+.voe-primary-roll { width: 100%; padding: 7px; }
+.voe-contingency p { margin: 7px 1px 0; font-size: 11px; line-height: 1.35; }
+
+.voe-skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; }
+.voe-skill { display: grid; grid-template-columns: 1fr 34px 55px; gap: 4px; align-items: center; }
+.voe-skill button { min-height: 27px; text-align: left; padding-left: 8px; }
+.voe-skill span { text-align: center; font-size: 10px; font-weight: bold; color: #554a3a; }
+.voe-skill input { text-align: center; }
+
+.voe-ability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.voe-ability-grid label { padding: 5px; border: 1px solid #998463; background: rgba(255,255,255,.32); }
+.voe-ability-grid strong { display: block; margin-bottom: 4px; text-align: center; color: #e9d9ad; background: var(--navy); padding: 5px; }
+.voe-ability-grid textarea { margin-top: 4px; }
+
+.voe-tempo-display { display: grid; grid-template-columns: 1fr 1fr .8fr; gap: 7px; align-items: end; }
+.voe-tempo-display input[type="checkbox"] { display: block; margin: 9px auto 5px; }
+.voe-action-reference { margin-top: 8px; display: grid; gap: 5px; }
+.voe-action-reference div { display: grid; grid-template-columns: 80px 1fr; gap: 7px; font-size: 11px; padding: 5px; background: rgba(12,32,45,.07); border-left: 3px solid var(--gold); }
+.voe-full-label textarea { margin-top: 4px; }
+.voe-quick-rolls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.voe-quick-rolls button { padding: 7px; }
+
+.voe-wide-panel { width: 100%; }
+.voe-loadout-summary { grid-template-columns: repeat(4, 1fr); }
+.voe-repeat-row { padding: 6px; margin: 5px 0; border: 1px solid rgba(95,76,48,.35); background: rgba(255,255,255,.3); }
+.voe-contact-row { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 5px; }
+.voe-protocol-row { display: grid; grid-template-columns: 74px 1.4fr .8fr 55px 55px 36px 2.2fr; gap: 5px; align-items: start; }
+.voe-protocol-row button { height: 29px; }
+.voe-protocol-row textarea { min-height: 42px; }
+.voe-two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+.voe-weapon-row { display: grid; grid-template-columns: 70px 1.2fr 62px 80px 80px 2fr; gap: 5px; align-items: start; }
+.voe-equipment-row { display: grid; grid-template-columns: 1.2fr .8fr 60px 60px 2fr; gap: 5px; align-items: start; }
+.voe-weapon-row button { height: 29px; }
+.voe-weapon-row textarea, .voe-equipment-row textarea { min-height: 38px; }
+.voe-tall-text { min-height: 260px !important; }
+
+.repcontainer[data-groupname="repeating_protocols"] .repitem,
+.repcontainer[data-groupname="repeating_contacts"] .repitem,
+.repcontainer[data-groupname="repeating_weapons"] .repitem,
+.repcontainer[data-groupname="repeating_equipment"] .repitem { margin-bottom: 4px; }
+.repcontrol { margin-top: 5px; }
+.repcontrol button { background: var(--navy); color: #f5ead0; border: 1px solid var(--gold); }
+
+.sheet-rolltemplate-voe .sheet-voe-roll {
+  overflow: hidden;
+  width: 260px;
+  border: 2px solid #b98935;
+  background: #f1eadc;
+  color: #211e19;
+  font-family: Georgia, "Times New Roman", serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,.35);
+}
+.sheet-rolltemplate-voe .sheet-voe-roll-head { padding: 7px; text-align: center; color: #e4c77d; background: #0c202d; letter-spacing: .16em; font-size: 11px; }
+.sheet-rolltemplate-voe .sheet-voe-roll-title { padding: 8px 10px 2px; text-align: center; font-size: 19px; }
+.sheet-rolltemplate-voe .sheet-voe-roll-agent, .sheet-rolltemplate-voe .sheet-voe-roll-kind { text-align: center; font-size: 11px; color: #665b4b; }
+.sheet-rolltemplate-voe .sheet-voe-roll-result { margin: 9px auto; width: 86px; padding: 9px; text-align: center; font-size: 24px; font-weight: bold; border: 1px solid #a68b5d; background: rgba(255,255,255,.7); }
+.sheet-rolltemplate-voe .sheet-voe-roll-row { display: flex; justify-content: space-between; margin: 4px 10px; padding: 5px 7px; border-top: 1px solid #c9b996; }
+.sheet-rolltemplate-voe .sheet-voe-roll-description { margin: 7px 10px; padding: 7px; border-left: 3px solid #b98935; background: rgba(255,255,255,.5); white-space: pre-wrap; }
+.sheet-rolltemplate-voe .sheet-voe-roll-footer { padding: 7px 10px; font-size: 10px; font-style: italic; color: #6b6257; background: #e4dac7; }
+
+@media (max-width: 1050px) {
+  .voe-sheet { min-width: 760px; }
+  .voe-header { grid-template-columns: 1fr 1.6fr; }
+  .voe-xp { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; align-items: end; }
+  .voe-page-agent { grid-template-columns: 1fr 1.5fr; }
+  .voe-right { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, 1fr); }
+  .voe-protocol-row { grid-template-columns: 70px 1fr .8fr 50px 50px 34px; }
+  .voe-protocol-row textarea { grid-column: 1 / -1; }
+}
+
+/* Roll20 adds a dice glyph before roll buttons by default.
+   Removing it keeps compact attribute abbreviations readable and clickable. */
+.voe-sheet button[type="roll"]::before {
+  content: "" !important;
+  display: none !important;
+}
+.voe-stat button {
+  font-size: 10px !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  padding: 0 2px !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sheet-rolltemplate-voe .sheet-voe-roll-status {
+  margin: 6px 10px;
+  padding: 7px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: .14em;
+  color: #f5ead0;
+  background: #0c202d;
+  border: 1px solid #b98935;
+}
+
+/* v0.5 roll outcome clarity */
+.sheet-rolltemplate-voe .sheet-voe-success {
+  background: #dcebd8;
+  border: 1px solid #3f6d3a;
+  color: #214d20;
+}
+.sheet-rolltemplate-voe .sheet-voe-failure {
+  background: #f0d7d4;
+  border: 1px solid #8b3a32;
+  color: #6b211b;
+}
+
+.sheet-rolltemplate-voe .sheet-voe-roll-outcome {
+  margin: 6px 10px 10px;
+  padding: 7px 9px;
+  border-left: 3px solid #b58b3b;
+  background: rgba(255,255,255,0.07);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+/* v0.7 skill formula display: Base + Attribute = Total */
+.voe-skill-grid .voe-skill {
+  grid-template-columns: minmax(118px, 1fr) 30px 48px 14px 48px 14px 52px;
+  gap: 5px;
+  align-items: center;
+}
+
+.voe-skill-grid .voe-skill > input {
+  min-width: 0;
+  width: 100%;
+  text-align: center;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.voe-skill-plus,
+.voe-skill-equals {
+  text-align: center;
+  font-weight: 800;
+  color: var(--voe-gold-dark);
+}
+
+.voe-skill-attribute,
+.voe-skill-total {
+  background: rgba(21, 37, 49, 0.08) !important;
+}
+
+.voe-skill-total {
+  font-weight: 800;
+  border-color: var(--voe-gold-dark) !important;
+}
+
+
+/* =========================================================
+   Veil of Empires v1.0 layout stabilization
+   ========================================================= */
+
+.voe-sheet {
+  min-width: 720px;
+}
+
+.voe-page,
+.voe-page-agent,
+.voe-column,
+.voe-panel,
+.voe-center,
+.voe-right,
+.voe-left {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.voe-panel {
+  overflow: hidden;
+}
+
+.voe-page-agent {
+  grid-template-columns: minmax(220px, .85fr) minmax(390px, 1.55fr) minmax(235px, .9fr);
+  align-items: start;
+  gap: 10px;
+}
+
+/* Defenses: stable left-justified rows */
+.voe-defense-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+
+.voe-defense-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(100,80,50,.16);
+}
+
+.voe-defense-row:last-child {
+  border-bottom: 0;
+}
+
+.voe-defense-row label {
+  margin: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.voe-defense-row input {
+  width: 64px !important;
+  min-width: 0;
+  margin: 0 !important;
+  text-align: center;
+}
+
+/* Skills: one controlled column prevents collision with Combat */
+.voe-skill-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+}
+
+.voe-skill-header,
+.voe-skill-grid .voe-skill {
+  display: grid;
+  grid-template-columns: minmax(128px, 1fr) 34px 52px 14px 52px 14px 56px;
+  gap: 5px;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.voe-skill-header {
+  padding: 0 2px 4px;
+  border-bottom: 1px solid rgba(89,70,42,.28);
+  color: #615443;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: .06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.voe-skill-header span:first-child {
+  text-align: left;
+  padding-left: 8px;
+}
+
+.voe-skill-grid .voe-skill {
+  padding: 2px;
+  border-bottom: 1px solid rgba(100,80,50,.12);
+}
+
+.voe-skill-grid .voe-skill:last-child {
+  border-bottom: 0;
+}
+
+.voe-skill-grid .voe-skill > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.voe-skill-grid .voe-skill button {
+  width: 100%;
+  overflow: hidden;
+  padding: 5px 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.voe-skill-grid .voe-skill input {
+  width: 100% !important;
+  min-width: 0;
+  padding: 3px 2px;
+}
+
+.voe-skill-plus,
+.voe-skill-equals {
+  width: 14px;
+  overflow: hidden;
+}
+
+/* Combat card stays inside its own column */
+.voe-right .voe-combat-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.voe-right .voe-combat-grid label,
+.voe-right .voe-combat-grid input {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 1080px) {
+  .voe-sheet { min-width: 700px; }
+  .voe-page-agent {
+    grid-template-columns: minmax(220px, .85fr) minmax(390px, 1.5fr);
+  }
+  .voe-right {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (max-width: 820px) {
+  .voe-sheet { min-width: 0; width: 100%; }
+  .voe-header { grid-template-columns: 1fr; }
+  .voe-xp { grid-column: auto; }
+  .voe-page-agent { grid-template-columns: minmax(0, 1fr); }
+  .voe-right { grid-column: auto; grid-template-columns: minmax(0, 1fr); }
+  .voe-skill-header,
+  .voe-skill-grid .voe-skill {
+    grid-template-columns: minmax(112px, 1fr) 30px 46px 12px 46px 12px 50px;
+    gap: 3px;
+  }
+  .voe-two-column { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* =========================================================
+   Veil of Empires v1.1 combat revision
+   ========================================================= */
+
+.voe-left-help {
+  margin-top: 7px;
+  text-align: left;
+}
+
+/* Combat values are presented as stable, left-justified rows. */
+.voe-combat-panel .voe-combat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+
+.voe-combat-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(100,80,50,.16);
+}
+
+.voe-combat-row:last-child {
+  border-bottom: 0;
+}
+
+.voe-combat-row label {
+  margin: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.voe-combat-row input {
+  width: 64px !important;
+  min-width: 0;
+  margin: 0 !important;
+  text-align: center;
+}
+
+.voe-defense-row select {
+  width: 100% !important;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+.voe-round-status {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 7px;
+}
+
+.voe-round-status > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  padding: 6px;
+  border: 1px solid rgba(95,76,48,.35);
+  background: rgba(255,255,255,.3);
+}
+
+.voe-round-status > div span {
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.voe-round-status > div strong {
+  min-width: 28px;
+  padding: 3px 6px;
+  text-align: center;
+  color: #f5ead0;
+  background: var(--navy);
+  border: 1px solid var(--gold);
+}
+
+.voe-reaction-check {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 6px;
+  border-left: 3px solid var(--gold);
+  background: rgba(12,32,45,.07);
+  text-align: left !important;
+}
+
+.voe-combat-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.voe-combat-buttons button {
+  width: 100%;
+  padding: 7px;
+  cursor: pointer;
+  border: 1px solid #7b5b24;
+  border-radius: 2px;
+  background: linear-gradient(#d4b266, #a97827);
+  color: #18120a;
+  font-weight: bold;
+  text-align: left;
+}
+
+.voe-target-modifiers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin: 8px 0;
+  padding: 7px;
+  border: 1px solid rgba(95,76,48,.35);
+  background: rgba(255,255,255,.25);
+}
+
+.voe-target-modifiers label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  gap: 7px;
+  align-items: center;
+  text-align: left;
+}
+
+.voe-target-modifiers select,
+.voe-target-modifiers input[type="number"] {
+  width: 100% !important;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+.voe-target-modifiers .voe-target-evasion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 1080px) {
+  .voe-actions-panel {
+    min-width: 0;
+  }
+}
+
+
+/* v1.2 data-driven Heritage and Protocol engine */
+.voe-derived-header,.voe-stat-derived{display:grid;grid-template-columns:42px minmax(75px,1fr) 46px 12px 46px 12px 50px;gap:4px;align-items:center;text-align:center}
+.voe-derived-header{font-size:9px;font-weight:bold;color:#5d5447;margin-bottom:4px}.voe-derived-header span:nth-child(2){text-align:left}
+.voe-stat-derived span:nth-child(2){text-align:left}.voe-stat-derived input{text-align:center;min-width:0;width:100%}.voe-math{font-weight:bold;text-align:center!important}
+.voe-choice-card{display:grid;gap:5px;padding:7px;border:1px solid rgba(95,76,48,.35);background:rgba(255,255,255,.28)}
+.voe-choice-card strong{font-size:16px;color:#0c202d}.voe-choice-card textarea,.voe-origin-engine>textarea{min-height:68px;font-size:11px;line-height:1.3}
+.voe-protocol-slots{display:grid;gap:5px;margin:7px 0}.voe-protocol-slots label,.voe-choice-card label{text-align:left}.voe-protocol-slots select,.voe-choice-card select{margin-top:3px}
+.voe-skill-header,.voe-skill-grid .voe-skill{grid-template-columns:minmax(108px,1fr) 28px 43px 12px 43px 12px 43px 12px 48px!important}
+.voe-skill-extra{background:rgba(218,190,122,.23)!important}.voe-skill-attribute{background:rgba(130,166,183,.15)!important}
+.voe-defense-grid,.voe-combat-grid{grid-template-columns:1fr!important}.voe-defense-row,.voe-combat-row{display:grid;grid-template-columns:minmax(120px,1fr) 95px;gap:8px;align-items:center;text-align:left}.voe-defense-row label,.voe-combat-row label{text-align:left!important}.voe-defense-row input,.voe-defense-row select,.voe-combat-row input{margin-top:0!important;text-align:left}
+@media(max-width:1050px){.voe-derived-header,.voe-stat-derived{grid-template-columns:40px minmax(70px,1fr) 42px 10px 42px 10px 46px}.voe-skill-header,.voe-skill-grid .voe-skill{grid-template-columns:minmax(100px,1fr) 26px 40px 10px 40px 10px 40px 10px 44px!important}}
+
+
+/* v1.3 Character Identity Engine */
+.voe-identity-engine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.voe-identity-engine .voe-choice-card textarea { min-height: 92px; }
+.voe-contact-grant {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 6px;
+  align-items: end;
+}
+.voe-contact-grant input { margin-top: 3px; }
+.voe-protocol-slots-wide {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.voe-identity-engine > textarea { min-height: 100px; font-size: 11px; line-height: 1.35; }
+.voe-current-bonuses {
+  margin-top: 8px;
+  padding: 7px;
+  border: 1px solid rgba(95,76,48,.35);
+  background: rgba(12,32,45,.06);
+}
+.voe-current-bonuses h3 {
+  margin: 0 0 5px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.voe-current-bonuses textarea { min-height: 118px; font-size: 11px; line-height: 1.35; }
+@media (max-width: 1050px) {
+  .voe-identity-engine-grid { grid-template-columns: 1fr; }
+  .voe-protocol-slots-wide { grid-template-columns: 1fr; }
+}
+
+/* v1.3.1 specialty display fix */
+.voe-card-title {
+  width: 100%;
+  border: 0 !important;
+  background: transparent !important;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  padding: 0 !important;
+  margin: 0 0 4px 0;
+  box-shadow: none !important;
+}
+
+/* v1.4: Prepared Protocol mirror cards */
+.voe-prepared-protocol-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.voe-prepared-protocol-card {
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid rgba(95,76,48,.38);
+  background: rgba(255,255,255,.3);
+  min-width: 0;
+}
+.voe-prepared-protocol-card textarea {
+  min-height: 105px;
+  font-size: 11px;
+  line-height: 1.35;
+}
+@media (max-width: 860px) {
+  .voe-prepared-protocol-grid { grid-template-columns: 1fr; }
+}
+
+
+/* v1.5 health and rules reference */
+.voe-health-grid { grid-template-columns: 1fr; }
+.voe-health-grid .voe-combat-row { display:grid; grid-template-columns:minmax(125px,1fr) 78px; gap:8px; align-items:center; }
+.voe-health-grid .voe-combat-row label { text-align:left; }
+.voe-health-grid .voe-combat-row input { margin:0; text-align:center; }
+.voe-page-rules { grid-template-columns:1fr; }
+.voe-rules-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.voe-rules-grid article { padding:10px; border:1px solid #9d8865; background:rgba(255,255,255,.34); }
+.voe-rules-grid h3 { margin:0 0 7px; padding-bottom:5px; border-bottom:1px solid #ad9872; color:var(--navy); text-transform:uppercase; letter-spacing:.08em; }
+.voe-rules-grid p { margin:5px 0; line-height:1.35; }
+@media (max-width:1050px){ .voe-rules-grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
