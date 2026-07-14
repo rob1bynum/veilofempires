@@ -1,23 +1,17 @@
-# Veil of Empires Roll20 v2.3
+# Veil of Empires Roll20 v2.3.1
 
-## Added
-- Warden Specialty for frontline combat operatives.
-- Battle Focus Protocol.
-- Expanded Ursa Heritage summary.
-- Automated penalties for Blinded, Charmed, Deafened, Exhausted, Frightened, Incapacitated, Poisoned, Restrained, Shocked, and Stunned.
-- A live Condition Penalties summary below the checkboxes.
+## Wide, shallow masthead update
 
-## Warden
-- +5 Athletics, Close Combat, Intimidation, Survival, and Ranged Combat
-- +5 Movement
-- +5 Maximum Health
-- +1 Contact
-- Hold the Line specialty ability
+This update makes the Veil of Empires banner fill the complete width of the Roll20 character sheet while keeping the existing compact height.
 
-## Suggested Ursa Warden loadout
-- Titan Frame
-- Iron Heart
-- Battle Focus
+### Changes
 
-## Installation
-Replace the complete HTML and CSS in the Roll20 Custom Sheet editor, save, then close and reopen the character sheet.
+- Full-width banner with no empty side margins.
+- Desktop height remains 112px.
+- Narrow-layout height remains 96px.
+- No additional vertical space is added to the character sheet.
+- All v2.3 Warden, Protocol, combat, Condition, Heritage, Specialty, and Contingency automation remains unchanged.
+
+## Install
+
+Replace the complete contents of Roll20's **HTML Layout** and **CSS Styling** editors with the files in the `Veil%20of%20Empires` folder, save, and fully reopen the character sheet.
