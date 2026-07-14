@@ -1,10 +1,20 @@
-{
-  "html": "veil-of-empires.html",
-  "css": "veil-of-empires.css",
-  "authors": "Rob Bynum",
-  "roll20userid": "",
-  "preview": "preview.png",
-  "version": "2.4.0 Data Engine Foundation",
-  "instructions": "Official Veil of Empires Roll20 sheet. Version 2.4.0 preserves the complete v2.3.3 interface and automation while adding a structured internal rules-data facade for safe future development.",
-  "legacy": false
-}
+from pathlib import Path
+import json, re
+root = Path(__file__).resolve().parents[1] / "Veil of Empires"
+required = [
+    "veil-of-empires.html", "veil-of-empires.css", "sheet.json",
+    "translation.json", "preview.png", "assets/voe-character-sheet-banner.png"
+]
+missing = [f for f in required if not (root / f).exists()]
+assert not missing, f"Missing files: {missing}"
+meta = json.loads((root / "sheet.json").read_text())
+for key in ("html", "css", "authors", "preview", "instructions", "legacy"):
+    assert key in meta, f"sheet.json missing {key}"
+json.loads((root / "translation.json").read_text())
+html = (root / "veil-of-empires.html").read_text()
+css = (root / "veil-of-empires.css").read_text()
+assert '<script type="text/worker">' in html
+assert '60sxqiivmv.preview.c38.airoapp.ai' not in html + css
+assert 'assets/voe-character-sheet-banner.png' in css
+assert re.search(r'name="attr_character_name"', html)
+print("Veil of Empires repository package validation passed.")
