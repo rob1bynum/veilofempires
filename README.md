@@ -1,17 +1,18 @@
-# Veil of Empires Roll20 v2.0 Repository Project
+# Veil of Empires Roll20 v2.1
 
-This package contains:
+This update compacts the top banner and reorganizes the character header.
 
-- `Veil of Empires/` — the exact folder intended for the Roll20 community character-sheet repository.
-- `source/` — editable development copies, including the extracted sheet worker.
-- `tests/` — local validation scripts.
+## Changes
 
-## Quick start
+- Banner height reduced to 82–112 px and cropped to the useful logo region.
+- Character portrait standardized to a 3:4 frame using `object-fit: contain`.
+- Header reorganized into portrait, identity, and Agent Summary columns.
+- Agent Summary shows Health, Temporary Health, Movement, Armor, Actions, Reaction, and XP.
+- Navigation tabs use compact visual markers and consume less vertical space.
+- All existing Roll20 sheet-worker rules and game mechanics are preserved.
 
-1. Put the `Veil of Empires` folder inside a fork of `Roll20/roll20-character-sheets`.
-2. Change the banner URL in `veil-of-empires.css` to your fork while testing.
-3. Enter your Roll20 user ID in `sheet.json`.
-4. Test the HTML, CSS, and translation file in the Custom Sheet Sandbox.
-5. Submit a pull request to Roll20 when ready.
+## Install in Roll20
 
-The uploaded banner is bundled at `Veil of Empires/assets/voe-character-sheet-banner.png` and the sheet no longer references the previous Airo website.
+Paste `veil-of-empires.html` into HTML Layout and `veil-of-empires.css` into CSS Styling. Save, close the sheet, and reopen it.
+
+The banner loads from the project's GitHub raw asset URL.
