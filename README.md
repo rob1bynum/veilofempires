@@ -1,35 +1,33 @@
-# Veil of Empires Roll20 v3.0-alpha.1
+# Veil of Empires Roll20 v3.0-alpha.2 Sandbox Build
 
-This is the first architecture milestone for the Version 3.0 production release.
+This package is directly usable in Roll20's Custom Sheet Sandbox.
 
-## What this milestone contains
+## Install
 
-- A Roll20-compatible data layer for Heritages, Specialties, Protocols, Conditions, skills, and sheet modes.
-- A reusable rules engine that calculates modifiers without embedding game data in calculation functions.
-- Player, NPC, and Creature sheet-mode definitions.
-- A character-creation wizard state model.
-- Validation tests for duplicate IDs, missing references, malformed modifiers, and wizard steps.
-- A migration plan that keeps v2.3.3 stable while Version 3.0 is developed separately.
+1. Open the Roll20 Custom Sheet Sandbox or your game's Custom Character Sheet editor.
+2. Paste `dist/veil-of-empires-v3.html` into **HTML Layout**.
+3. Paste `dist/veil-of-empires-v3.css` into **CSS Styling**.
+4. Paste `dist/translation.json` into **Translation**.
+5. Save.
+6. Close and reopen the character sheet.
 
-## Important
+## Included
 
-This package is an architecture alpha, not yet a replacement for the live v2.3.3 sheet.
-The next build milestone will connect this engine to the existing HTML controls and then introduce the redesigned interface.
+- Working HTML layout
+- Working CSS
+- Embedded Roll20 sheet worker
+- Version 3 structured rules data
+- Automated Attribute and Skill totals
+- Warden bonuses
+- Condition penalties
+- Percentile rolls
+- Contingency digit flipping
+- Agent, NPC, and Creature mode selector
+- Protocol selection scaffolding
 
-## Project layout
+## Alpha limits
 
-- `source/data/game-data.js` — structured rules content
-- `source/engine/rules-engine.js` — calculation and validation functions
-- `source/engine/roll20-adapter.js` — Roll20 sheet-worker integration boundary
-- `source/components/wizard-model.js` — character creation workflow
-- `source/components/sheet-modes.js` — Player, NPC, and Creature modes
-- `tests/validate-data.js` — local validation suite
-- `docs/ARCHITECTURE.md` — Version 3.0 design
-- `docs/MIGRATION.md` — safe migration from v2.3.3
-- `docs/ROADMAP.md` — staged development plan
-
-## Run validation
-
-```bash
-node tests/validate-data.js
-```
+This build is deliberately conservative. Only confirmed Warden and Condition modifiers are automated.
+Heritage and Protocol choices are wired into the data engine but currently have no mechanical modifiers.
+The full v2.3.3 source was not available as a complete local file during this build, so this is a clean,
+functional sandbox sheet rather than a byte-for-byte visual migration of v2.3.3.
