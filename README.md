@@ -1,18 +1,15 @@
-# Veil of Empires Roll20 v2.1
+# Veil of Empires Roll20 Sheet v2.2
 
-This update compacts the top banner and reorganizes the character header.
+## Compact masthead correction
 
-## Changes
+This update replaces the CSS background banner with an actual `<img>` element.
 
-- Banner height reduced to 82–112 px and cropped to the useful logo region.
-- Character portrait standardized to a 3:4 frame using `object-fit: contain`.
-- Header reorganized into portrait, identity, and Agent Summary columns.
-- Agent Summary shows Health, Temporary Health, Movement, Armor, Actions, Reaction, and XP.
-- Navigation tabs use compact visual markers and consume less vertical space.
-- All existing Roll20 sheet-worker rules and game mechanics are preserved.
+Changes:
+- The complete Veil of Empires logo is always visible.
+- The masthead is limited to 112px tall on full-size sheets and 96px on narrower layouts.
+- `object-fit: contain` prevents cropping.
+- The portrait, identity panel, Agent Summary, rules automation, and roll workers are unchanged from v2.1.
 
-## Install in Roll20
+## Install
 
-Paste `veil-of-empires.html` into HTML Layout and `veil-of-empires.css` into CSS Styling. Save, close the sheet, and reopen it.
-
-The banner loads from the project's GitHub raw asset URL.
+Replace the complete HTML and CSS in Roll20's Custom Sheet editor with the files in the `Veil of Empires` folder. Save, then fully close and reopen the character sheet.
