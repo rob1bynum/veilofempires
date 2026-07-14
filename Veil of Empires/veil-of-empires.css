@@ -1050,3 +1050,49 @@
     object-position: 50% 61% !important;
   }
 }
+
+/* =========================================================
+   v2.3.3: full logo, no cropping, no distortion
+   The masthead remains full-width, while the artwork itself is
+   centered and scaled proportionally inside the shallow header.
+   ========================================================= */
+.voe-banner {
+  width: 100% !important;
+  height: 112px !important;
+  min-height: 112px !important;
+  max-height: 112px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  background:
+    linear-gradient(90deg, #101318 0%, #1a1d22 18%, #f5efe3 50%, #1a1d22 82%, #101318 100%) !important;
+}
+
+.voe-banner-image {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  max-height: 112px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  transform: none !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 1050px) {
+  .voe-banner {
+    height: 96px !important;
+    min-height: 96px !important;
+    max-height: 96px !important;
+  }
+
+  .voe-banner-image {
+    height: 96px !important;
+    max-height: 96px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+  }
+}
