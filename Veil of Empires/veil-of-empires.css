@@ -970,3 +970,39 @@
   background: rgba(255,248,232,.9);
   border: 1px solid rgba(117,75,34,.35);
 }
+
+/* =========================================================
+   v2.3.1: wide, shallow Roll20 masthead
+   Fill the available sheet width without increasing height.
+   ========================================================= */
+.voe-banner {
+  width: 100% !important;
+  height: 112px !important;
+  min-height: 112px !important;
+  max-height: 112px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  background: #f8f5ed !important;
+}
+
+.voe-banner-image {
+  display: block !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  height: 112px !important;
+  min-height: 112px !important;
+  max-height: 112px !important;
+  object-fit: fill !important;
+  object-position: center center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 1050px) {
+  .voe-banner,
+  .voe-banner-image {
+    height: 96px !important;
+    min-height: 96px !important;
+    max-height: 96px !important;
+  }
+}
