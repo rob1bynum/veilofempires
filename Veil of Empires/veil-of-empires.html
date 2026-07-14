@@ -30,19 +30,29 @@
       </label>
     </div>
 
-    <div class="voe-xp">
-      <strong>Experience</strong>
-      <label>Current<input type="number" name="attr_experience" value="0" min="0"></label>
-      <label>To Next<input type="number" name="attr_experience_next" value="0" min="0"></label>
-    </div>
+    <aside class="voe-agent-summary" aria-label="Agent combat summary">
+      <h2>Agent Summary</h2>
+      <div class="voe-summary-grid">
+        <div><span>Health</span><strong><input type="number" name="attr_health" value="10" min="0"> / <input type="number" name="attr_health_max" value="10" readonly></strong></div>
+        <div><span>Temp Health</span><strong><input type="number" name="attr_temporary_health" value="0" min="0"></strong></div>
+        <div><span>Movement</span><strong><input type="number" name="attr_speed" value="35" readonly> ft.</strong></div>
+        <div><span>Armor</span><strong><input type="text" name="attr_heritage_armor_display" value="None" readonly></strong></div>
+        <div><span>Actions</span><strong name="attr_actions_current">3</strong></div>
+        <div><span>Reaction</span><strong class="voe-summary-reaction"><input type="checkbox" name="attr_reaction_available" value="1" checked> Ready</strong></div>
+      </div>
+      <div class="voe-summary-xp">
+        <label>XP<input type="number" name="attr_experience" value="0" min="0"></label>
+        <label>Next<input type="number" name="attr_experience_next" value="0" min="0"></label>
+      </div>
+    </aside>
   </header>
 
   <nav class="voe-tabs" aria-label="Character sheet sections">
-    <label for="voe-tab-agent">Agent</label>
-    <label for="voe-tab-protocols">Protocols</label>
-    <label for="voe-tab-gear">Equipment</label>
-    <label for="voe-tab-notes">Dossier</label>
-    <label for="voe-tab-rules">Rules Reference</label>
+    <label for="voe-tab-agent">◆ Agent</label>
+    <label for="voe-tab-protocols">✦ Protocols</label>
+    <label for="voe-tab-gear">⚙ Equipment</label>
+    <label for="voe-tab-notes">▤ Dossier</label>
+    <label for="voe-tab-rules">? Rules</label>
   </nav>
 
   <section class="voe-page voe-page-agent">

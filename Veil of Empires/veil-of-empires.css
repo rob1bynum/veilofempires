@@ -54,7 +54,7 @@
   border: 1px solid var(--gold);
   border-bottom: 0;
   background-color: #f8f5ed;
-  background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Veil%20of%20Empires/assets/voe-character-sheet-banner.png");
+  background-image: url("https://raw.githubusercontent.com/rob1bynum/veilofempires/main/Veil%20of%20Empires/assets/voe-character-sheet-banner.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: contain;
@@ -766,3 +766,182 @@
 .voe-rules-grid h3 { margin:0 0 7px; padding-bottom:5px; border-bottom:1px solid #ad9872; color:var(--navy); text-transform:uppercase; letter-spacing:.08em; }
 .voe-rules-grid p { margin:5px 0; line-height:1.35; }
 @media (max-width:1050px){ .voe-rules-grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
+
+
+/* =========================================================
+   Veil of Empires v2.1 compact header and summary layout
+   ========================================================= */
+.voe-banner {
+  height: clamp(82px, 9vw, 112px) !important;
+  min-height: 82px !important;
+  max-height: 112px !important;
+  aspect-ratio: auto !important;
+  background-size: cover !important;
+  background-position: center 24% !important;
+  border-bottom: 2px solid var(--gold) !important;
+  box-shadow: 0 5px 14px rgba(5,18,27,.22);
+}
+
+.voe-header {
+  grid-template-columns: 180px minmax(360px, 1.7fr) minmax(220px, .82fr) !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+  padding: 10px 12px !important;
+}
+
+.voe-brand,
+.voe-portrait-frame {
+  width: 180px !important;
+  min-width: 180px !important;
+  min-height: 240px !important;
+  height: 240px !important;
+  aspect-ratio: 3 / 4 !important;
+  align-self: start !important;
+}
+
+.voe-character-portrait {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: 240px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+.voe-identity-grid {
+  align-content: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px 12px !important;
+}
+
+.voe-agent-summary {
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid rgba(222,197,135,.48);
+  background: rgba(0,0,0,.2);
+}
+
+.voe-agent-summary h2 {
+  margin: 0 0 7px;
+  padding-bottom: 5px;
+  color: var(--gold-light);
+  font-size: 13px;
+  font-weight: normal;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  border-bottom: 1px solid rgba(222,197,135,.34);
+}
+
+.voe-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px;
+}
+
+.voe-summary-grid > div {
+  display: grid;
+  grid-template-columns: minmax(75px, 1fr) minmax(82px, auto);
+  gap: 8px;
+  align-items: center;
+  min-height: 27px;
+  padding: 3px 5px;
+  border-bottom: 1px solid rgba(222,197,135,.14);
+}
+
+.voe-summary-grid span {
+  color: #d8c9a6;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.voe-summary-grid strong {
+  color: #fff5dc;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.voe-summary-grid input[type="number"] {
+  display: inline-block;
+  width: 42px !important;
+  min-height: 23px !important;
+  margin: 0 !important;
+  padding: 2px 3px !important;
+  color: #fff5dc !important;
+  text-align: center;
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(222,197,135,.28) !important;
+}
+
+.voe-summary-grid input[type="text"] {
+  width: 95px !important;
+  min-height: 23px !important;
+  margin: 0 !important;
+  padding: 2px 4px !important;
+  color: #fff5dc !important;
+  text-align: right;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.voe-summary-reaction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.voe-summary-reaction input {
+  margin: 0 !important;
+}
+
+.voe-summary-xp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.voe-summary-xp label {
+  color: #d8c9a6;
+  font-size: 9px;
+}
+
+.voe-summary-xp input {
+  min-height: 24px !important;
+  margin-top: 2px !important;
+  text-align: center;
+}
+
+.voe-tabs {
+  margin: 6px 0 8px !important;
+}
+
+.voe-tabs label {
+  padding: 7px 8px !important;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+@media (max-width: 1050px) {
+  .voe-header {
+    grid-template-columns: 160px minmax(340px, 1fr) !important;
+  }
+  .voe-brand,
+  .voe-portrait-frame {
+    width: 160px !important;
+    min-width: 160px !important;
+    height: 214px !important;
+    min-height: 214px !important;
+  }
+  .voe-character-portrait { max-height: 214px !important; }
+  .voe-agent-summary {
+    grid-column: 1 / -1;
+  }
+  .voe-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px 8px;
+  }
+}
