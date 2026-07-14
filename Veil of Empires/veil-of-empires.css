@@ -1006,3 +1006,47 @@
     max-height: 96px !important;
   }
 }
+
+/* =========================================================
+   v2.3.2: responsive masthead without image distortion
+   The artwork keeps its native proportions and is cropped only
+   vertically as needed to fill the shallow, full-width header.
+   ========================================================= */
+.voe-banner {
+  width: 100% !important;
+  height: clamp(96px, 9vw, 112px) !important;
+  min-height: 96px !important;
+  max-height: 112px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  background: #f8f5ed !important;
+}
+
+.voe-banner-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: 50% 61% !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 1050px) {
+  .voe-banner {
+    height: 96px !important;
+    min-height: 96px !important;
+    max-height: 96px !important;
+  }
+
+  .voe-banner-image {
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    object-position: 50% 61% !important;
+  }
+}
