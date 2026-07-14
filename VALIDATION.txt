@@ -1,1 +1,0 @@
-PASS: HTML, CSS, translation, worker block, and core event handlers are present.
