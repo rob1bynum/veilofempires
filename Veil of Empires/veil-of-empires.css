@@ -956,3 +956,17 @@
 @media (max-width: 1050px) {
   .voe-banner { height: 96px; }
 }
+
+
+/* v2.3: condition automation */
+.voe-condition-summary {
+  width: 100%;
+  min-height: 92px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #4a2630;
+  background: rgba(255,248,232,.9);
+  border: 1px solid rgba(117,75,34,.35);
+}

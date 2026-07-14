@@ -22,7 +22,7 @@
       <label>Agent Name<input type="text" name="attr_character_name" placeholder="Agent name"></label>
       <label>Player Name<input type="text" name="attr_player_name" placeholder="Player name"></label>
       <label>Heritage<select name="attr_heritage"><option value="">None</option><option value="rajah">Rajah</option><option value="balam">Balam</option><option value="hrafn">Hrafn</option><option value="ursa">Ursa</option><option value="zephyr">Zephyr</option></select></label>
-      <label>Specialty<select name="attr_specialty"><option value="">None</option><option value="investigator">Investigator</option><option value="infiltrator">Infiltrator</option><option value="vanguard">Vanguard</option><option value="scholar">Scholar</option><option value="pathfinder">Pathfinder</option></select></label>
+      <label>Specialty<select name="attr_specialty"><option value="">None</option><option value="investigator">Investigator</option><option value="infiltrator">Infiltrator</option><option value="vanguard">Vanguard</option><option value="scholar">Scholar</option><option value="pathfinder">Pathfinder</option><option value="warden">Warden</option></select></label>
       <label>Origin<input type="text" name="attr_origin" placeholder="City, family, or lineage"></label>
       <label>Rank / Mastery
         <span class="voe-inline-fields">
@@ -85,17 +85,18 @@
       <section class="voe-panel">
         <h2>Conditions</h2>
         <div class="voe-check-grid">
-          <label><input type="checkbox" name="attr_condition_blinded" value="1">Blinded</label>
-          <label><input type="checkbox" name="attr_condition_charmed" value="1">Charmed</label>
-          <label><input type="checkbox" name="attr_condition_deafened" value="1">Deafened</label>
-          <label><input type="checkbox" name="attr_condition_exhausted" value="1">Exhausted</label>
-          <label><input type="checkbox" name="attr_condition_frightened" value="1">Frightened</label>
-          <label><input type="checkbox" name="attr_condition_incapacitated" value="1">Incapacitated</label>
-          <label><input type="checkbox" name="attr_condition_poisoned" value="1">Poisoned</label>
-          <label><input type="checkbox" name="attr_condition_restrained" value="1">Restrained</label>
-          <label><input type="checkbox" name="attr_condition_shocked" value="1">Shocked</label>
-          <label><input type="checkbox" name="attr_condition_stunned" value="1">Stunned</label>
+          <label title="-20% to Perception, Close Combat, and Ranged Combat tests."><input type="checkbox" name="attr_condition_blinded" value="1">Blinded</label>
+          <label title="-10% to Insight, Persuasion, Deception, and Intimidation tests. You cannot willingly attack the source of the charm."><input type="checkbox" name="attr_condition_charmed" value="1">Charmed</label>
+          <label title="-10% to Perception and Initiative rolls that rely on hearing."><input type="checkbox" name="attr_condition_deafened" value="1">Deafened</label>
+          <label title="-10% to all skill and Attribute tests; movement reduced by 10 feet."><input type="checkbox" name="attr_condition_exhausted" value="1">Exhausted</label>
+          <label title="-10% to all tests while the source of fear is present."><input type="checkbox" name="attr_condition_frightened" value="1">Frightened</label>
+          <label title="Actions are reduced to 0 and your Reaction is unavailable."><input type="checkbox" name="attr_condition_incapacitated" value="1">Incapacitated</label>
+          <label title="-10% to all skill and Attribute tests."><input type="checkbox" name="attr_condition_poisoned" value="1">Poisoned</label>
+          <label title="Movement becomes 0; -10% to Dexterity-based skills, Close Combat, and Ranged Combat."><input type="checkbox" name="attr_condition_restrained" value="1">Restrained</label>
+          <label title="-10% to Intelligence- and Wisdom-based tests; Reaction unavailable."><input type="checkbox" name="attr_condition_shocked" value="1">Shocked</label>
+          <label title="Actions are reduced to 0, Reaction unavailable, and -20% to all tests."><input type="checkbox" name="attr_condition_stunned" value="1">Stunned</label>
         </div>
+        <textarea class="voe-condition-summary" name="attr_condition_summary" readonly>No active condition penalties.</textarea>
       </section>
 
       <section class="voe-panel voe-contingency">
@@ -149,7 +150,7 @@
           </div>
 
           <div class="voe-choice-card">
-            <label>Specialty<select name="attr_specialty"><option value="">None</option><option value="investigator">Investigator</option><option value="infiltrator">Infiltrator</option><option value="vanguard">Vanguard</option><option value="scholar">Scholar</option><option value="pathfinder">Pathfinder</option></select></label>
+            <label>Specialty<select name="attr_specialty"><option value="">None</option><option value="investigator">Investigator</option><option value="infiltrator">Infiltrator</option><option value="vanguard">Vanguard</option><option value="scholar">Scholar</option><option value="pathfinder">Pathfinder</option><option value="warden">Warden</option></select></label>
             <input class="voe-card-title" type="text" name="attr_specialty_display" value="No Specialty" readonly>
             <span name="attr_specialty_tagline">Choose an Agent Specialty</span>
             <textarea name="attr_specialty_summary" readonly>No Specialty selected.</textarea>
@@ -161,9 +162,9 @@
         </div>
 
         <div class="voe-protocol-slots voe-protocol-slots-wide">
-          <label>Protocol 1<select name="attr_protocol_slot_1"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option></select></label>
-          <label>Protocol 2<select name="attr_protocol_slot_2"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option></select></label>
-          <label>Protocol 3<select name="attr_protocol_slot_3"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option></select></label>
+          <label>Protocol 1<select name="attr_protocol_slot_1"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select></label>
+          <label>Protocol 2<select name="attr_protocol_slot_2"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select></label>
+          <label>Protocol 3<select name="attr_protocol_slot_3"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select></label>
         </div>
         <textarea name="attr_protocol_summary" readonly>No Protocols prepared.</textarea>
 
@@ -400,9 +401,9 @@
 </rolltemplate>
 
 <script type="text/worker">
-const HERITAGES = {"":{"name":"None","lineage":"Choose a Heritage","attributes":{},"skills":{},"armor":0,"health":0,"special":"No Heritage selected."},"rajah":{"name":"Rajah","lineage":"Snake Lineage","attributes":{"dexterity":5,"charisma":5},"skills":{"stealth":5,"deception":5},"armor":5,"health":0,"special":"Natural Scales: counts as Light Armor, imposing -5% on attackers."},"balam":{"name":"Balam","lineage":"Jaguar Lineage","attributes":{"strength":5,"dexterity":5},"skills":{"athletics":5,"close_combat":5},"armor":0,"health":0,"special":"Pounce: Once per round, move up to 5 feet immediately before a Close Combat attack without spending an action."},"hrafn":{"name":"Hrafn","lineage":"Raven Lineage","attributes":{"intelligence":5,"wisdom":5},"skills":{"investigation":5,"perception":5},"armor":0,"health":0,"special":"Keen Eyes: Gain +10 on Perception tests made to notice distant or hidden details."},"ursa":{"name":"Ursa","lineage":"Bear Lineage","attributes":{"strength":5,"endurance":5},"skills":{"athletics":5,"survival":5},"armor":0,"health":5,"special":"Massive Frame: +5 Maximum Health."},"zephyr":{"name":"Zephyr","lineage":"Wind Lineage","attributes":{"dexterity":5,"wisdom":5},"skills":{"acrobatics":5,"stealth":5},"armor":0,"health":0,"special":"Airborne Step: Ignore ordinary difficult terrain and reduce falling harm at the Director's discretion."}};
-const PROTOCOLS = {"":{"name":"None","attributes":{},"skills":{},"temporary_health":0,"special":"No Protocol prepared."},"ghost_step":{"name":"Ghost Step","attributes":{"dexterity":5},"skills":{"stealth":10},"temporary_health":0,"special":"Observers suffer -5 to Perception tests made to locate you."},"arcane_sight":{"name":"Arcane Sight","attributes":{"intelligence":5},"skills":{"investigation":10},"temporary_health":0,"special":"You can perceive active magic and magical residue, even through thin barriers at short range."},"iron_heart":{"name":"Iron Heart","attributes":{"endurance":5},"skills":{"survival":10},"temporary_health":0,"special":"Ignore the first fatigue or exhaustion penalty you would suffer each scene."},"titan_frame":{"name":"Titan Frame","attributes":{"strength":5},"skills":{"athletics":10},"temporary_health":5,"special":"Gain +5 Temporary Health while this Protocol is prepared."},"calm_mind":{"name":"Calm Mind","attributes":{"wisdom":5},"skills":{"insight":10},"temporary_health":0,"special":"Once per scene, clear Frightened or gain +10 to resist mental or emotional influence."}};
-const SPECIALTIES = {"":{"name":"None","tagline":"Choose an Agent Specialty","skills":{},"movement":0,"contacts":0,"health":0,"contact_types":[],"special":"No Specialty selected."},"investigator":{"name":"Investigator","tagline":"The truth has a habit of hiding behind lies.","skills":{"perception":5,"investigation":5,"deception":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Detective","Professor","Informant"],"special":"Once per mission, ask the Director one focused investigative question. The answer must be truthful, though it may be incomplete."},"infiltrator":{"name":"Infiltrator","tagline":"Some doors were never meant to open.","skills":{"stealth":5,"acrobatics":5,"sleight_of_hand":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Spy","Fence","Safehouse Keeper"],"special":"After using a Move action, you may immediately attempt to Hide when suitable cover or concealment is available."},"vanguard":{"name":"Vanguard","tagline":"When the plan breaks, the Vanguard holds.","skills":{"athletics":5,"survival":5,"intimidation":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":5,"contact_types":["Officer","Veteran","Quartermaster"],"special":"Hardened Operative: +5 Maximum Health."},"scholar":{"name":"Scholar","tagline":"Every ruin is a library with sharper shelves.","skills":{"investigation":5,"arcana":5,"engineering":5,"technology":5,"medicine":5},"movement":5,"contacts":1,"health":0,"contact_types":["Archivist","Researcher","Librarian"],"special":"After one minute of examination, identify the broad purpose, origin, or danger of an unknown artifact or arcane device."},"pathfinder":{"name":"Pathfinder","tagline":"The Wilds are only unmapped until you survive them.","skills":{"survival":5,"perception":5,"athletics":5,"animal_handling":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Hunter","Scout","Guide"],"special":"Ordinary difficult terrain does not reduce your movement."}};
+const HERITAGES = {"":{"name":"None","lineage":"Choose a Heritage","attributes":{},"skills":{},"armor":0,"health":0,"special":"No Heritage selected."},"rajah":{"name":"Rajah","lineage":"Snake Lineage","attributes":{"dexterity":5,"charisma":5},"skills":{"stealth":5,"deception":5},"armor":5,"health":0,"special":"Natural Scales: counts as Light Armor, imposing -5% on attackers."},"balam":{"name":"Balam","lineage":"Jaguar Lineage","attributes":{"strength":5,"dexterity":5},"skills":{"athletics":5,"close_combat":5},"armor":0,"health":0,"special":"Pounce: Once per round, move up to 5 feet immediately before a Close Combat attack without spending an action."},"hrafn":{"name":"Hrafn","lineage":"Raven Lineage","attributes":{"intelligence":5,"wisdom":5},"skills":{"investigation":5,"perception":5},"armor":0,"health":0,"special":"Keen Eyes: Gain +10 on Perception tests made to notice distant or hidden details."},"ursa":{"name":"Ursa","lineage":"Bear Lineage","attributes":{"strength":5,"endurance":5},"skills":{"athletics":5,"survival":5},"armor":0,"health":5,"special":"Massive Frame: +5 Maximum Health and count as one size larger when lifting, carrying, or resisting forced movement."},"zephyr":{"name":"Zephyr","lineage":"Wind Lineage","attributes":{"dexterity":5,"wisdom":5},"skills":{"acrobatics":5,"stealth":5},"armor":0,"health":0,"special":"Airborne Step: Ignore ordinary difficult terrain and reduce falling harm at the Director's discretion."}};
+const PROTOCOLS = {"":{"name":"None","attributes":{},"skills":{},"temporary_health":0,"special":"No Protocol prepared."},"ghost_step":{"name":"Ghost Step","attributes":{"dexterity":5},"skills":{"stealth":10},"temporary_health":0,"special":"Observers suffer -5 to Perception tests made to locate you."},"arcane_sight":{"name":"Arcane Sight","attributes":{"intelligence":5},"skills":{"investigation":10},"temporary_health":0,"special":"You can perceive active magic and magical residue, even through thin barriers at short range."},"iron_heart":{"name":"Iron Heart","attributes":{"endurance":5},"skills":{"survival":10},"temporary_health":0,"special":"Ignore the first fatigue or exhaustion penalty you would suffer each scene."},"titan_frame":{"name":"Titan Frame","attributes":{"strength":5},"skills":{"athletics":10},"temporary_health":5,"special":"Gain +5 Temporary Health while this Protocol is prepared."},"calm_mind":{"name":"Calm Mind","attributes":{"wisdom":5},"skills":{"insight":10},"temporary_health":0,"special":"Once per scene, clear Frightened or gain +10 to resist mental or emotional influence."},"battle_focus":{"name":"Battle Focus","attributes":{"charisma":5},"skills":{"close_combat":10},"temporary_health":0,"special":"Your second Close Combat attack each round ignores the normal -10% multiple-attack penalty."}};
+const SPECIALTIES = {"":{"name":"None","tagline":"Choose an Agent Specialty","skills":{},"movement":0,"contacts":0,"health":0,"contact_types":[],"special":"No Specialty selected."},"investigator":{"name":"Investigator","tagline":"The truth has a habit of hiding behind lies.","skills":{"perception":5,"investigation":5,"deception":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Detective","Professor","Informant"],"special":"Once per mission, ask the Director one focused investigative question. The answer must be truthful, though it may be incomplete."},"infiltrator":{"name":"Infiltrator","tagline":"Some doors were never meant to open.","skills":{"stealth":5,"acrobatics":5,"sleight_of_hand":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Spy","Fence","Safehouse Keeper"],"special":"After using a Move action, you may immediately attempt to Hide when suitable cover or concealment is available."},"vanguard":{"name":"Vanguard","tagline":"When the plan breaks, the Vanguard holds.","skills":{"athletics":5,"survival":5,"intimidation":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":5,"contact_types":["Officer","Veteran","Quartermaster"],"special":"Hardened Operative: +5 Maximum Health."},"scholar":{"name":"Scholar","tagline":"Every ruin is a library with sharper shelves.","skills":{"investigation":5,"arcana":5,"engineering":5,"technology":5,"medicine":5},"movement":5,"contacts":1,"health":0,"contact_types":["Archivist","Researcher","Librarian"],"special":"After one minute of examination, identify the broad purpose, origin, or danger of an unknown artifact or arcane device."},"pathfinder":{"name":"Pathfinder","tagline":"The Wilds are only unmapped until you survive them.","skills":{"survival":5,"perception":5,"athletics":5,"animal_handling":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Hunter","Scout","Guide"],"special":"Ordinary difficult terrain does not reduce your movement."},"warden":{"name":"Warden","tagline":"Stand behind me.","skills":{"athletics":5,"close_combat":5,"intimidation":5,"survival":5,"ranged_combat":5},"movement":5,"contacts":1,"health":5,"contact_types":["Veteran Commander","Master Smith","Expedition Marshal"],"special":"Hold the Line: Once each round after a successful adjacent Close Combat hit, force the target to remain engaged until its next turn unless it succeeds on an Athletics test."}};
 
 const numberValue = (value, fallback = 0) => {
   const parsed = parseFloat(value);
@@ -426,6 +427,44 @@ const SKILL_ATTRIBUTE_MAP = {
   insight: ["insight", "wisdom"], persuasion: ["persuasion", "charisma"], deception: ["deception", "charisma"],
   intimidation: ["intimidation", "charisma"], sleight_of_hand: ["sleight_of_hand", "dexterity"], technology: ["technology", "intelligence"],
   animal_handling: ["animal_handling", "wisdom"], close_combat: ["close_combat", "strength"], ranged_combat: ["ranged_combat", "dexterity"]
+};
+
+const CONDITION_KEYS = ["blinded","charmed","deafened","exhausted","frightened","incapacitated","poisoned","restrained","shocked","stunned"];
+const CONDITION_LABELS = {
+  blinded:"Blinded: -20% Perception, Close Combat, and Ranged Combat.",
+  charmed:"Charmed: -10% Insight, Persuasion, Deception, and Intimidation; cannot willingly attack the charmer.",
+  deafened:"Deafened: -10% Perception and hearing-based Initiative.",
+  exhausted:"Exhausted: -10% to all tests and -10 feet Movement.",
+  frightened:"Frightened: -10% to all tests while the source is present.",
+  incapacitated:"Incapacitated: 0 Actions and no Reaction.",
+  poisoned:"Poisoned: -10% to all tests.",
+  restrained:"Restrained: Movement 0; -10% Dexterity-based skills and combat attacks.",
+  shocked:"Shocked: -10% Intelligence/Wisdom-based tests and no Reaction.",
+  stunned:"Stunned: 0 Actions, no Reaction, and -20% to all tests."
+};
+const getActiveConditions = values => CONDITION_KEYS.filter(k => values[`condition_${k}`] === "1");
+const conditionPenaltyForSkill = (skill, attribute, active) => {
+  let penalty = 0;
+  if (active.includes("exhausted")) penalty -= 10;
+  if (active.includes("frightened")) penalty -= 10;
+  if (active.includes("poisoned")) penalty -= 10;
+  if (active.includes("stunned")) penalty -= 20;
+  if (active.includes("blinded") && ["perception","close_combat","ranged_combat"].includes(skill)) penalty -= 20;
+  if (active.includes("charmed") && ["insight","persuasion","deception","intimidation"].includes(skill)) penalty -= 10;
+  if (active.includes("deafened") && skill === "perception") penalty -= 10;
+  if (active.includes("restrained") && (attribute === "dexterity" || ["close_combat","ranged_combat"].includes(skill))) penalty -= 10;
+  if (active.includes("shocked") && ["intelligence","wisdom"].includes(attribute)) penalty -= 10;
+  return penalty;
+};
+const conditionPenaltyForAttribute = (attribute, active) => {
+  let penalty = 0;
+  if (active.includes("exhausted")) penalty -= 10;
+  if (active.includes("frightened")) penalty -= 10;
+  if (active.includes("poisoned")) penalty -= 10;
+  if (active.includes("stunned")) penalty -= 20;
+  if (active.includes("restrained") && attribute === "dexterity") penalty -= 10;
+  if (active.includes("shocked") && ["intelligence","wisdom"].includes(attribute)) penalty -= 10;
+  return penalty;
 };
 
 const summarizeHeritage = heritage => {
@@ -464,7 +503,7 @@ const summarizeCurrentBonuses = (heritage, specialty, protocols) => {
 };
 
 const recalculateCharacter = () => {
-  const fields = ["heritage","heritage_mirror","specialty","protocol_slot_1","protocol_slot_2","protocol_slot_3", "armor_type", "carry_capacity_base", "health", "health_max", "temporary_health", "temporary_health_max", "temporary_health_applied", ...ATTRIBUTE_KEYS.flatMap(k=>[`${k}_base`,`${k}_heritage_applied`]), ...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0])];
+  const fields = ["heritage","heritage_mirror","specialty","protocol_slot_1","protocol_slot_2","protocol_slot_3", "armor_type", "carry_capacity_base", "health", "health_max", "temporary_health", "temporary_health_max", "temporary_health_applied", ...ATTRIBUTE_KEYS.flatMap(k=>[`${k}_base`,`${k}_heritage_applied`]), ...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0]), ...CONDITION_KEYS.map(k=>`condition_${k}`)];
   getAttrs([...new Set(fields)], values => {
     const heritageKey = values.heritage_mirror || values.heritage || "";
     const heritage = HERITAGES[heritageKey] || HERITAGES[""];
@@ -472,6 +511,7 @@ const recalculateCharacter = () => {
     const specialty = SPECIALTIES[specialtyKey] || SPECIALTIES[""];
     const selectedProtocolKeys = [...new Set([values.protocol_slot_1, values.protocol_slot_2, values.protocol_slot_3].filter(Boolean))];
     const selectedProtocols = selectedProtocolKeys.map(k=>PROTOCOLS[k]).filter(Boolean);
+    const activeConditions = getActiveConditions(values);
     // Heritage Attribute values are folded into the editable Base field.
     // Protocol Attribute values remain temporary/active bonuses.
     const protocolAttrBonuses = Object.fromEntries(ATTRIBUTE_KEYS.map(k=>[k,0]));
@@ -502,7 +542,8 @@ const recalculateCharacter = () => {
       protocol_slot_3_summary: values.protocol_slot_3 ? summarizeProtocol(PROTOCOLS[values.protocol_slot_3]) : "No Protocol prepared.",
       current_bonuses_summary: summarizeCurrentBonuses(heritage,specialty,selectedProtocols),
       heritage_armor_display: numberValue(heritage.armor,0) ? `Natural Light (-${heritage.armor}%)` : "None",
-      speed: 35 + numberValue(specialty.movement,0)
+      speed: activeConditions.includes("restrained") ? 0 : Math.max(0, 35 + numberValue(specialty.movement,0) - (activeConditions.includes("exhausted") ? 10 : 0)),
+      condition_summary: activeConditions.length ? activeConditions.map(k=>CONDITION_LABELS[k]).join("\n") : "No active condition penalties."
     };
     ATTRIBUTE_KEYS.forEach(k=>{
       const currentBase = numberValue(values[`${k}_base`],0);
@@ -515,14 +556,15 @@ const recalculateCharacter = () => {
       updates[`${k}_base`] = adjustedBase;
       updates[`${k}_heritage_applied`] = newHeritageBase;
       updates[`${k}_bonus`] = protocolBonus;
-      updates[k] = clampPercent(adjustedBase + protocolBonus);
+      updates[k] = clampPercent(adjustedBase + protocolBonus + conditionPenaltyForAttribute(k, activeConditions));
     });
     Object.entries(SKILL_ATTRIBUTE_MAP).forEach(([skill,[baseField,attribute]])=>{
       const base = numberValue(values[baseField],0);
       const attrTotal = updates[attribute];
       const extra = skillBonuses[skill] || 0;
-      updates[`${skill}_bonus`] = extra;
-      updates[`${skill}_total`] = clampPercent(base + attrTotal + extra);
+      const conditionPenalty = conditionPenaltyForSkill(skill, attribute, activeConditions);
+      updates[`${skill}_bonus`] = extra + conditionPenalty;
+      updates[`${skill}_total`] = clampPercent(base + attrTotal + extra + conditionPenalty);
     });
     const armorRaw = String(values.armor_type || "0");
     const wornArmor = numberValue(armorRaw.replace("natural_",""),0);
@@ -541,6 +583,9 @@ const recalculateCharacter = () => {
     updates.temporary_health_max = newTempHealth;
     updates.temporary_health_applied = newTempHealth;
     updates.temporary_health = Math.max(0, currentTemp - previousTempApplied + newTempHealth);
+
+    if (activeConditions.includes("incapacitated") || activeConditions.includes("stunned")) updates.actions_current = 0;
+    if (activeConditions.includes("incapacitated") || activeConditions.includes("stunned") || activeConditions.includes("shocked")) updates.reaction_available = 0;
 
     const baseCapacity = numberValue(values.carry_capacity_base,20);
     updates.carry_capacity = baseCapacity;
@@ -571,10 +616,11 @@ Object.entries(skillLabels).forEach(([k,label])=>bindTest(k,`${k}_total`,label,"
 const runInitiative = () => getAttrs(["character_name"],v=>startRoll(`&{template:voe} {{name=Initiative}} {{agent=${escapeTemplate(v.character_name||"Unnamed Agent")}}} {{kind=Initiative}} {{showinitiative=1}} {{rolled=[[1d100]]}} {{result=[[0]]}}`,r=>finishRoll(r.rollId,{result:Math.trunc(r.results.rolled.result)})));
 const runCombatAttack = mode => {
   const field=mode==="close"?"close_combat_total":"ranged_combat_total"; const label=mode==="close"?"Close Combat Attack":"Ranged Combat Attack";
-  getAttrs([field,"actions_current","attacks_made","target_armor_penalty","target_evading","attack_other_modifier"],v=>{
+  getAttrs([field,"actions_current","attacks_made","target_armor_penalty","target_evading","attack_other_modifier","protocol_slot_1","protocol_slot_2","protocol_slot_3"],v=>{
     const actions=Math.max(0,Math.trunc(numberValue(v.actions_current,3))); const attacks=Math.max(0,Math.trunc(numberValue(v.attacks_made,0)));
     if(actions<1) return postNotice(label,"No actions remain. Reset the round before making another attack.");
-    const base=numberValue(v[field],0), multi=attacks*10, armor=Math.max(0,numberValue(v.target_armor_penalty,0)), evasion=v.target_evading==="1"?10:0, other=numberValue(v.attack_other_modifier,0);
+    const hasBattleFocus=[v.protocol_slot_1,v.protocol_slot_2,v.protocol_slot_3].includes("battle_focus");
+    const base=numberValue(v[field],0), multi=(mode==="close" && hasBattleFocus && attacks===1 ? 0 : attacks*10), armor=Math.max(0,numberValue(v.target_armor_penalty,0)), evasion=v.target_evading==="1"?10:0, other=numberValue(v.attack_other_modifier,0);
     const finalTarget=clampPercent(base-multi-armor-evasion+other);
     runPercentileTest({name:label,target:finalTarget,kind:"Attack",description:`Base ${Math.trunc(base)}% | Attack ${attacks+1} penalty -${multi}% | Armor -${armor}% | Evasion -${evasion}% | Other ${other>=0?"+":""}${other}% | Final ${finalTarget}%`});
     setAttrs({actions_current:actions-1,attacks_made:attacks+1},{silent:true});
@@ -600,10 +646,10 @@ on("clicked:contingency",()=>getAttrs(["last_roll","last_target","last_test_name
 on("change:armor_type",recalculateCharacter);
 on("change:heritage",e=>setAttrs({heritage_mirror:e.newValue},{silent:true}));
 on("change:heritage_mirror",e=>setAttrs({heritage:e.newValue},{silent:true}));
-const recalcEvents=["heritage","heritage_mirror","specialty","protocol_slot_1","protocol_slot_2","protocol_slot_3","armor_type",...ATTRIBUTE_KEYS.map(k=>`${k}_base`),...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0])].map(f=>`change:${f}`).join(" ");
+const recalcEvents=["heritage","heritage_mirror","specialty","protocol_slot_1","protocol_slot_2","protocol_slot_3","armor_type",...ATTRIBUTE_KEYS.map(k=>`${k}_base`),...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0]), ...CONDITION_KEYS.map(k=>`condition_${k}`)].map(f=>`change:${f}`).join(" ");
 on(recalcEvents,recalculateCharacter);
 on("change:specialty", recalculateCharacter);
-on("sheet:opened",()=>{getAttrs(["sheet_version","actions_current","attacks_made","reaction_available"],v=>{const u={sheet_version:"1.5"};if(!Number.isFinite(parseFloat(v.actions_current)))u.actions_current=3;if(!Number.isFinite(parseFloat(v.attacks_made)))u.attacks_made=0;if(v.reaction_available!=="0"&&v.reaction_available!=="1")u.reaction_available=1;setAttrs(u,{silent:true});recalculateCharacter();});});
+on("sheet:opened",()=>{getAttrs(["sheet_version","actions_current","attacks_made","reaction_available"],v=>{const u={sheet_version:"2.3"};if(!Number.isFinite(parseFloat(v.actions_current)))u.actions_current=3;if(!Number.isFinite(parseFloat(v.attacks_made)))u.attacks_made=0;if(v.reaction_available!=="0"&&v.reaction_available!=="1")u.reaction_available=1;setAttrs(u,{silent:true});recalculateCharacter();});});
 
 on("change:contingency_max",e=>{const m=Math.max(0,numberValue(e.newValue,3));getAttrs(["contingency_current"],v=>setAttrs({contingency_current:Math.min(m,numberValue(v.contingency_current,m))}));});
 
