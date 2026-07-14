@@ -1,15 +1,16 @@
-# Veil of Empires Roll20 v2.3.2
+# Veil of Empires Roll20 v2.3.3
 
-## Masthead correction
+## Banner correction
 
-The top banner now preserves the artwork's original aspect ratio at every sheet width.
+This update removes all masthead cropping and distortion.
 
-- `object-fit: fill` has been removed.
-- The image uses `object-fit: cover`, so it fills the full width without being stretched or squashed.
-- Only excess vertical artwork is clipped inside the shallow header.
-- The focal point is positioned over the title plaque so **Veil of Empires** remains centered as the sheet is resized.
-- Header height remains compact: 96–112 pixels.
+- The complete banner artwork is now always visible.
+- The image keeps its original aspect ratio.
+- The masthead remains a compact 112px tall on desktop and 96px on narrower sheets.
+- A full-width dark-to-parchment backdrop fills unused side space without stretching the artwork.
 
-## Installation
+This is the only intentional change from v2.3.2. All Warden, Protocol, Condition, combat, Heritage, Specialty, and Contingency mechanics remain unchanged.
 
-Replace all content in Roll20's **HTML Layout** and **CSS Styling** editors with the corresponding files in the `Veil%20of%20Empires` folder. Save the game settings, then fully close and reopen the character sheet.
+## Install
+
+Replace the complete HTML and CSS in Roll20 with the files in the `Veil%20of%20Empires` folder, save, then close and reopen the character sheet.
