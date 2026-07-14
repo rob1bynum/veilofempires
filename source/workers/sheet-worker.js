@@ -256,7 +256,7 @@ const runCombatAttack = mode => {
     const base=numberValue(v[field],0), multi=(mode==="close" && hasBattleFocus && attacks===1 ? 0 : attacks*10), armor=Math.max(0,numberValue(v.target_armor_penalty,0)), evasion=v.target_evading==="1"?10:0, other=numberValue(v.attack_other_modifier,0);
     const finalTarget=clampPercent(base-multi-armor-evasion+other);
     runPercentileTest({name:label,target:finalTarget,kind:"Attack",description:`Base ${Math.trunc(base)}% | Attack ${attacks+1} penalty -${multi}% | Armor -${armor}% | Evasion -${evasion}% | Other ${other>=0?"+":""}${other}% | Final ${finalTarget}%`});
-    setAttrs({actions_current:actions-1,attacks_made:attacks+1},{silent:true});
+    setAttrs({actions_current:actions-1,attacks_made:attacks+1,attacks_remaining:Math.max(0,2-attacks)},{silent:true});
   });
 };
 on("clicked:initiative",runInitiative);
@@ -264,7 +264,7 @@ on("clicked:evasion",()=>getAttrs(["reaction_available","athletics_total"],v=>{i
 on("clicked:move_action",()=>getAttrs(["actions_current","speed"],v=>{const a=Math.max(0,Math.trunc(numberValue(v.actions_current,3)));if(a<1)return postNotice("Move","No actions remain.");setAttrs({actions_current:a-1},{silent:true});postNotice("Move",`Moved up to ${numberValue(v.speed,35)} feet. ${a-1} actions remain.`);}));
 on("clicked:close_attack clicked:close_combat",()=>runCombatAttack("close"));
 on("clicked:ranged_attack clicked:ranged_combat",()=>runCombatAttack("ranged"));
-on("clicked:reset_round",()=>{setAttrs({actions_current:3,attacks_made:0,reaction_available:1,target_evading:0},{silent:true});postNotice("New Round","Actions reset to 3, attack penalties cleared, and Reaction restored.");});
+on("clicked:reset_round",()=>{setAttrs({actions_current:3,attacks_made:0,attacks_remaining:3,reaction_available:1,target_evading:0},{silent:true});postNotice("New Round","Actions reset to 3, attack penalties cleared, and Reaction restored.");});
 on("clicked:untrained_test",()=>runPercentileTest({name:"Untrained Test",target:0,kind:"Custom Test"}));
 on("clicked:diagnostic_d100",()=>runPercentileTest({name:"Test d100",target:100,kind:"Diagnostic"}));
 
@@ -282,7 +282,7 @@ on("change:heritage_mirror",e=>setAttrs({heritage:e.newValue},{silent:true}));
 const recalcEvents=["heritage","heritage_mirror","specialty","protocol_slot_1","protocol_slot_2","protocol_slot_3","armor_type",...ATTRIBUTE_KEYS.map(k=>`${k}_base`),...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0]), ...CONDITION_KEYS.map(k=>`condition_${k}`)].map(f=>`change:${f}`).join(" ");
 on(recalcEvents,recalculateCharacter);
 on("change:specialty", recalculateCharacter);
-on("sheet:opened",()=>{getAttrs(["sheet_version","actions_current","attacks_made","reaction_available"],v=>{const u={sheet_version:"2.3"};if(!Number.isFinite(parseFloat(v.actions_current)))u.actions_current=3;if(!Number.isFinite(parseFloat(v.attacks_made)))u.attacks_made=0;if(v.reaction_available!=="0"&&v.reaction_available!=="1")u.reaction_available=1;setAttrs(u,{silent:true});recalculateCharacter();});});
+on("sheet:opened",()=>{getAttrs(["sheet_version","actions_current","attacks_made","attacks_remaining","reaction_available"],v=>{const u={sheet_version:"2.4.2"};const made=Math.max(0,Math.trunc(numberValue(v.attacks_made,0)));if(!Number.isFinite(parseFloat(v.actions_current)))u.actions_current=3;if(!Number.isFinite(parseFloat(v.attacks_made)))u.attacks_made=0;if(!Number.isFinite(parseFloat(v.attacks_remaining)))u.attacks_remaining=Math.max(0,3-made);if(v.reaction_available!=="0"&&v.reaction_available!=="1")u.reaction_available=1;setAttrs(u,{silent:true});recalculateCharacter();});});
 
 on("change:contingency_max",e=>{const m=Math.max(0,numberValue(e.newValue,3));getAttrs(["contingency_current"],v=>setAttrs({contingency_current:Math.min(m,numberValue(v.contingency_current,m))}));});
 
