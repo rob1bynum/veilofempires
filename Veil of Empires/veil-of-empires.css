@@ -45,19 +45,25 @@
 .voe-sheet label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
 
 .voe-banner {
-  position: relative;
   width: 100%;
-  aspect-ratio: 1536 / 570;
-  min-height: 185px;
-  max-height: 390px;
+  height: 112px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--gold);
   border-bottom: 0;
-  background-color: #f8f5ed;
-  background-image: url("https://raw.githubusercontent.com/rob1bynum/veilofempires/main/Veil%20of%20Empires/assets/voe-character-sheet-banner.png");
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: contain;
+  background: #f8f5ed;
+  box-shadow: inset 0 -8px 16px rgba(12,32,45,.08);
+}
+
+.voe-banner-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  border: 0;
 }
 
 .voe-header {
@@ -944,4 +950,9 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4px 8px;
   }
+}
+
+
+@media (max-width: 1050px) {
+  .voe-banner { height: 96px; }
 }
