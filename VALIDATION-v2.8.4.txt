@@ -1,0 +1,9 @@
+PASS: HTML synchronized
+PASS: Two-row grid only
+PASS: No Protocol footer row in HTML
+PASS: Protocol inside Contingency zone
+PASS: Tab visibility retained
+PASS: Protocol sync retained
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

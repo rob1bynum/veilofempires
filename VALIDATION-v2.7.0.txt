@@ -1,0 +1,17 @@
+Veil of Empires v2.7.0 validation passed.
+
+PASS: HTML synchronized
+PASS: Identity tab
+PASS: Header selectors removed
+PASS: Identity selectors preserved
+PASS: Contacts preserved
+PASS: Agent protocol summary
+PASS: Protocol page retained
+PASS: Armor numeric summary
+PASS: XP next 1000
+PASS: XP meter
+PASS: Level Up retained
+PASS: Round Actions
+PASS: Equipment catalog
+PASS: Banner
+PASS: worker JavaScript syntax

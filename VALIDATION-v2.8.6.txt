@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: Left column order
+PASS: Right column order
+PASS: Strict default hiding
+PASS: Agent-only display
+PASS: All six tab rules
+PASS: Protocol sync retained
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

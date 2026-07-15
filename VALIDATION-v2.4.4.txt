@@ -1,0 +1,18 @@
+Veil of Empires v2.4.4 validation passed.
+
+PASS: production/source HTML synchronized
+PASS: production CSS catalog styling
+PASS: source CSS catalog styling
+PASS: three Protocol quick-load selectors
+PASS: equipment catalog popup
+PASS: weapon catalog
+PASS: armor catalog
+PASS: base equipment catalog
+PASS: standard field kit
+PASS: Round Actions retained
+PASS: attack counters retained
+PASS: banner retained
+PASS: portrait retained
+PASS: custom repeating sections retained
+PASS: skill defaults retained at 15
+PASS: worker JavaScript syntax

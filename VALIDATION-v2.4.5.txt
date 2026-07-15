@@ -1,0 +1,8 @@
+PASS: html sync
+PASS: protocol dropdown
+PASS: catalog contrast
+PASS: close X
+PASS: compact previews
+PASS: round actions
+PASS: banner
+PASS: worker syntax

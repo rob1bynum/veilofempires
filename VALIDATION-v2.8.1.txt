@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: Compact dashboard
+PASS: Left stack
+PASS: Center stack
+PASS: Right stack
+PASS: Protocol footer
+PASS: Protocol sync
+PASS: Round Actions
+PASS: Banner
+PASS: worker syntax

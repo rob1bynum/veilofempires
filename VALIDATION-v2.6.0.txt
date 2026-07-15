@@ -1,0 +1,19 @@
+Veil of Empires v2.6.0 validation passed.
+
+PASS: HTML synchronized
+PASS: Arcane Rank UI
+PASS: Protocol budget UI
+PASS: three primary rank selectors
+PASS: repeating rank selector
+PASS: rank data
+PASS: budget logic
+PASS: rank cap
+PASS: Rank 2 points
+PASS: Arcane Rank sync
+PASS: Level Up integration
+PASS: Roll20 worker
+PASS: Round Actions retained
+PASS: equipment catalog retained
+PASS: banner retained
+PASS: worker JavaScript syntax
+PASS: Protocol budget runtime test

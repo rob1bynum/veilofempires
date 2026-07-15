@@ -1,0 +1,7 @@
+PASS: HTML synchronized
+PASS: Square frame retained
+PASS: Full avatar fit
+PASS: Centered avatar
+PASS: Tab isolation retained
+PASS: Protocol sync retained
+PASS: worker JavaScript syntax

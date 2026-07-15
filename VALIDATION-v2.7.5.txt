@@ -1,0 +1,11 @@
+PASS: HTML synchronized
+PASS: Row1
+PASS: Row2
+PASS: Row3
+PASS: Health panel
+PASS: Equipment summary
+PASS: Protocol bottom
+PASS: Protocol sync
+PASS: Round Actions
+PASS: Banner
+PASS: worker syntax

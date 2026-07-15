@@ -1,0 +1,12 @@
+PASS: HTML synchronized
+PASS: Two-row Agent grid
+PASS: Attributes and Defenses grouped
+PASS: Health and Equipment grouped
+PASS: Round Actions and Conditions grouped
+PASS: Protocol footer retained
+PASS: Strict page hiding
+PASS: All six tab selectors
+PASS: Protocol sync retained
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

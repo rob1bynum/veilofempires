@@ -1,0 +1,14 @@
+PASS: HTML synchronized
+PASS: Level Up button
+PASS: Rank 2 modal
+PASS: 1,000 XP cost
+PASS: Attribute choice
+PASS: two Skill choices
+PASS: Specialty path
+PASS: Rank 2 Protocol data
+PASS: Rank 2 Specialty data
+PASS: Rank health bonus
+PASS: existing Round Actions
+PASS: equipment catalog
+PASS: banner
+PASS: worker JavaScript syntax

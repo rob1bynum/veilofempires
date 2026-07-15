@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: Stable dashboard restored
+PASS: Original grid retained
+PASS: No stack layout CSS
+PASS: Natural panel height
+PASS: Safe compact spacing
+PASS: Protocol sync retained
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

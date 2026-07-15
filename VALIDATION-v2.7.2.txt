@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: No duplicated Roman suffix code
+PASS: All Protocol summary field
+PASS: Repeating Protocol collection
+PASS: Agent summary refresh
+PASS: XP Rank 2 fallback
+PASS: Mission Status remains in Dossier
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

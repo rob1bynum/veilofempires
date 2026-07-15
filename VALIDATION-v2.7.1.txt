@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: Protocol readout inputs
+PASS: Arcane Rank input
+PASS: Protocol points inputs
+PASS: Mission Status absent from Agent page
+PASS: Mission Status present in Notes/Dossier
+PASS: Protocol refresh retained
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

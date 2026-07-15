@@ -1,0 +1,11 @@
+PASS: HTML synchronized
+PASS: Protocol footer at bottom
+PASS: Two-column Agent CSS
+PASS: State-derived Protocol summary
+PASS: Primary Protocol fields read
+PASS: Repeating Protocol fields read
+PASS: Remove event refresh
+PASS: Rank change refresh
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

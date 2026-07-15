@@ -1,0 +1,9 @@
+PASS: HTML synchronized
+PASS: Horizontal Protocol row
+PASS: Protocol dynamic fields
+PASS: Contingency in center
+PASS: Single Contingency
+PASS: Identity spacing
+PASS: Round Actions
+PASS: Banner
+PASS: worker syntax

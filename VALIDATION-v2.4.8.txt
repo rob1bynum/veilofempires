@@ -1,0 +1,14 @@
+Veil of Empires v2.4.8 validation passed.
+
+PASS: HTML synchronized
+PASS: uses canonical summarizeProtocol
+PASS: refreshes existing rows
+PASS: uses getSectionIDs
+PASS: robust row ID extraction
+PASS: Protocol display field retained
+PASS: Protocol summary field retained
+PASS: Round Actions retained
+PASS: Close link retained
+PASS: Banner retained
+PASS: worker JavaScript syntax
+PASS: Protocol summary formatter runtime test

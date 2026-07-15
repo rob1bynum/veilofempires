@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: Exactly two columns
+PASS: Left order
+PASS: Right order
+PASS: Two-column CSS
+PASS: Tab visibility retained
+PASS: Protocol sync retained
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

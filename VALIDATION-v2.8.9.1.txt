@@ -1,0 +1,9 @@
+PASS: HTML synchronized
+PASS: Square width
+PASS: Square height
+PASS: Aspect ratio
+PASS: Overflow clipped
+PASS: Cover crop
+PASS: Tab isolation retained
+PASS: Protocol sync retained
+PASS: worker JavaScript syntax

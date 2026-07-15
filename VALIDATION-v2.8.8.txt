@@ -1,0 +1,11 @@
+PASS: HTML synchronized
+PASS: Compact Agent Summary
+PASS: Only XP and Level Up in summary
+PASS: Combat summary removed
+PASS: Rank Mastery pair
+PASS: Rank and Mastery retained
+PASS: Tab isolation retained
+PASS: Protocol sync retained
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

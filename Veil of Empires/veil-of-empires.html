@@ -1,7 +1,66 @@
 <div class="voe-sheet">
+  <input type="hidden" name="attr_rank_health_bonus" value="0">
+  <input type="hidden" name="attr_specialty_rank" value="1">
+  <input type="hidden" name="attr_secondary_specialty" value="">
+  <input type="hidden" name="attr_rank2_completed" value="0"><input type="hidden" name="attr_protocol_points_max" value="3"><input type="hidden" name="attr_protocol_points_used" value="0"><input type="hidden" name="attr_protocol_points_remaining" value="3">
+  <input class="voe-levelup-toggle" type="checkbox" name="attr_levelup_open" value="1" id="voe-levelup-toggle">
+
+  <div class="voe-levelup-modal">
+    <label class="voe-levelup-backdrop" for="voe-levelup-toggle"></label>
+    <section class="voe-levelup-dialog">
+      <header class="voe-levelup-header">
+        <div>
+          <h2>Advance to Rank 2</h2>
+          <p>Spend 1,000 XP and complete each advancement choice.</p>
+        </div>
+        <label class="voe-levelup-close" for="voe-levelup-toggle">Close</label>
+      </header>
+
+      <div class="voe-levelup-rewards">
+        <strong>Rank 2 Rewards</strong>
+        <span>+5 to one Attribute</span>
+        <span>+5 to two different Skills</span>
+        <span>+5 Maximum Health</span>
+        <span>Rank 2 Protocol effects</span>
+      </div>
+
+      <div class="voe-levelup-grid">
+        <label>Attribute Increase
+          <select name="attr_levelup_attribute"><option value="strength">Strength</option><option value="dexterity">Dexterity</option><option value="endurance">Endurance</option><option value="intelligence">Intelligence</option><option value="wisdom">Wisdom</option><option value="charisma">Charisma</option></select>
+        </label>
+        <label>First Skill Increase
+          <select name="attr_levelup_skill_1"><option value="athletics">Athletics</option><option value="acrobatics">Acrobatics</option><option value="stealth">Stealth</option><option value="investigation">Investigation</option><option value="arcana">Arcana</option><option value="engineering">Engineering</option><option value="medicine">Medicine</option><option value="survival">Survival</option><option value="perception">Perception</option><option value="insight">Insight</option><option value="persuasion">Persuasion</option><option value="deception">Deception</option><option value="intimidation">Intimidation</option><option value="sleight_of_hand">Sleight of Hand</option><option value="technology">Technology</option><option value="animal_handling">Animal Handling</option><option value="close_combat">Close Combat</option><option value="ranged_combat">Ranged Combat</option></select>
+        </label>
+        <label>Second Skill Increase
+          <select name="attr_levelup_skill_2"><option value="athletics">Athletics</option><option value="acrobatics">Acrobatics</option><option value="stealth">Stealth</option><option value="investigation">Investigation</option><option value="arcana">Arcana</option><option value="engineering">Engineering</option><option value="medicine">Medicine</option><option value="survival">Survival</option><option value="perception">Perception</option><option value="insight">Insight</option><option value="persuasion">Persuasion</option><option value="deception">Deception</option><option value="intimidation">Intimidation</option><option value="sleight_of_hand">Sleight of Hand</option><option value="technology">Technology</option><option value="animal_handling">Animal Handling</option><option value="close_combat">Close Combat</option><option value="ranged_combat">Ranged Combat</option></select>
+        </label>
+      </div>
+
+      <section class="voe-levelup-specialty">
+        <h3>Specialty Advancement</h3>
+        <label><input type="radio" name="attr_levelup_specialty_path" value="advance" checked>
+          Advance your current Specialty to Rank 2
+        </label>
+        <label><input type="radio" name="attr_levelup_specialty_path" value="new">
+          Learn a second Rank 1 Specialty
+        </label>
+        <label>Second Specialty
+          <select name="attr_levelup_new_specialty">
+            <option value="">Choose a Specialty</option><option value="investigator">Investigator</option><option value="infiltrator">Infiltrator</option><option value="vanguard">Vanguard</option><option value="scholar">Scholar</option><option value="pathfinder">Pathfinder</option><option value="warden">Warden</option>
+          </select>
+        </label>
+        <textarea name="attr_levelup_specialty_preview" rows="5" readonly>Advance your current Specialty to unlock its Rank 2 feature and signature bonuses.</textarea>
+      </section>
+
+      <p class="voe-levelup-warning" name="attr_levelup_warning"></p>
+      <button type="action" name="act_confirm_level_up" class="voe-levelup-confirm">Confirm Rank 2 Advancement</button>
+    </section>
+  </div>
+
   <input type="hidden" name="attr_voe_schema_version" value="1">
-  <input type="hidden" name="attr_voe_sheet_version" value="2.4.0">
+  <input type="hidden" name="attr_voe_sheet_version" value="2.8.9.2">
   <input class="voe-tab-input" type="radio" name="attr_sheet_tab" value="agent" id="voe-tab-agent" checked>
+  <input class="voe-tab-input" type="radio" name="attr_sheet_tab" value="identity" id="voe-tab-identity">
   <input class="voe-tab-input" type="radio" name="attr_sheet_tab" value="protocols" id="voe-tab-protocols">
   <input class="voe-tab-input" type="radio" name="attr_sheet_tab" value="gear" id="voe-tab-gear">
   <input class="voe-tab-input" type="radio" name="attr_sheet_tab" value="notes" id="voe-tab-notes">
@@ -23,47 +82,42 @@
     <div class="voe-identity-grid">
       <label>Agent Name<input type="text" name="attr_character_name" placeholder="Agent name"></label>
       <label>Player Name<input type="text" name="attr_player_name" placeholder="Player name"></label>
-      <label>Heritage<select name="attr_heritage"><option value="">None</option><option value="rajah">Rajah</option><option value="balam">Balam</option><option value="hrafn">Hrafn</option><option value="ursa">Ursa</option><option value="zephyr">Zephyr</option></select></label>
-      <label>Specialty<select name="attr_specialty"><option value="">None</option><option value="investigator">Investigator</option><option value="infiltrator">Infiltrator</option><option value="vanguard">Vanguard</option><option value="scholar">Scholar</option><option value="pathfinder">Pathfinder</option><option value="warden">Warden</option></select></label>
       <label>Origin<input type="text" name="attr_origin" placeholder="City, family, or lineage"></label>
-      <label>Rank / Mastery
-        <span class="voe-inline-fields">
-          <input type="number" name="attr_rank" value="1" min="1" max="5" title="Rank">
-          <input type="number" name="attr_mastery" value="1" min="1" max="5" title="Mastery">
-        </span>
-      </label>
+      <div class="voe-rank-mastery-pair">
+        <label>Rank<input type="number" name="attr_rank" value="1" min="1" max="5" title="Rank"></label>
+        <label>Mastery<input type="number" name="attr_mastery" value="1" min="1" max="5" title="Mastery"></label>
+      </div>
     </div>
 
-    <aside class="voe-agent-summary" aria-label="Agent combat summary">
-      <h2>Agent Summary</h2>
-      <div class="voe-summary-grid">
-        <div><span>Health</span><strong><input type="number" name="attr_health" value="10" min="0"> / <input type="number" name="attr_health_max" value="10" readonly></strong></div>
-        <div><span>Temp Health</span><strong><input type="number" name="attr_temporary_health" value="0" min="0"></strong></div>
-        <div><span>Movement</span><strong><input type="number" name="attr_speed" value="35" readonly> ft.</strong></div>
-        <div><span>Armor</span><strong><input type="text" name="attr_heritage_armor_display" value="None" readonly></strong></div>
-        <div><span>Actions</span><strong name="attr_actions_current">3</strong></div>
-        <div><span>Reaction</span><strong class="voe-summary-reaction"><input type="checkbox" name="attr_reaction_available" value="1" checked> Ready</strong></div>
-      </div>
-      <div class="voe-summary-xp">
-        <label>XP<input type="number" name="attr_experience" value="0" min="0"></label>
-        <label>Next<input type="number" name="attr_experience_next" value="0" min="0"></label>
+    <aside class="voe-agent-summary voe-agent-summary-compact" aria-label="Agent advancement summary">
+      <div class="voe-compact-advancement">
+        <div class="voe-summary-xp">
+          <label>XP<input type="number" name="attr_experience" value="0" min="0"></label>
+          <label>Next Rank<input type="number" name="attr_experience_next" value="1000" min="0" readonly></label>
+        </div>
+        <div class="voe-xp-meter" name="attr_xp_progress_bar">□□□□□□□□□□</div>
+        <div class="voe-rank-controls">
+          <button type="action" name="act_open_level_up" class="voe-level-up-button">Level Up</button>
+          <span name="attr_rank_progress_message">Rank 2 requires 1,000 XP.</span>
+        </div>
       </div>
     </aside>
   </header>
 
   <nav class="voe-tabs" aria-label="Character sheet sections">
     <label for="voe-tab-agent">◆ Agent</label>
+    <label for="voe-tab-identity">◈ Identity</label>
     <label for="voe-tab-protocols">✦ Protocols</label>
     <label for="voe-tab-gear">⚙ Equipment</label>
     <label for="voe-tab-notes">▤ Dossier</label>
     <label for="voe-tab-rules">? Rules</label>
   </nav>
 
-  <section class="voe-page voe-page-agent">
-    <div class="voe-column voe-left">
-      <section class="voe-panel">
+  <section class="voe-page voe-page-agent voe-agent-dashboard voe-agent-two-column">
+  <div class="voe-agent-column voe-agent-left-column">
+    <section class="voe-panel">
         <h2>Attributes</h2>
-        <div class="voe-derived-header"><span></span><span>Attribute</span><span>Base + Heritage</span><span></span><span>Protocol</span><span></span><span>Total</span></div>
+        <div class="voe-compact-attributes voe-derived-header"><span></span><span>Attribute</span><span>Base + Heritage</span><span></span><span>Protocol</span><span></span><span>Total</span></div>
         <div class="voe-attribute-list"><div class="voe-stat voe-stat-derived"><button type="action" name="act_strength">STR</button><span>Strength</span><input type="number" name="attr_strength_base" value="0" min="0" max="100" title="Base"><span class="voe-math">+</span><input type="number" name="attr_strength_bonus" value="0" readonly title="Protocol Attribute bonus"><span class="voe-math">=</span><input type="number" name="attr_strength" value="0" readonly title="Final Attribute"></div>
 <div class="voe-stat voe-stat-derived"><button type="action" name="act_dexterity">DEX</button><span>Dexterity</span><input type="number" name="attr_dexterity_base" value="0" min="0" max="100" title="Base"><span class="voe-math">+</span><input type="number" name="attr_dexterity_bonus" value="0" readonly title="Protocol Attribute bonus"><span class="voe-math">=</span><input type="number" name="attr_dexterity" value="0" readonly title="Final Attribute"></div>
 <div class="voe-stat voe-stat-derived"><button type="action" name="act_endurance">END</button><span>Endurance</span><input type="number" name="attr_endurance_base" value="0" min="0" max="100" title="Base"><span class="voe-math">+</span><input type="number" name="attr_endurance_bonus" value="0" readonly title="Protocol Attribute bonus"><span class="voe-math">=</span><input type="number" name="attr_endurance" value="0" readonly title="Final Attribute"></div>
@@ -71,10 +125,9 @@
 <div class="voe-stat voe-stat-derived"><button type="action" name="act_wisdom">WIS</button><span>Wisdom</span><input type="number" name="attr_wisdom_base" value="0" min="0" max="100" title="Base"><span class="voe-math">+</span><input type="number" name="attr_wisdom_bonus" value="0" readonly title="Protocol Attribute bonus"><span class="voe-math">=</span><input type="number" name="attr_wisdom" value="0" readonly title="Final Attribute"></div>
 <div class="voe-stat voe-stat-derived"><button type="action" name="act_charisma">CHA</button><span>Charisma</span><input type="number" name="attr_charisma_base" value="0" min="0" max="100" title="Base"><span class="voe-math">+</span><input type="number" name="attr_charisma_bonus" value="0" readonly title="Protocol Attribute bonus"><span class="voe-math">=</span><input type="number" name="attr_charisma" value="0" readonly title="Final Attribute"></div></div>
       </section>
-
-      <section class="voe-panel">
+    <section class="voe-panel">
         <h2>Defenses</h2>
-        <div class="voe-defense-grid">
+        <div class="voe-compact-defenses voe-defense-grid">
           <div class="voe-defense-row"><label for="voe-armor-type">Armor Type</label><select id="voe-armor-type" name="attr_armor_type"><option value="0">None (0%)</option><option value="5">Light (-5%)</option><option value="10">Medium (-10%)</option><option value="15">Heavy (-15%)</option><option value="natural_5">Natural Light (-5%)</option><option value="natural_10">Natural Medium (-10%)</option><option value="natural_15">Natural Heavy (-15%)</option></select></div>
           <div class="voe-defense-row"><label for="voe-armor-penalty">Attack Penalty</label><input id="voe-armor-penalty" type="number" name="attr_armor_penalty" value="0" readonly></div>
           <div class="voe-defense-row"><label for="voe-heritage-armor">Heritage Armor</label><input id="voe-heritage-armor" type="text" name="attr_heritage_armor_display" value="None" readonly></div>
@@ -83,8 +136,57 @@
         <button class="voe-primary-roll" type="action" name="act_evasion">Attempt Evasion (Athletics)</button>
         <p class="voe-help voe-left-help">Evasion uses your Reaction. On success, the attacker reduces their attack target by 10%.</p>
       </section>
+    <section class="voe-panel voe-health-panel">
+      <h2>Health</h2>
+      <div class="voe-health-dashboard">
+        <div class="voe-health-bar-shell">
+          <span class="voe-health-bar-fill" name="attr_health_bar_text">██████████</span>
+        </div>
+        <div class="voe-health-main">
+          <input type="number" name="attr_health" value="10" min="0">
+          <span>/</span>
+          <input type="number" name="attr_health_max" value="10" readonly>
+        </div>
+        <div class="voe-health-meta">
+          <label>Temp<input type="number" name="attr_temporary_health" value="0" min="0"></label>
+          <label>Move<input type="number" name="attr_speed" value="35" readonly><span>ft</span></label>
+        </div>
+      </div>
+    </section>
+    <section class="voe-panel voe-equipment-summary-panel">
+      <h2>Equipment Summary</h2>
+      <div class="voe-equipment-summary-grid">
+        <label>Armor Penalty<span><input type="number" name="attr_armor_penalty" value="0" readonly>%</span></label>
+        <label>Armor Type
+          <select name="attr_armor_type">
+            <option value="0">None</option>
+            <option value="5">Light</option>
+            <option value="10">Medium</option>
+            <option value="15">Heavy</option>
+          </select>
+        </label>
+        <label>Carried Weight<input type="number" name="attr_carried_weight" value="0" readonly></label>
+        <label>Load Capacity<input type="number" name="attr_load_capacity" value="0" readonly></label>
+      </div>
+      <label class="voe-equipment-tab-link" for="voe-tab-gear">Manage Equipment →</label>
+    </section>
+    <section class="voe-panel voe-agent-protocol-summary voe-agent-protocol-footer">
+      <h2>Protocol Loadout</h2>
+      <div class="voe-agent-protocol-budget">
+        <span>Arcane Rank <input class="voe-inline-readout" type="number" name="attr_arcane_rank" value="1" readonly></span>
+        <span>Points <input class="voe-inline-readout" type="number" name="attr_protocol_points_used" value="0" readonly> / <input class="voe-inline-readout" type="number" name="attr_protocol_points_max" value="3" readonly></span>
+      </div>
+      
+      <div class="voe-agent-protocol-text-row">
+          <span class="voe-protocol-badge" name="attr_agent_protocol_slot_1_text">No Protocol</span>
+          <span class="voe-protocol-badge" name="attr_agent_protocol_slot_2_text">No Protocol</span>
+          <span class="voe-protocol-badge" name="attr_agent_protocol_slot_3_text">No Protocol</span>
+          <span class="voe-protocol-badge voe-protocol-badge-extra" name="attr_agent_protocol_extra_text"></span>
+        </div>
 
-      <section class="voe-panel">
+      <label class="voe-agent-protocol-link" for="voe-tab-protocols">Manage Protocol Loadout →</label>
+    </section>
+    <section class="voe-panel">
         <h2>Conditions</h2>
         <div class="voe-check-grid">
           <label title="-20% to Perception, Close Combat, and Ranged Combat tests."><input type="checkbox" name="attr_condition_blinded" value="1">Blinded</label>
@@ -100,8 +202,7 @@
         </div>
         <textarea class="voe-condition-summary" name="attr_condition_summary" readonly>No active condition penalties.</textarea>
       </section>
-
-      <section class="voe-panel voe-contingency">
+    <section class="voe-panel voe-contingency">
         <h2>Contingencies</h2>
         <div class="voe-resource-row">
           <label>Current<input type="number" name="attr_contingency_current" value="3" min="0"></label>
@@ -110,10 +211,10 @@
         <button class="voe-primary-roll" type="action" name="act_contingency">Apply Contingency to Last Roll</button>
         <p>Spend one point and describe the preparation. The sheet flips the digits of the last percentile result without rolling again.</p>
       </section>
-    </div>
+  </div>
 
-    <div class="voe-column voe-center">
-      <section class="voe-panel">
+  <div class="voe-agent-column voe-agent-right-column">
+    <section class="voe-panel">
         <h2>Skills</h2>
         <p class="voe-help">Each skill shows Base + linked Attribute = Total. Click the skill name to roll against the Total.</p>
         <div class="voe-skill-header" aria-hidden="true">
@@ -140,57 +241,7 @@
           <div class="voe-skill"><button type="action" name="act_ranged_combat">Ranged Combat</button><span>DEX</span><input class="voe-skill-base" type="number" name="attr_ranged_combat" value="15" min="0" max="100" title="Base skill"><span class="voe-skill-plus">+</span><input class="voe-skill-attribute" type="number" name="attr_dexterity" value="0" readonly title="Linked attribute"><span class="voe-skill-plus">+</span><input class="voe-skill-extra" type="number" name="attr_ranged_combat_bonus" value="0" readonly title="Heritage, Specialty, and Protocol skill bonus"><span class="voe-skill-equals">=</span><input class="voe-skill-total" type="number" name="attr_ranged_combat_total" value="0" readonly title="Final target"></div>
         </div>
       </section>
-
-      <section class="voe-panel voe-identity-engine">
-        <h2>Heritage, Specialty & Protocols</h2>
-        <div class="voe-identity-engine-grid">
-          <div class="voe-choice-card">
-            <label>Heritage<select name="attr_heritage_mirror"><option value="">None</option><option value="rajah">Rajah</option><option value="balam">Balam</option><option value="hrafn">Hrafn</option><option value="ursa">Ursa</option><option value="zephyr">Zephyr</option></select></label>
-            <input class="voe-card-title" type="text" name="attr_heritage_display" value="No Heritage" readonly>
-            <span name="attr_heritage_lineage">Choose a Heritage</span>
-            <textarea name="attr_heritage_summary" readonly>No Heritage selected.</textarea>
-          </div>
-
-          <div class="voe-choice-card">
-            <label>Specialty<select name="attr_specialty"><option value="">None</option><option value="investigator">Investigator</option><option value="infiltrator">Infiltrator</option><option value="vanguard">Vanguard</option><option value="scholar">Scholar</option><option value="pathfinder">Pathfinder</option><option value="warden">Warden</option></select></label>
-            <input class="voe-card-title" type="text" name="attr_specialty_display" value="No Specialty" readonly>
-            <span name="attr_specialty_tagline">Choose an Agent Specialty</span>
-            <textarea name="attr_specialty_summary" readonly>No Specialty selected.</textarea>
-            <div class="voe-contact-grant">
-              <label>Contacts Granted<input type="number" name="attr_contacts_granted" value="0" readonly></label>
-              <label>Suggested Network<input type="text" name="attr_specialty_contact_types" value="" readonly></label>
-            </div>
-          </div>
-        </div>
-
-        <div class="voe-protocol-slots voe-protocol-slots-wide">
-          <label>Protocol 1<select name="attr_protocol_slot_1"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select></label>
-          <label>Protocol 2<select name="attr_protocol_slot_2"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select></label>
-          <label>Protocol 3<select name="attr_protocol_slot_3"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select></label>
-        </div>
-        <textarea name="attr_protocol_summary" readonly>No Protocols prepared.</textarea>
-
-        <div class="voe-current-bonuses">
-          <h3>Current Bonuses</h3>
-          <textarea name="attr_current_bonuses_summary" readonly>No Heritage, Specialty, or Protocol bonuses selected.</textarea>
-        </div>
-        <p class="voe-help">Duplicate Protocols do not stack. Heritage, Specialty, and Protocol bonuses are calculated automatically.</p>
-      </section>
-
-      <section class="voe-panel">
-        <h2>Relationships & Contacts</h2>
-        <fieldset class="repeating_contacts">
-          <div class="voe-repeat-row voe-contact-row">
-            <input type="text" name="attr_contact_name" placeholder="Name">
-            <input type="text" name="attr_contact_faction" placeholder="Faction / relationship">
-            <textarea name="attr_contact_notes" placeholder="Leverage, trust, debts, notes"></textarea>
-          </div>
-        </fieldset>
-      </section>
-    </div>
-
-    <div class="voe-column voe-right">
-      <section class="voe-panel voe-combat-panel">
+    <section class="voe-panel voe-combat-panel">
         <h2>Combat</h2>
         <div class="voe-combat-grid voe-health-grid">
           <div class="voe-combat-row"><label for="voe-health">Current Health</label><input id="voe-health" type="number" name="attr_health" value="10" min="0"></div>
@@ -201,9 +252,12 @@
           <div class="voe-combat-row"><label for="voe-combat-move">Movement</label><input id="voe-combat-move" type="number" name="attr_speed" value="35" readonly></div>
         </div>
         <p class="voe-help voe-left-help">Damage is removed from Temporary Health first, then Current Health.</p>
-      </section>
-
-      <section class="voe-panel voe-actions-panel">
+      <div class="voe-combat-quick-actions"><h3>Quick Actions</h3><div class="voe-quick-rolls">
+          <button type="action" name="act_initiative">Initiative d100</button>
+          <button type="action" name="act_untrained_test">Custom Test</button>
+          <button type="action" name="act_diagnostic_d100" title="Runs a d100 test through the sheet worker">Test d100</button>
+        </div></div></section>
+    <section class="voe-panel voe-actions-panel">
         <h2>Round Actions</h2>
         <div class="voe-round-status">
           <div><span>Actions Remaining</span><input class="voe-round-counter" type="number" name="attr_actions_current" value="3" readonly></div>
@@ -230,42 +284,123 @@
           <div><strong>Multiple Attacks</strong><span>First attack uses the full skill, second is -10%, third is -20%.</span></div>
         </div>
       </section>
+  </div>
+</section>
+<section class="voe-page voe-page-identity">
+    <div class="voe-identity-main">
+      <section class="voe-panel voe-identity-engine">
+        <h2>Heritage & Specialty</h2>
+        <div class="voe-identity-engine-grid">
+          <div class="voe-choice-card">
+            <label>Heritage<select name="attr_heritage_mirror"><option value="">None</option><option value="rajah">Rajah</option><option value="balam">Balam</option><option value="hrafn">Hrafn</option><option value="ursa">Ursa</option><option value="zephyr">Zephyr</option></select></label>
+            <input class="voe-card-title" type="text" name="attr_heritage_display" value="No Heritage" readonly>
+            <span name="attr_heritage_lineage">Choose a Heritage</span>
+            <textarea name="attr_heritage_summary" readonly>No Heritage selected.</textarea>
+          </div>
 
+          <div class="voe-choice-card">
+            <label>Specialty<select name="attr_specialty"><option value="">None</option><option value="investigator">Investigator</option><option value="infiltrator">Infiltrator</option><option value="vanguard">Vanguard</option><option value="scholar">Scholar</option><option value="pathfinder">Pathfinder</option><option value="warden">Warden</option></select></label>
+            <input class="voe-card-title" type="text" name="attr_specialty_display" value="No Specialty" readonly>
+            <span name="attr_specialty_tagline">Choose an Agent Specialty</span>
+            <textarea name="attr_specialty_summary" readonly>No Specialty selected.</textarea>
+            <div class="voe-contact-grant">
+              <label>Contacts Granted<input type="number" name="attr_contacts_granted" value="0" readonly></label>
+              <label>Suggested Network<input type="text" name="attr_specialty_contact_types" value="" readonly></label>
+            </div>
+          </div>
+          <div class="voe-choice-card voe-secondary-specialty-card">
+            <label>Secondary Specialty
+              <input type="text" name="attr_secondary_specialty_display" value="None" readonly>
+            </label>
+            <textarea name="attr_secondary_specialty_summary" readonly>No secondary Specialty selected.</textarea>
+          </div>
+        </div></section>
       <section class="voe-panel">
-        <h2>Mission Status</h2>
-        <label class="voe-full-label">Objective<textarea name="attr_mission_objective" placeholder="Current operational objective"></textarea></label>
-        <div class="voe-resource-row">
-          <label>Escalation<input type="number" name="attr_escalation" value="0" min="0" max="6"></label>
-          <label>Maximum<input type="number" name="attr_escalation_max" value="6" min="1"></label>
-        </div>
-        <label class="voe-full-label">Complications<textarea name="attr_mission_complications" placeholder="Alarms, reinforcements, political fallout..."></textarea></label>
+        <h2>Relationships & Contacts</h2>
+        <fieldset class="repeating_contacts">
+          <div class="voe-repeat-row voe-contact-row">
+            <input type="text" name="attr_contact_name" placeholder="Name">
+            <input type="text" name="attr_contact_faction" placeholder="Faction / relationship">
+            <textarea name="attr_contact_notes" placeholder="Leverage, trust, debts, notes"></textarea>
+          </div>
+        </fieldset>
       </section>
-
+    </div>
+    <div class="voe-identity-side">
       <section class="voe-panel">
-        <h2>Quick Actions</h2>
-        <div class="voe-quick-rolls">
-          <button type="action" name="act_initiative">Initiative d100</button>
-          <button type="action" name="act_untrained_test">Custom Test</button>
-          <button type="action" name="act_diagnostic_d100" title="Runs a d100 test through the sheet worker">Test d100</button>
-        </div>
+        <h2>Agent Profile</h2>
+        <label>Origin<input type="text" name="attr_origin" placeholder="City, family, or lineage"></label>
+        <label>Affiliation<input type="text" name="attr_affiliation" placeholder="Agency, city, or allegiance"></label>
+        <label>Appearance<textarea name="attr_appearance" placeholder="Appearance and identifying features"></textarea></label>
+        <label>Background<textarea name="attr_background" placeholder="History, training, and formative events"></textarea></label>
+      </section>
+      <section class="voe-panel">
+        <h2>Current Bonuses</h2>
+        <textarea class="voe-identity-bonus-summary" name="attr_current_bonuses_summary" readonly>No Heritage, Specialty, or Protocol bonuses selected.</textarea>
+        <p class="voe-help">Heritage and Specialty choices live here. Protocol loadouts are managed on the Protocols tab.</p>
       </section>
     </div>
   </section>
 
   <section class="voe-page voe-page-protocols">
+    <section class="voe-card voe-protocol-budget-card">
+      <h2>Protocol Budget</h2>
+      <div class="voe-protocol-budget-grid">
+        <label>Arcane Rank<input type="number" name="attr_arcane_rank" value="1" readonly></label>
+        <label>Protocol Points<input type="number" name="attr_protocol_points_max" value="3" readonly></label>
+        <label>Points Used<input type="number" name="attr_protocol_points_used" value="0" readonly></label>
+        <label>Points Remaining<input type="number" name="attr_protocol_points_remaining" value="3" readonly></label>
+      </div>
+      <p class="voe-caption">Each Protocol Rank costs one Protocol Point. No Protocol may exceed your Arcane Rank.</p>
+      <p class="voe-protocol-budget-warning" name="attr_protocol_budget_warning"></p>
+    </section>
+
     <section class="voe-panel voe-wide-panel voe-prepared-protocols-panel">
       <h2>Prepared Protocols</h2>
       <p class="voe-help">These are the Protocols selected on the Agent tab. Changes made there appear here automatically.</p>
       <div class="voe-prepared-protocol-grid">
         <div class="voe-prepared-protocol-card">
+          <label class="voe-quick-protocol-label">Loadout Slot 1
+            <select class="voe-quick-protocol-select" name="attr_protocol_slot_1"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select>
+          <label class="voe-protocol-rank-label">Rank
+            <select class="voe-protocol-rank-select" name="attr_protocol_rank_1">
+              <option value="0">0</option>
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+            </select>
+          </label>
+
+          </label>
           <input class="voe-card-title" type="text" name="attr_protocol_slot_1_display" value="No Protocol" readonly>
           <textarea name="attr_protocol_slot_1_summary" readonly>No Protocol prepared.</textarea>
         </div>
         <div class="voe-prepared-protocol-card">
+          <label class="voe-quick-protocol-label">Loadout Slot 2
+            <select class="voe-quick-protocol-select" name="attr_protocol_slot_2"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select>
+          <label class="voe-protocol-rank-label">Rank
+            <select class="voe-protocol-rank-select" name="attr_protocol_rank_2">
+              <option value="0">0</option>
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+            </select>
+          </label>
+
+          </label>
           <input class="voe-card-title" type="text" name="attr_protocol_slot_2_display" value="No Protocol" readonly>
           <textarea name="attr_protocol_slot_2_summary" readonly>No Protocol prepared.</textarea>
         </div>
         <div class="voe-prepared-protocol-card">
+          <label class="voe-quick-protocol-label">Loadout Slot 3
+            <select class="voe-quick-protocol-select" name="attr_protocol_slot_3"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select>
+          <label class="voe-protocol-rank-label">Rank
+            <select class="voe-protocol-rank-select" name="attr_protocol_rank_3">
+              <option value="0">0</option>
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+            </select>
+          </label>
+
+          </label>
           <input class="voe-card-title" type="text" name="attr_protocol_slot_3_display" value="No Protocol" readonly>
           <textarea name="attr_protocol_slot_3_summary" readonly>No Protocol prepared.</textarea>
         </div>
@@ -281,20 +416,108 @@
         <label>Mastery Degree<input type="number" name="attr_arcane_mastery" value="1" min="1" max="5"></label>
       </div>
       <fieldset class="repeating_protocols">
-        <div class="voe-repeat-row voe-protocol-row">
-          <button type="action" name="act_protocol">Activate</button>
-          <input type="text" name="attr_protocol_name" placeholder="Protocol name">
-          <select name="attr_protocol_category"><option>Enhancement</option><option>Offensive</option><option>Defensive</option><option>Movement</option><option>Perception</option><option>Social</option><option>Utility</option><option>Classified</option></select>
-          <input type="number" name="attr_protocol_rank" value="1" min="1" max="5" title="Rank">
-          <input type="number" name="attr_protocol_load" value="1" min="0" title="Load">
-          <input type="checkbox" name="attr_protocol_prepared" value="1" title="Prepared">
-          <textarea name="attr_protocol_effect" placeholder="Effect, activation, duration, limits"></textarea>
-        </div>
-      </fieldset>
+      <div class="voe-prepared-protocol-card voe-library-protocol-card">
+        <label class="voe-quick-protocol-label">Additional Loadout Slot
+          <select class="voe-quick-protocol-select" name="attr_protocol_name"><option value="">None</option><option value="ghost_step">Ghost Step</option><option value="arcane_sight">Arcane Sight</option><option value="iron_heart">Iron Heart</option><option value="titan_frame">Titan Frame</option><option value="calm_mind">Calm Mind</option><option value="battle_focus">Battle Focus</option></select>
+        <label class="voe-protocol-rank-label">Rank
+          <select class="voe-protocol-rank-select" name="attr_protocol_rank">
+            <option value="0">0</option>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+          </select>
+        </label>
+
+        </label>
+        <input class="voe-card-title" type="text" name="attr_protocol_display" value="No Protocol" readonly>
+        <textarea class="voe-protocol-description" name="attr_protocol_summary" rows="3" readonly>No Protocol prepared.</textarea>
+      </div>
+    </fieldset>
     </section>
   </section>
 
   <section class="voe-page voe-page-gear">
+    <input class="voe-catalog-toggle" type="checkbox" name="attr_equipment_catalog_open" value="1" id="voe-equipment-catalog-toggle">
+    <div class="voe-catalog-toolbar">
+      <label class="voe-catalog-open-button" for="voe-equipment-catalog-toggle">✦ Open Equipment Catalog</label>
+      <span>Choose standard weapons, armor, and field equipment without manually entering every line.</span>
+    </div>
+
+    <div class="voe-catalog-modal">
+      <label class="voe-catalog-backdrop" for="voe-equipment-catalog-toggle" title="Close catalog"></label>
+      <section class="voe-catalog-dialog">
+        <div class="voe-catalog-header">
+          <div>
+            <h2>Agent Requisition Catalog</h2>
+            <p>Selections are added to the existing repeating Weapons and Equipment sections.</p>
+          </div>
+          <label class="voe-catalog-close" for="voe-equipment-catalog-toggle" title="Close">Close</label>
+        </div>
+
+        <div class="voe-catalog-grid">
+          <article class="voe-catalog-card">
+            <h3>Weapons</h3>
+            <label>Weapon
+              <select name="attr_catalog_weapon">
+                <option value="utility_knife">Utility Knife</option>
+                <option value="service_sword">Service Sword</option>
+                <option value="war_hammer">War Hammer</option>
+                <option value="compact_pistol">Compact Pistol</option>
+                <option value="service_carbine">Service Carbine</option>
+                <option value="long_rifle">Long Rifle</option>
+                <option value="scattergun">Scattergun</option>
+                <option value="arc_caster">Arc Caster</option>
+              </select>
+            </label>
+            <textarea class="voe-catalog-preview" name="attr_catalog_weapon_preview" rows="2" readonly>Utility Knife • Close Combat • Damage 2 • Close</textarea>
+            <button type="action" name="act_add_catalog_weapon">Add Weapon</button>
+          </article>
+
+          <article class="voe-catalog-card">
+            <h3>Armor</h3>
+            <label>Armor
+              <select name="attr_catalog_armor">
+                <option value="field_coat">Light Field Coat</option>
+                <option value="lamellar_vest">Medium Lamellar Vest</option>
+                <option value="bulwark_harness">Heavy Bulwark Harness</option>
+              </select>
+            </label>
+            <textarea class="voe-catalog-preview" name="attr_catalog_armor_preview" rows="2" readonly>Light Armor • Attackers suffer -5% • Weight 3</textarea>
+            <button type="action" name="act_equip_catalog_armor">Equip & Add</button>
+          </article>
+
+          <article class="voe-catalog-card">
+            <h3>Base Equipment</h3>
+            <label>Item
+              <select name="attr_catalog_equipment">
+                <option value="agent_pack">Agent Pack</option>
+                <option value="commlink">Encrypted Commlink</option>
+                <option value="field_rations">Field Rations (3 days)</option>
+                <option value="medical_kit">Medical Kit</option>
+                <option value="bypass_kit">Bypass Kit</option>
+                <option value="climbing_kit">Climbing Kit</option>
+                <option value="binoculars">Field Binoculars</option>
+                <option value="lantern">Aether Lantern</option>
+                <option value="rope">Silksteel Rope</option>
+                <option value="disguise_kit">Disguise Kit</option>
+                <option value="protocol_toolkit">Protocol Toolkit</option>
+                <option value="map_case">Survey Map Case</option>
+              </select>
+            </label>
+            <textarea class="voe-catalog-preview" name="attr_catalog_equipment_preview" rows="2" readonly>Agent Pack • Container • Weight 2</textarea>
+            <button type="action" name="act_add_catalog_equipment">Add Item</button>
+          </article>
+        </div>
+
+        <div class="voe-catalog-loadout">
+          <div>
+            <h3>Standard Agent Field Kit</h3>
+            <p>Adds an Agent Pack, Encrypted Commlink, Field Rations, Medical Kit, Aether Lantern, and Silksteel Rope.</p>
+          </div>
+          <button type="action" name="act_add_field_kit">Add Complete Kit</button>
+        </div>
+      </section>
+    </div>
+
     <div class="voe-two-column">
       <section class="voe-panel">
         <h2>Weapons & Attacks</h2>
@@ -331,6 +554,16 @@
   </section>
 
   <section class="voe-page voe-page-notes">
+
+      <section class="voe-panel">
+        <h2>Mission Status</h2>
+        <label class="voe-full-label">Objective<textarea name="attr_mission_objective" placeholder="Current operational objective"></textarea></label>
+        <div class="voe-resource-row">
+          <label>Escalation<input type="number" name="attr_escalation" value="0" min="0" max="6"></label>
+          <label>Maximum<input type="number" name="attr_escalation_max" value="6" min="1"></label>
+        </div>
+        <label class="voe-full-label">Complications<textarea name="attr_mission_complications" placeholder="Alarms, reinforcements, political fallout..."></textarea></label>
+      </section>
     <div class="voe-two-column">
       <section class="voe-panel">
         <h2>Notes & Backstory</h2>
@@ -407,6 +640,257 @@
 const HERITAGES = {"":{"name":"None","lineage":"Choose a Heritage","attributes":{},"skills":{},"armor":0,"health":0,"special":"No Heritage selected."},"rajah":{"name":"Rajah","lineage":"Snake Lineage","attributes":{"dexterity":5,"charisma":5},"skills":{"stealth":5,"deception":5},"armor":5,"health":0,"special":"Natural Scales: counts as Light Armor, imposing -5% on attackers."},"balam":{"name":"Balam","lineage":"Jaguar Lineage","attributes":{"strength":5,"dexterity":5},"skills":{"athletics":5,"close_combat":5},"armor":0,"health":0,"special":"Pounce: Once per round, move up to 5 feet immediately before a Close Combat attack without spending an action."},"hrafn":{"name":"Hrafn","lineage":"Raven Lineage","attributes":{"intelligence":5,"wisdom":5},"skills":{"investigation":5,"perception":5},"armor":0,"health":0,"special":"Keen Eyes: Gain +10 on Perception tests made to notice distant or hidden details."},"ursa":{"name":"Ursa","lineage":"Bear Lineage","attributes":{"strength":5,"endurance":5},"skills":{"athletics":5,"survival":5},"armor":0,"health":5,"special":"Massive Frame: +5 Maximum Health and count as one size larger when lifting, carrying, or resisting forced movement."},"zephyr":{"name":"Zephyr","lineage":"Wind Lineage","attributes":{"dexterity":5,"wisdom":5},"skills":{"acrobatics":5,"stealth":5},"armor":0,"health":0,"special":"Airborne Step: Ignore ordinary difficult terrain and reduce falling harm at the Director's discretion."}};
 const PROTOCOLS = {"":{"name":"None","attributes":{},"skills":{},"temporary_health":0,"special":"No Protocol prepared."},"ghost_step":{"name":"Ghost Step","attributes":{"dexterity":5},"skills":{"stealth":10},"temporary_health":0,"special":"Observers suffer -5 to Perception tests made to locate you."},"arcane_sight":{"name":"Arcane Sight","attributes":{"intelligence":5},"skills":{"investigation":10},"temporary_health":0,"special":"You can perceive active magic and magical residue, even through thin barriers at short range."},"iron_heart":{"name":"Iron Heart","attributes":{"endurance":5},"skills":{"survival":10},"temporary_health":0,"special":"Ignore the first fatigue or exhaustion penalty you would suffer each scene."},"titan_frame":{"name":"Titan Frame","attributes":{"strength":5},"skills":{"athletics":10},"temporary_health":5,"special":"Gain +5 Temporary Health while this Protocol is prepared."},"calm_mind":{"name":"Calm Mind","attributes":{"wisdom":5},"skills":{"insight":10},"temporary_health":0,"special":"Once per scene, clear Frightened or gain +10 to resist mental or emotional influence."},"battle_focus":{"name":"Battle Focus","attributes":{"charisma":5},"skills":{"close_combat":10},"temporary_health":0,"special":"Your second Close Combat attack each round ignores the normal -10% multiple-attack penalty."}};
 const SPECIALTIES = {"":{"name":"None","tagline":"Choose an Agent Specialty","skills":{},"movement":0,"contacts":0,"health":0,"contact_types":[],"special":"No Specialty selected."},"investigator":{"name":"Investigator","tagline":"The truth has a habit of hiding behind lies.","skills":{"perception":5,"investigation":5,"deception":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Detective","Professor","Informant"],"special":"Once per mission, ask the Director one focused investigative question. The answer must be truthful, though it may be incomplete."},"infiltrator":{"name":"Infiltrator","tagline":"Some doors were never meant to open.","skills":{"stealth":5,"acrobatics":5,"sleight_of_hand":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Spy","Fence","Safehouse Keeper"],"special":"After using a Move action, you may immediately attempt to Hide when suitable cover or concealment is available."},"vanguard":{"name":"Vanguard","tagline":"When the plan breaks, the Vanguard holds.","skills":{"athletics":5,"survival":5,"intimidation":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":5,"contact_types":["Officer","Veteran","Quartermaster"],"special":"Hardened Operative: +5 Maximum Health."},"scholar":{"name":"Scholar","tagline":"Every ruin is a library with sharper shelves.","skills":{"investigation":5,"arcana":5,"engineering":5,"technology":5,"medicine":5},"movement":5,"contacts":1,"health":0,"contact_types":["Archivist","Researcher","Librarian"],"special":"After one minute of examination, identify the broad purpose, origin, or danger of an unknown artifact or arcane device."},"pathfinder":{"name":"Pathfinder","tagline":"The Wilds are only unmapped until you survive them.","skills":{"survival":5,"perception":5,"athletics":5,"animal_handling":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Hunter","Scout","Guide"],"special":"Ordinary difficult terrain does not reduce your movement."},"warden":{"name":"Warden","tagline":"Stand behind me.","skills":{"athletics":5,"close_combat":5,"intimidation":5,"survival":5,"ranged_combat":5},"movement":5,"contacts":1,"health":5,"contact_types":["Veteran Commander","Master Smith","Expedition Marshal"],"special":"Hold the Line: Once each round after a successful adjacent Close Combat hit, force the target to remain engaged until its next turn unless it succeeds on an Athletics test."}};
+
+const PROTOCOLS_RANK_2 = {
+  ghost_step:{
+    name:"Ghost Step II",
+    attributes:{dexterity:5},
+    skills:{stealth:15},
+    temporary_health:0,
+    special:"Observers suffer -10 to Perception tests made to locate you, and moving at full speed does not automatically reveal you."
+  },
+  arcane_sight:{
+    name:"Arcane Sight II",
+    attributes:{intelligence:5},
+    skills:{investigation:15},
+    temporary_health:0,
+    special:"Perceive active magic and residue through substantial barriers at medium range, and identify its broad source or tradition."
+  },
+  iron_heart:{
+    name:"Iron Heart II",
+    attributes:{endurance:5},
+    skills:{survival:15},
+    temporary_health:5,
+    special:"Ignore the first two fatigue or exhaustion penalties each scene and gain +5 Temporary Health while prepared."
+  },
+  titan_frame:{
+    name:"Titan Frame II",
+    attributes:{strength:10},
+    skills:{athletics:15},
+    temporary_health:10,
+    special:"Gain +10 Temporary Health while prepared and count as one size larger for lifting, carrying, and forced movement."
+  },
+  calm_mind:{
+    name:"Calm Mind II",
+    attributes:{wisdom:5},
+    skills:{insight:15},
+    temporary_health:0,
+    special:"Once per scene, clear Frightened or Charmed. Gain +15 to resist mental or emotional influence."
+  },
+  battle_focus:{
+    name:"Battle Focus II",
+    attributes:{charisma:5},
+    skills:{close_combat:15},
+    temporary_health:0,
+    special:"Your second attack each round ignores its multiple-attack penalty. Your third attack suffers only -10%."
+  }
+};
+
+
+const RANK_DATA = {
+  1:{arcaneRank:1,protocolPoints:3},
+  2:{arcaneRank:2,protocolPoints:4}
+};
+
+const protocolPointLimit = rank => (RANK_DATA[rank] || RANK_DATA[1]).protocolPoints;
+const arcaneRankFor = rank => (RANK_DATA[rank] || RANK_DATA[1]).arcaneRank;
+
+const clampProtocolRank = (requested, arcaneRank) =>
+  Math.max(0, Math.min(Math.trunc(numberValue(requested,0)), arcaneRank));
+
+const protocolForSelectedRank = (key, selectedRank) => {
+  if (!key || selectedRank <= 0) return PROTOCOLS[""];
+  return selectedRank >= 2 && PROTOCOLS_RANK_2[key]
+    ? PROTOCOLS_RANK_2[key]
+    : (PROTOCOLS[key] || PROTOCOLS[""]);
+};
+
+const collectProtocolBudgetFields = () => [
+  "rank",
+  "protocol_slot_1","protocol_rank_1",
+  "protocol_slot_2","protocol_rank_2",
+  "protocol_slot_3","protocol_rank_3"
+];
+
+const calculatePrimaryProtocolBudget = values => {
+  const rank = Math.max(1,Math.trunc(numberValue(values.rank,1)));
+  const arcaneRank = arcaneRankFor(rank);
+  const maxPoints = protocolPointLimit(rank);
+  let used = 0;
+  const normalized = {};
+
+  [1,2,3].forEach(slot => {
+    const key = values[`protocol_slot_${slot}`] || "";
+    const selectedRank = key ? clampProtocolRank(values[`protocol_rank_${slot}`], arcaneRank) : 0;
+    normalized[`protocol_rank_${slot}`] = selectedRank;
+    used += selectedRank;
+  });
+
+  return {
+    rank,
+    arcaneRank,
+    maxPoints,
+    used,
+    remaining:maxPoints-used,
+    normalized
+  };
+};
+
+const refreshProtocolBudget = () => {
+  getAttrs(collectProtocolBudgetFields(), values => {
+    const budget = calculatePrimaryProtocolBudget(values);
+    let warning = "";
+    if (budget.used > budget.maxPoints) {
+      warning = `Protocol loadout exceeds the ${budget.maxPoints}-point budget by ${budget.used-budget.maxPoints}.`;
+    }
+    setAttrs({
+      arcane_rank:budget.arcaneRank,
+      protocol_points_max:budget.maxPoints,
+      protocol_points_used:budget.used,
+      protocol_points_remaining:budget.remaining,
+      protocol_budget_warning:warning,
+      ...budget.normalized
+    }, {silent:true});
+  });
+};
+
+const refreshPrimaryProtocolCards = () => {
+  const fields = [
+    "rank",
+    "protocol_slot_1","protocol_rank_1",
+    "protocol_slot_2","protocol_rank_2",
+    "protocol_slot_3","protocol_rank_3"
+  ];
+  getAttrs(fields, values => {
+    const rank = Math.max(1,Math.trunc(numberValue(values.rank,1)));
+    const arcaneRank = arcaneRankFor(rank);
+    const updates = {};
+    [1,2,3].forEach(slot => {
+      const key = values[`protocol_slot_${slot}`] || "";
+      const selectedRank = key ? clampProtocolRank(values[`protocol_rank_${slot}`],arcaneRank) : 0;
+      const protocol = protocolForSelectedRank(key,selectedRank);
+      updates[`protocol_slot_${slot}_display`] = key && selectedRank > 0
+        ? protocol.name
+        : "No Protocol";
+      updates[`protocol_slot_${slot}_summary`] = key && selectedRank > 0
+        ? summarizeProtocol(protocol)
+        : "No Protocol prepared.";
+      updates[`protocol_rank_${slot}`] = selectedRank;
+    });
+    setAttrs(updates,{silent:true});
+  });
+};
+
+
+const refreshAgentProtocolLoadoutSummary = () => {
+  const fields = [
+    "rank",
+    "protocol_slot_1","protocol_rank_1",
+    "protocol_slot_2","protocol_rank_2",
+    "protocol_slot_3","protocol_rank_3"
+  ];
+
+  getSectionIDs("repeating_protocols", rowIds => {
+    rowIds.forEach(rowId => {
+      fields.push(`repeating_protocols_${rowId}_protocol_name`);
+      fields.push(`repeating_protocols_${rowId}_protocol_rank`);
+    });
+
+    getAttrs(fields, values => {
+      const agentRank = Math.max(1,Math.trunc(numberValue(values.rank,1)));
+      const arcaneRank = arcaneRankFor(agentRank);
+      const names = [];
+
+      [1,2,3].forEach(slot => {
+        const key = values[`protocol_slot_${slot}`] || "";
+        const selectedRank = key
+          ? clampProtocolRank(values[`protocol_rank_${slot}`],arcaneRank)
+          : 0;
+
+        if (key && selectedRank > 0) {
+          const protocol = protocolForSelectedRank(key,selectedRank);
+          if (protocol && protocol.name && protocol.name !== "None") names.push(protocol.name);
+        }
+      });
+
+      rowIds.forEach(rowId => {
+        const key = values[`repeating_protocols_${rowId}_protocol_name`] || "";
+        const selectedRank = key
+          ? clampProtocolRank(values[`repeating_protocols_${rowId}_protocol_rank`],arcaneRank)
+          : 0;
+
+        if (key && selectedRank > 0) {
+          const protocol = protocolForSelectedRank(key,selectedRank);
+          if (protocol && protocol.name && protocol.name !== "None") names.push(protocol.name);
+        }
+      });
+
+      const visible = [...new Set(names)];
+
+      setAttrs({
+        agent_protocol_slot_1_text:visible[0] || "",
+        agent_protocol_slot_2_text:visible[1] || "",
+        agent_protocol_slot_3_text:visible[2] || "",
+        agent_protocol_extra_text:visible.length > 3 ? visible.slice(3).join(" • ") : ""
+      }, {silent:true});
+    });
+  });
+};
+
+const refreshAllProtocolState = () => {
+  refreshProtocolBudget();
+  refreshPrimaryProtocolCards();
+  refreshRepeatingProtocolRows();
+  refreshAgentProtocolLoadoutSummary();
+};
+
+on("change:rank change:protocol_slot_1 change:protocol_rank_1 change:protocol_slot_2 change:protocol_rank_2 change:protocol_slot_3 change:protocol_rank_3", refreshAllProtocolState);
+on("sheet:opened", refreshAllProtocolState);
+on("sheet:opened", refreshAgentProtocolLoadoutSummary);
+on("sheet:opened", refreshPrimaryProtocolCards);
+
+const SPECIALTIES_RANK_2 = {
+  investigator:{
+    skills:{perception:5,investigation:5},health:0,contacts:1,
+    special:"Reconstruct the Scene: Once per mission after examining a scene, ask two linked investigative questions. The Director answers truthfully, though details may remain incomplete."
+  },
+  infiltrator:{
+    skills:{stealth:5,acrobatics:5},health:0,contacts:1,
+    special:"Ghost Entry: Once per scene after successfully Hiding, reposition up to 10 feet without another test when cover or concealment connects the positions."
+  },
+  vanguard:{
+    skills:{athletics:5,close_combat:5},health:5,contacts:1,
+    special:"Refuse to Fall: Once per mission when reduced to 0 Health, remain at 1 Health instead."
+  },
+  scholar:{
+    skills:{arcana:5,engineering:5},health:0,contacts:1,
+    special:"Deep Analysis: Once per mission, identify one hidden property, flaw, or operating principle of an artifact, device, or magical phenomenon."
+  },
+  pathfinder:{
+    skills:{survival:5,perception:5},health:0,contacts:1,
+    special:"Trailblazer: You and allies following your route ignore ordinary difficult terrain and reduce environmental travel penalties by 5%."
+  },
+  warden:{
+    skills:{close_combat:5,athletics:5},health:5,contacts:1,
+    special:"Unbroken Line: Once each round when an adjacent ally takes damage, reduce that damage by 2 and become engaged with the attacker."
+  }
+};
+
+const specialtyRank2Summary = key => {
+  const base = SPECIALTIES[key] || SPECIALTIES[""];
+  const rank2 = SPECIALTIES_RANK_2[key];
+  if (!rank2) return summarizeSpecialty(base);
+  const skills = Object.entries(rank2.skills || {}).map(([skill,value]) => `+${value} ${skill.replace(/_/g," ")}`);
+  const extras = [];
+  if (rank2.health) extras.push(`+${rank2.health} Maximum Health`);
+  if (rank2.contacts) extras.push(`+${rank2.contacts} Contact`);
+  if (rank2.special) extras.push(rank2.special);
+  return `${summarizeSpecialty(base)}\n\nRank 2: ${[...skills,...extras].join(" • ")}`;
+};
+
+const getProtocolForRank = (key, rank) =>
+  rank >= 2 && PROTOCOLS_RANK_2[key] ? PROTOCOLS_RANK_2[key] : (PROTOCOLS[key] || PROTOCOLS[""]);
+
 
 const numberValue = (value, fallback = 0) => {
   const parsed = parseFloat(value);
@@ -542,14 +1026,24 @@ const summarizeCurrentBonuses = (heritage, specialty, protocols) => {
 };
 
 const recalculateCharacter = () => {
-  const fields = ["heritage","heritage_mirror","specialty","protocol_slot_1","protocol_slot_2","protocol_slot_3", "armor_type", "carry_capacity_base", "health", "health_max", "temporary_health", "temporary_health_max", "temporary_health_applied", ...ATTRIBUTE_KEYS.flatMap(k=>[`${k}_base`,`${k}_heritage_applied`]), ...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0]), ...CONDITION_KEYS.map(k=>`condition_${k}`)];
+  const fields = ["heritage","heritage_mirror","specialty","secondary_specialty","specialty_rank","rank","rank_health_bonus","experience","experience_next","protocol_rank_1","protocol_rank_2","protocol_rank_3","protocol_slot_1","protocol_slot_2","protocol_slot_3", "armor_type", "carry_capacity_base", "health", "health_max", "temporary_health", "temporary_health_max", "temporary_health_applied", ...ATTRIBUTE_KEYS.flatMap(k=>[`${k}_base`,`${k}_heritage_applied`]), ...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0]), ...CONDITION_KEYS.map(k=>`condition_${k}`)];
   getAttrs([...new Set(fields)], values => {
     const heritageKey = values.heritage_mirror || values.heritage || "";
     const heritage = HERITAGES[heritageKey] || HERITAGES[""];
     const specialtyKey = values.specialty || "";
     const specialty = SPECIALTIES[specialtyKey] || SPECIALTIES[""];
+    const secondarySpecialtyKey = values.secondary_specialty || "";
+    const secondarySpecialty = SPECIALTIES[secondarySpecialtyKey] || SPECIALTIES[""];
+    const specialtyRank = Math.max(1,Math.trunc(numberValue(values.specialty_rank,1)));
+    const agentRank = Math.max(1,Math.trunc(numberValue(values.rank,1)));
+    const specialtyRank2 = specialtyRank >= 2 ? SPECIALTIES_RANK_2[specialtyKey] : null;
     const selectedProtocolKeys = [...new Set([values.protocol_slot_1, values.protocol_slot_2, values.protocol_slot_3].filter(Boolean))];
-    const selectedProtocols = selectedProtocolKeys.map(k=>PROTOCOLS[k]).filter(Boolean);
+    const selectedProtocolRanks = [
+      clampProtocolRank(values.protocol_rank_1,arcaneRankFor(agentRank)),
+      clampProtocolRank(values.protocol_rank_2,arcaneRankFor(agentRank)),
+      clampProtocolRank(values.protocol_rank_3,arcaneRankFor(agentRank))
+    ];
+    const selectedProtocols = selectedProtocolKeys.map((k,index)=>protocolForSelectedRank(k,selectedProtocolRanks[index])).filter(p=>p && p.name!=="None");
     const activeConditions = getActiveConditions(values);
     // Heritage Attribute values are folded into the editable Base field.
     // Protocol Attribute values remain temporary/active bonuses.
@@ -557,6 +1051,8 @@ const recalculateCharacter = () => {
     const skillBonuses = Object.fromEntries(Object.keys(SKILL_ATTRIBUTE_MAP).map(k=>[k,0]));
     Object.entries(heritage.skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
     Object.entries(specialty.skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
+    Object.entries(secondarySpecialty.skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
+    Object.entries((specialtyRank2 || {}).skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
     selectedProtocols.forEach(p=>{
       Object.entries(p.attributes || {}).forEach(([k,v])=>protocolAttrBonuses[k]=(protocolAttrBonuses[k]||0)+v);
       Object.entries(p.skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
@@ -569,19 +1065,21 @@ const recalculateCharacter = () => {
       heritage_summary: summarizeHeritage(heritage),
       specialty_display: specialty.name === "None" ? "No Specialty" : specialty.name,
       specialty_tagline: specialty.tagline || "",
-      specialty_summary: summarizeSpecialty(specialty),
+      specialty_summary: specialtyRank >= 2 ? specialtyRank2Summary(specialtyKey) : summarizeSpecialty(specialty),
+      secondary_specialty_display: secondarySpecialtyKey ? secondarySpecialty.name : "",
+      secondary_specialty_summary: secondarySpecialtyKey ? summarizeSpecialty(secondarySpecialty) : "",
       specialty_contact_types: (specialty.contact_types || []).join(" / "),
-      contacts_granted: numberValue(specialty.contacts,0),
+      contacts_granted: numberValue(specialty.contacts,0) + numberValue(secondarySpecialty.contacts,0) + numberValue((specialtyRank2||{}).contacts,0),
       protocol_summary: selectedProtocols.length ? selectedProtocols.map(summarizeProtocol).join("\n\n") : "No Protocols prepared.",
-      protocol_slot_1_display: PROTOCOLS[values.protocol_slot_1 || ""].name === "None" ? "No Protocol" : PROTOCOLS[values.protocol_slot_1 || ""].name,
-      protocol_slot_1_summary: values.protocol_slot_1 ? summarizeProtocol(PROTOCOLS[values.protocol_slot_1]) : "No Protocol prepared.",
-      protocol_slot_2_display: PROTOCOLS[values.protocol_slot_2 || ""].name === "None" ? "No Protocol" : PROTOCOLS[values.protocol_slot_2 || ""].name,
-      protocol_slot_2_summary: values.protocol_slot_2 ? summarizeProtocol(PROTOCOLS[values.protocol_slot_2]) : "No Protocol prepared.",
-      protocol_slot_3_display: PROTOCOLS[values.protocol_slot_3 || ""].name === "None" ? "No Protocol" : PROTOCOLS[values.protocol_slot_3 || ""].name,
-      protocol_slot_3_summary: values.protocol_slot_3 ? summarizeProtocol(PROTOCOLS[values.protocol_slot_3]) : "No Protocol prepared.",
+      protocol_slot_1_display: values.protocol_slot_1 && selectedProtocolRanks[0] > 0 ? `${protocolForSelectedRank(values.protocol_slot_1,selectedProtocolRanks[0]).name} ${selectedProtocolRanks[0] >= 2 ? "II" : "I"}` : "No Protocol",
+      protocol_slot_1_summary: values.protocol_slot_1 && selectedProtocolRanks[0] > 0 ? summarizeProtocol(protocolForSelectedRank(values.protocol_slot_1,selectedProtocolRanks[0])) : "No Protocol prepared.",
+      protocol_slot_2_display: values.protocol_slot_2 && selectedProtocolRanks[1] > 0 ? `${protocolForSelectedRank(values.protocol_slot_2,selectedProtocolRanks[1]).name} ${selectedProtocolRanks[1] >= 2 ? "II" : "I"}` : "No Protocol",
+      protocol_slot_2_summary: values.protocol_slot_2 && selectedProtocolRanks[1] > 0 ? summarizeProtocol(protocolForSelectedRank(values.protocol_slot_2,selectedProtocolRanks[1])) : "No Protocol prepared.",
+      protocol_slot_3_display: values.protocol_slot_3 && selectedProtocolRanks[2] > 0 ? `${protocolForSelectedRank(values.protocol_slot_3,selectedProtocolRanks[2]).name} ${selectedProtocolRanks[2] >= 2 ? "II" : "I"}` : "No Protocol",
+      protocol_slot_3_summary: values.protocol_slot_3 && selectedProtocolRanks[2] > 0 ? summarizeProtocol(protocolForSelectedRank(values.protocol_slot_3,selectedProtocolRanks[2])) : "No Protocol prepared.",
       current_bonuses_summary: summarizeCurrentBonuses(heritage,specialty,selectedProtocols),
       heritage_armor_display: numberValue(heritage.armor,0) ? `Natural Light (-${heritage.armor}%)` : "None",
-      speed: activeConditions.includes("restrained") ? 0 : Math.max(0, 35 + numberValue(specialty.movement,0) - (activeConditions.includes("exhausted") ? 10 : 0)),
+      speed: activeConditions.includes("restrained") ? 0 : Math.max(0, 35 + numberValue(specialty.movement,0) + numberValue(secondarySpecialty.movement,0) - (activeConditions.includes("exhausted") ? 10 : 0)),
       condition_summary: activeConditions.length ? activeConditions.map(k=>CONDITION_LABELS[k]).join("\n") : "No active condition penalties."
     };
     ATTRIBUTE_KEYS.forEach(k=>{
@@ -609,9 +1107,19 @@ const recalculateCharacter = () => {
     const wornArmor = numberValue(armorRaw.replace("natural_",""),0);
     const heritageArmor = numberValue(heritage.armor,0);
     updates.armor_penalty = Math.max(wornArmor, heritageArmor);
+    const currentXp = Math.max(0,numberValue(values.experience,0));
+    const nextXp = Math.max(1,numberValue(values.experience_next,RANK_UP_COST));
+    const currentRank = Math.max(1,Math.trunc(numberValue(values.rank,1)));
+    const xpDisplayValue = currentRank >= 2 && currentXp === 0 ? nextXp : currentXp;
+    const filledXp = Math.max(0,Math.min(10,Math.floor((xpDisplayValue/nextXp)*10)));
+    updates.xp_progress_bar = "■".repeat(filledXp) + "□".repeat(10-filledXp);
+    const healthCurrent = Math.max(0,numberValue(values.health,0));
+    const healthMaximum = Math.max(1,numberValue(updates.health_max || values.health_max,1));
+    const healthSteps = Math.max(0,Math.min(10,Math.round((healthCurrent/healthMaximum)*10)));
+    updates.health_bar_text = "█".repeat(healthSteps) + "░".repeat(10-healthSteps);
 
     const previousHealthMax = Math.max(0,numberValue(values.health_max,10));
-    const newHealthMax = 10 + numberValue(heritage.health,0) + numberValue(specialty.health,0);
+    const newHealthMax = 10 + numberValue(heritage.health,0) + numberValue(specialty.health,0) + numberValue(secondarySpecialty.health,0) + numberValue((specialtyRank2||{}).health,0) + numberValue(values.rank_health_bonus,0);
     const currentHealth = Math.max(0,numberValue(values.health,previousHealthMax));
     updates.health_max = newHealthMax;
     updates.health = Math.min(newHealthMax, Math.max(0, currentHealth + (newHealthMax - previousHealthMax)));
@@ -647,6 +1155,110 @@ const runPercentileTest = ({name,target,kind="Test",damage="",description=""}) =
 };
 const bindTest = (button,field,label,kind="Test") => on(`clicked:${button}`,()=>getAttrs([field],v=>runPercentileTest({name:label,target:v[field],kind})));
 const postNotice = (name,notice,kind="Combat") => getAttrs(["character_name"],v=>startRoll(`&{template:voe} {{name=${escapeTemplate(name)}}} {{agent=${escapeTemplate(v.character_name||"Unnamed Agent")}}} {{kind=${escapeTemplate(kind)}}} {{notice=${escapeTemplate(notice)}}}`,r=>finishRoll(r.rollId)));
+
+
+const RANK_UP_COST = 1000;
+
+const rank2PathPreview = (path, currentSpecialty, newSpecialty) => {
+  if (path === "new") {
+    const selected = SPECIALTIES[newSpecialty] || SPECIALTIES[""];
+    return newSpecialty
+      ? `Second Specialty: ${selected.name}\n${summarizeSpecialty(selected)}`
+      : "Choose a second Specialty. It must be different from your current Specialty.";
+  }
+  return currentSpecialty
+    ? specialtyRank2Summary(currentSpecialty)
+    : "Choose a current Specialty before advancing it to Rank 2.";
+};
+
+const refreshLevelUpPreview = () => {
+  getAttrs(["levelup_specialty_path","specialty","levelup_new_specialty"], values => {
+    setAttrs({
+      levelup_specialty_preview: rank2PathPreview(
+        values.levelup_specialty_path || "advance",
+        values.specialty || "",
+        values.levelup_new_specialty || ""
+      )
+    }, {silent:true});
+  });
+};
+
+on("clicked:open_level_up", () => {
+  getAttrs(["rank","experience","rank2_completed"], values => {
+    const rank = Math.max(1, Math.trunc(numberValue(values.rank,1)));
+    const xp = Math.max(0, Math.trunc(numberValue(values.experience,0)));
+    let warning = "";
+    if (rank >= 2 || String(values.rank2_completed) === "1") warning = "This Agent has already completed Rank 2 advancement.";
+    else if (xp < RANK_UP_COST) warning = `You need ${RANK_UP_COST - xp} more XP to reach Rank 2.`;
+    setAttrs({levelup_open:1,levelup_warning:warning});
+    refreshLevelUpPreview();
+  });
+});
+
+on("change:levelup_specialty_path change:levelup_new_specialty change:specialty", refreshLevelUpPreview);
+
+on("clicked:confirm_level_up", () => {
+  const fields = [
+    "rank","experience","rank2_completed","health","health_max","rank_health_bonus",
+    "specialty","levelup_specialty_path","levelup_new_specialty",
+    "levelup_attribute","levelup_skill_1","levelup_skill_2"
+  ];
+  getAttrs(fields, values => {
+    const rank = Math.max(1,Math.trunc(numberValue(values.rank,1)));
+    const xp = Math.max(0,Math.trunc(numberValue(values.experience,0)));
+    const attribute = values.levelup_attribute || "";
+    const skill1 = values.levelup_skill_1 || "";
+    const skill2 = values.levelup_skill_2 || "";
+    const path = values.levelup_specialty_path || "advance";
+    const currentSpecialty = values.specialty || "";
+    const newSpecialty = values.levelup_new_specialty || "";
+
+    const errors = [];
+    if (rank !== 1 || String(values.rank2_completed) === "1") errors.push("Rank 2 advancement has already been completed.");
+    if (xp < RANK_UP_COST) errors.push("At least 1,000 current XP is required.");
+    if (!ATTRIBUTE_KEYS.includes(attribute)) errors.push("Choose an Attribute.");
+    if (!SKILL_ATTRIBUTE_MAP[skill1] || !SKILL_ATTRIBUTE_MAP[skill2]) errors.push("Choose two Skills.");
+    if (skill1 === skill2) errors.push("The two Skill increases must be different.");
+    if (path === "advance" && !currentSpecialty) errors.push("Choose a current Specialty before advancing it.");
+    if (path === "new" && (!newSpecialty || newSpecialty === currentSpecialty)) errors.push("Choose a different second Specialty.");
+
+    if (errors.length) {
+      setAttrs({levelup_warning:errors.join("\n")});
+      return;
+    }
+
+    const attributeField = `${attribute}_base`;
+    const skillField1 = SKILL_ATTRIBUTE_MAP[skill1][0];
+    const skillField2 = SKILL_ATTRIBUTE_MAP[skill2][0];
+    getAttrs([attributeField,skillField1,skillField2], current => {
+      const updates = {
+        rank:2,
+        arcane_rank:2,
+        protocol_points_max:4,
+        mastery:1,
+        experience:xp-RANK_UP_COST,
+        experience_next:RANK_UP_COST,
+        rank_health_bonus:numberValue(values.rank_health_bonus,0)+5,
+        rank2_completed:1,
+        levelup_open:0,
+        levelup_warning:"",
+        [attributeField]:clampPercent(numberValue(current[attributeField],0)+5),
+        [skillField1]:clampPercent(numberValue(current[skillField1],0)+5),
+        [skillField2]:clampPercent(numberValue(current[skillField2],0)+5)
+      };
+
+      if (path === "advance") {
+        updates.specialty_rank = 2;
+        updates.secondary_specialty = "";
+      } else {
+        updates.specialty_rank = 1;
+        updates.secondary_specialty = newSpecialty;
+      }
+
+      setAttrs(updates, {}, () => { recalculateCharacter(); refreshAllProtocolState(); });
+    });
+  });
+});
 
 ATTRIBUTE_KEYS.forEach(k=>bindTest(k,k,k.charAt(0).toUpperCase()+k.slice(1),"Attribute Test"));
 const skillLabels = {athletics:"Athletics",acrobatics:"Acrobatics",stealth:"Stealth",investigation:"Investigation",arcana:"Arcana",engineering:"Engineering",medicine:"Medicine",survival:"Survival",perception:"Perception",insight:"Insight",persuasion:"Persuasion",deception:"Deception",intimidation:"Intimidation",sleight_of_hand:"Sleight of Hand",technology:"Technology",animal_handling:"Animal Handling"};
@@ -691,6 +1303,197 @@ on("change:specialty", recalculateCharacter);
 on("sheet:opened",()=>{getAttrs(["sheet_version","actions_current","attacks_made","attacks_remaining","reaction_available"],v=>{const u={sheet_version:"2.4.2"};const made=Math.max(0,Math.trunc(numberValue(v.attacks_made,0)));if(!Number.isFinite(parseFloat(v.actions_current)))u.actions_current=3;if(!Number.isFinite(parseFloat(v.attacks_made)))u.attacks_made=0;if(!Number.isFinite(parseFloat(v.attacks_remaining)))u.attacks_remaining=Math.max(0,3-made);if(v.reaction_available!=="0"&&v.reaction_available!=="1")u.reaction_available=1;setAttrs(u,{silent:true});recalculateCharacter();});});
 
 on("change:contingency_max",e=>{const m=Math.max(0,numberValue(e.newValue,3));getAttrs(["contingency_current"],v=>setAttrs({contingency_current:Math.min(m,numberValue(v.contingency_current,m))}));});
+
+
+
+
+
+
+const getProtocolCardDetails = (protocolId, selectedRank, agentRank) => {
+  const arcaneRank = arcaneRankFor(agentRank);
+  const safeRank = protocolId ? clampProtocolRank(selectedRank,arcaneRank) : 0;
+  const protocol = protocolForSelectedRank(protocolId,safeRank);
+  return {
+    rank:safeRank,
+    display: protocolId && safeRank > 0 ? protocol.name : "No Protocol",
+    summary: protocolId && safeRank > 0 ? summarizeProtocol(protocol) : "No Protocol prepared."
+  };
+};
+
+const updateRepeatingProtocolRow = (rowId, selectedId, selectedRank, agentRank) => {
+  if (!rowId) return;
+  const prefix = `repeating_protocols_${rowId}`;
+  const selected = getProtocolCardDetails(selectedId || "", selectedRank, agentRank);
+  setAttrs({
+    [`${prefix}_protocol_rank`]:selected.rank,
+    [`${prefix}_protocol_display`]:selected.display,
+    [`${prefix}_protocol_summary`]:selected.summary
+  }, {silent:true}, refreshAgentProtocolLoadoutSummary);
+};
+
+on("change:repeating_protocols:protocol_name change:repeating_protocols:protocol_rank", eventInfo => {
+  const source = eventInfo.sourceAttribute || "";
+  const match = source.match(/^repeating_protocols_([^_]+)_(protocol_name|protocol_rank)$/);
+  if (!match) return;
+  const rowId = match[1];
+  const prefix = `repeating_protocols_${rowId}`;
+  getAttrs(["rank",`${prefix}_protocol_name`,`${prefix}_protocol_rank`], values => {
+    updateRepeatingProtocolRow(
+      rowId,
+      values[`${prefix}_protocol_name`] || "",
+      values[`${prefix}_protocol_rank`] || 0,
+      values.rank || 1
+    );
+  });
+  refreshProtocolBudgetWithRepeating();
+  refreshAgentProtocolLoadoutSummary();
+});
+
+const refreshRepeatingProtocolRows = () => {
+  getSectionIDs("repeating_protocols", rowIds => {
+    if (!rowIds || !rowIds.length) return;
+    const fields = ["rank"];
+    rowIds.forEach(rowId => {
+      fields.push(`repeating_protocols_${rowId}_protocol_name`);
+      fields.push(`repeating_protocols_${rowId}_protocol_rank`);
+    });
+    getAttrs(fields, values => {
+      rowIds.forEach(rowId => {
+        updateRepeatingProtocolRow(
+          rowId,
+          values[`repeating_protocols_${rowId}_protocol_name`] || "",
+          values[`repeating_protocols_${rowId}_protocol_rank`] || 0,
+          values.rank || 1
+        );
+      });
+    });
+  });
+};
+
+const refreshProtocolBudgetWithRepeating = () => {
+  getSectionIDs("repeating_protocols", rowIds => {
+    const fields = collectProtocolBudgetFields();
+    rowIds.forEach(rowId => {
+      fields.push(`repeating_protocols_${rowId}_protocol_name`);
+      fields.push(`repeating_protocols_${rowId}_protocol_rank`);
+    });
+    getAttrs(fields, values => {
+      const budget = calculatePrimaryProtocolBudget(values);
+      rowIds.forEach(rowId => {
+        const key = values[`repeating_protocols_${rowId}_protocol_name`] || "";
+        const selectedRank = key ? clampProtocolRank(values[`repeating_protocols_${rowId}_protocol_rank`],budget.arcaneRank) : 0;
+        budget.used += selectedRank;
+      });
+      budget.remaining = budget.maxPoints-budget.used;
+      setAttrs({
+        arcane_rank:budget.arcaneRank,
+        protocol_points_max:budget.maxPoints,
+        protocol_points_used:budget.used,
+        protocol_points_remaining:budget.remaining,
+        protocol_budget_warning:budget.used > budget.maxPoints
+          ? `Protocol loadout exceeds the ${budget.maxPoints}-point budget by ${budget.used-budget.maxPoints}.`
+          : ""
+      },{silent:true});
+    });
+  });
+};
+
+on("remove:repeating_protocols", () => { refreshProtocolBudgetWithRepeating(); refreshRepeatingProtocolRows(); refreshAgentProtocolLoadoutSummary(); });
+
+const WEAPON_CATALOG = {
+  utility_knife:{name:"Utility Knife",skill:"close_combat",damage:"2",range:"Close",notes:"Concealable, utility blade.",weight:0.5},
+  service_sword:{name:"Service Sword",skill:"close_combat",damage:"3",range:"Close",notes:"Balanced military sidearm.",weight:2},
+  war_hammer:{name:"War Hammer",skill:"close_combat",damage:"4",range:"Close",notes:"Heavy, effective against hardened targets.",weight:4},
+  compact_pistol:{name:"Compact Pistol",skill:"ranged_combat",damage:"3",range:"30 ft",notes:"Concealable sidearm; requires ammunition.",weight:1.5},
+  service_carbine:{name:"Service Carbine",skill:"ranged_combat",damage:"4",range:"100 ft",notes:"Reliable standard-issue ranged weapon.",weight:4},
+  long_rifle:{name:"Long Rifle",skill:"ranged_combat",damage:"5",range:"200 ft",notes:"Two-handed, accurate at long range.",weight:5},
+  scattergun:{name:"Scattergun",skill:"ranged_combat",damage:"5",range:"20 ft",notes:"Two-handed; devastating at short range.",weight:5},
+  arc_caster:{name:"Arc Caster",skill:"ranged_combat",damage:"4",range:"60 ft",notes:"Protocol-powered weapon; conspicuous arc discharge.",weight:3}
+};
+
+const ARMOR_CATALOG = {
+  field_coat:{name:"Light Field Coat",armor:"5",type:"Armor",weight:3,notes:"Light Armor. Attackers suffer -5%."},
+  lamellar_vest:{name:"Medium Lamellar Vest",armor:"10",type:"Armor",weight:6,notes:"Medium Armor. Attackers suffer -10%."},
+  bulwark_harness:{name:"Heavy Bulwark Harness",armor:"15",type:"Armor",weight:10,notes:"Heavy Armor. Attackers suffer -15%."}
+};
+
+const EQUIPMENT_CATALOG = {
+  agent_pack:{name:"Agent Pack",type:"Container",weight:2,notes:"Reinforced field pack with modular straps."},
+  commlink:{name:"Encrypted Commlink",type:"Communication",weight:0.2,notes:"Secure short-range voice and coded-text communication."},
+  field_rations:{name:"Field Rations (3 days)",type:"Supplies",weight:1.5,notes:"Compact preserved food and water-treatment tablets."},
+  medical_kit:{name:"Medical Kit",type:"Medical",weight:2,notes:"Bandages, antiseptic, splints, stimulants, and surgical basics."},
+  bypass_kit:{name:"Bypass Kit",type:"Tools",weight:1,notes:"Lock tools, wire probes, seals, and mechanical bypass instruments."},
+  climbing_kit:{name:"Climbing Kit",type:"Tools",weight:3,notes:"Harness, hooks, anchors, pulleys, and gloves."},
+  binoculars:{name:"Field Binoculars",type:"Optics",weight:1,notes:"Long-range optics with low-light filters."},
+  lantern:{name:"Aether Lantern",type:"Utility",weight:1,notes:"Shielded, adjustable magical illumination."},
+  rope:{name:"Silksteel Rope",type:"Utility",weight:2,notes:"50 feet of lightweight reinforced rope."},
+  disguise_kit:{name:"Disguise Kit",type:"Social",weight:2,notes:"Cosmetics, dyes, adhesives, false insignia, and wardrobe pieces."},
+  protocol_toolkit:{name:"Protocol Toolkit",type:"Arcane Tools",weight:3,notes:"Calibration tools, conduit patches, gauges, and replacement fittings."},
+  map_case:{name:"Survey Map Case",type:"Navigation",weight:0.5,notes:"Weatherproof case with writing tools and measurement instruments."}
+};
+
+const addEquipmentCatalogRow = item => {
+  const row = generateRowID();
+  const prefix = `repeating_equipment_${row}`;
+  setAttrs({
+    [`${prefix}_item_name`]:item.name,
+    [`${prefix}_item_type`]:item.type,
+    [`${prefix}_item_quantity`]:1,
+    [`${prefix}_item_weight`]:item.weight,
+    [`${prefix}_item_notes`]:item.notes
+  });
+};
+
+const catalogPreviewText = (catalog,key,kind) => {
+  const item=catalog[key] || Object.values(catalog)[0];
+  if(kind==="weapon") return `${item.name} • ${item.skill==="close_combat"?"Close Combat":"Ranged Combat"} • Damage ${item.damage} • ${item.range}`;
+  if(kind==="armor") return `${item.name} • Attackers suffer -${item.armor}% • Weight ${item.weight}`;
+  return `${item.name} • ${item.type} • Weight ${item.weight}`;
+};
+
+on("change:catalog_weapon",()=>{
+  getAttrs(["catalog_weapon"],v=>setAttrs({catalog_weapon_preview:catalogPreviewText(WEAPON_CATALOG,v.catalog_weapon,"weapon")},{silent:true}));
+});
+on("change:catalog_armor",()=>{
+  getAttrs(["catalog_armor"],v=>setAttrs({catalog_armor_preview:catalogPreviewText(ARMOR_CATALOG,v.catalog_armor,"armor")},{silent:true}));
+});
+on("change:catalog_equipment",()=>{
+  getAttrs(["catalog_equipment"],v=>setAttrs({catalog_equipment_preview:catalogPreviewText(EQUIPMENT_CATALOG,v.catalog_equipment,"equipment")},{silent:true}));
+});
+
+on("clicked:add_catalog_weapon",()=>{
+  getAttrs(["catalog_weapon","close_combat","ranged_combat"],v=>{
+    const item=WEAPON_CATALOG[v.catalog_weapon] || WEAPON_CATALOG.utility_knife;
+    const row=generateRowID();
+    const prefix=`repeating_weapons_${row}`;
+    setAttrs({
+      [`${prefix}_weapon_name`]:item.name,
+      [`${prefix}_weapon_target`]:numberValue(v[item.skill],40),
+      [`${prefix}_weapon_damage`]:item.damage,
+      [`${prefix}_weapon_range`]:item.range,
+      [`${prefix}_weapon_notes`]:item.notes
+    });
+  });
+});
+
+on("clicked:equip_catalog_armor",()=>{
+  getAttrs(["catalog_armor"],v=>{
+    const item=ARMOR_CATALOG[v.catalog_armor] || ARMOR_CATALOG.field_coat;
+    addEquipmentCatalogRow(item);
+    setAttrs({armor_type:item.armor});
+  });
+});
+
+on("clicked:add_catalog_equipment",()=>{
+  getAttrs(["catalog_equipment"],v=>{
+    const item=EQUIPMENT_CATALOG[v.catalog_equipment] || EQUIPMENT_CATALOG.agent_pack;
+    addEquipmentCatalogRow(item);
+  });
+});
+
+on("clicked:add_field_kit",()=>{
+  ["agent_pack","commlink","field_rations","medical_kit","lantern","rope"].forEach(key=>addEquipmentCatalogRow(EQUIPMENT_CATALOG[key]));
+});
 
 on("clicked:repeating_weapons:weapon",eventInfo=>{const m=(eventInfo.sourceAttribute||"").match(/^(repeating_weapons_[^_]+)_weapon$/);if(!m)return;const p=m[1];getAttrs([`${p}_weapon_name`,`${p}_weapon_target`,`${p}_weapon_damage`,`${p}_weapon_notes`],v=>runPercentileTest({name:v[`${p}_weapon_name`]||"Weapon Attack",target:v[`${p}_weapon_target`],kind:"Weapon Attack",damage:v[`${p}_weapon_damage`]||"",description:v[`${p}_weapon_notes`]||""}));});
 on("clicked:repeating_protocols:protocol",eventInfo=>{const m=(eventInfo.sourceAttribute||"").match(/^(repeating_protocols_[^_]+)_protocol$/);if(!m)return;const p=m[1];getAttrs([`${p}_protocol_name`,`${p}_protocol_rank`,`${p}_protocol_effect`,"character_name"],v=>startRoll(`&{template:voe} {{name=${escapeTemplate(v[`${p}_protocol_name`]||"Protocol")}}} {{agent=${escapeTemplate(v.character_name||"Unnamed Agent")}}} {{kind=Protocol • Rank ${escapeTemplate(v[`${p}_protocol_rank`]||"1")}}} {{description=${escapeTemplate(v[`${p}_protocol_effect`]||"Activated")}}}`,r=>finishRoll(r.rollId)));});

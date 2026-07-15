@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: Protocol detail helper
+PASS: Protocol bonuses output
+PASS: Repeating row parser
+PASS: Plain Close
+PASS: Borderless Close
+PASS: Right aligned Close
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

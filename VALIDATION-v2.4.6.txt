@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: additional Protocol card
+PASS: additional Protocol title field
+PASS: additional Protocol description
+PASS: repeating Protocol update handler
+PASS: plain Close label
+PASS: no X close label
+PASS: Round Actions retained
+PASS: banner retained
+PASS: worker JavaScript syntax

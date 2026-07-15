@@ -1,0 +1,10 @@
+PASS: HTML synchronized
+PASS: Approved dashboard retained
+PASS: Compact Attributes
+PASS: Compact Defenses
+PASS: Health dashboard
+PASS: Protocol badges
+PASS: Protocol sync retained
+PASS: Round Actions retained
+PASS: Banner retained
+PASS: worker JavaScript syntax

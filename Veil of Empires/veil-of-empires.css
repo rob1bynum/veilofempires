@@ -54,6 +54,10 @@
   border: 1px solid var(--gold);
   border-bottom: 0;
   background: #f8f5ed;
+  background-image: url("https://raw.githubusercontent.com/rob1bynum/veilofempires/main/Veil%20of%20Empires/assets/voe-character-sheet-banner.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
   box-shadow: inset 0 -8px 16px rgba(12,32,45,.08);
 }
 
@@ -1102,4 +1106,1176 @@
     max-width: 100% !important;
     object-fit: contain !important;
   }
+}
+
+
+/* v2.4.4: Protocol quick-load controls and requisition catalog */
+.voe-quick-protocol-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #dcc58d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.voe-quick-protocol-select {
+  width: 100%;
+  margin-top: 4px;
+  border-color: #947334;
+  background: #f5eedc;
+  color: #1b2228;
+  font-weight: 700;
+}
+.voe-catalog-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding: 9px 11px;
+  border: 1px solid #9b793d;
+  background: linear-gradient(90deg, rgba(28,57,70,.97), rgba(18,39,50,.97));
+  color: #e9dfc7;
+}
+.voe-catalog-toolbar span {
+  font-size: 11px;
+  font-style: italic;
+}
+.voe-catalog-open-button {
+  flex: 0 0 auto;
+  padding: 8px 13px;
+  border: 1px solid #d3b566;
+  border-radius: 3px;
+  background: linear-gradient(#ddc277,#a9782e);
+  color: #18130b;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.voe-catalog-toggle {
+  position: absolute;
+  left: -99999px;
+}
+.voe-catalog-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.voe-catalog-toggle:checked ~ .voe-catalog-modal {
+  display: flex;
+}
+.voe-catalog-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2,8,12,.82);
+  cursor: pointer;
+}
+.voe-catalog-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(980px, 94vw);
+  max-height: 88vh;
+  overflow: auto;
+  border: 2px solid #b99148;
+  box-shadow: 0 18px 60px rgba(0,0,0,.65);
+  background: #eee5d2;
+  color: #20262b;
+}
+.voe-catalog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #b99148;
+  background: linear-gradient(120deg,#173746,#0c202a);
+  color: #eee2c4;
+}
+.voe-catalog-header h2,
+.voe-catalog-header p {
+  margin: 0;
+}
+.voe-catalog-header p {
+  margin-top: 4px;
+  font-size: 11px;
+}
+.voe-catalog-close {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  border: 1px solid #d8be7d;
+  color: #f5e7c4;
+  cursor: pointer;
+  font: 700 24px/28px Arial,sans-serif;
+}
+.voe-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+  padding: 12px;
+}
+.voe-catalog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #ae9870;
+  background: rgba(255,255,255,.58);
+}
+.voe-catalog-card h3,
+.voe-catalog-loadout h3 {
+  margin: 0;
+  color: #173746;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.voe-catalog-card label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.voe-catalog-card select {
+  width: 100%;
+  margin-top: 4px;
+}
+.voe-catalog-card textarea {
+  min-height: 66px;
+  resize: none;
+  font-size: 11px;
+}
+.voe-catalog-card button,
+.voe-catalog-loadout button {
+  min-height: 32px;
+  border: 1px solid #795921;
+  border-radius: 3px;
+  background: linear-gradient(#ddc277,#a9782e);
+  color: #171109;
+  cursor: pointer;
+  font-weight: 700;
+}
+.voe-catalog-loadout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 12px 12px;
+  padding: 11px;
+  border: 1px solid #8d7040;
+  background: #ddd0b7;
+}
+.voe-catalog-loadout p {
+  margin: 3px 0 0;
+  font-size: 11px;
+}
+.voe-catalog-loadout button {
+  flex: 0 0 180px;
+  padding: 8px;
+}
+@media (max-width: 950px) {
+  .voe-catalog-grid { grid-template-columns: 1fr; }
+  .voe-catalog-loadout { align-items: stretch; flex-direction: column; }
+  .voe-catalog-loadout button { flex-basis: auto; }
+}
+
+/* v2.4.5 fixes */
+.voe-library-protocol-label{display:block;margin-bottom:6px;color:#2c2a25;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.voe-library-protocol-select{width:100%;margin-top:4px;min-height:30px;border:1px solid #947334;background:#fffaf0;color:#1c2227;font-weight:700}
+.voe-catalog-dialog,.voe-catalog-dialog label,.voe-catalog-dialog h2,.voe-catalog-dialog h3,.voe-catalog-dialog p,.voe-catalog-dialog span{color:#20262b}
+.voe-catalog-header,.voe-catalog-header h2,.voe-catalog-header p{color:#f4e9ce}
+.voe-catalog-card select,.voe-catalog-card textarea{color:#20262b;background:#fffdf7}
+.voe-catalog-close{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;border:1px solid #d8be7d;background:#1a2f3b;color:#f5e7c4!important;cursor:pointer;font-family:Arial,sans-serif;font-size:16px;font-weight:700;line-height:1}
+.voe-catalog-preview{min-height:42px;height:42px;max-height:110px;overflow-y:auto;resize:vertical;line-height:1.25;white-space:pre-wrap;overflow-wrap:anywhere}
+.voe-catalog-card textarea:focus{min-height:60px}
+
+
+/* v2.4.6: additional Protocol slots and plain Close control */
+.voe-library-protocol-card {
+  margin: 8px 0;
+}
+.voe-protocol-description {
+  width: 100%;
+  min-height: 58px;
+  height: auto;
+  resize: vertical;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+.voe-catalog-close {
+  width: auto;
+  min-width: 72px;
+  height: 34px;
+  padding: 0 12px;
+  font-size: 12px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+
+/* v2.4.7: Protocol descriptions and clean Close link */
+.voe-catalog-header {
+  position: relative;
+  align-items: flex-start;
+}
+.voe-catalog-close {
+  display: block;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  margin-left: auto;
+  padding: 2px 0 2px 14px;
+  border: 0 !important;
+  outline: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #f4e9ce !important;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .06em;
+  text-align: right;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+.voe-catalog-close:hover {
+  color: #ffffff !important;
+}
+.voe-library-protocol-card .voe-protocol-description {
+  min-height: 82px;
+  height: auto;
+  resize: vertical;
+  white-space: pre-wrap;
+  overflow-y: auto;
+}
+
+
+/* v2.5.0: Rank 2 progression and Level Up wizard */
+.voe-rank-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+.voe-rank-controls span{font-size:10px;color:#d9cba9}
+.voe-level-up-button,.voe-levelup-confirm{border:1px solid #d1b264;background:linear-gradient(#e0c77d,#a9792f);color:#171109;font-weight:700;cursor:pointer;padding:7px 12px}
+.voe-levelup-toggle{position:absolute;left:-99999px}
+.voe-levelup-modal{display:none;position:fixed;inset:0;z-index:10000;align-items:center;justify-content:center;padding:20px}
+.voe-levelup-toggle:checked~.voe-levelup-modal{display:flex}
+.voe-levelup-backdrop{position:absolute;inset:0;background:rgba(2,8,12,.84)}
+.voe-levelup-dialog{position:relative;z-index:1;width:min(850px,94vw);max-height:90vh;overflow:auto;border:2px solid #b99148;background:#eee5d2;color:#20262b;box-shadow:0 18px 60px rgba(0,0,0,.7)}
+.voe-levelup-header{display:flex;justify-content:space-between;gap:18px;padding:14px 16px;background:linear-gradient(120deg,#173746,#0c202a);color:#f4e9ce}
+.voe-levelup-header h2,.voe-levelup-header p{margin:0;color:#f4e9ce}
+.voe-levelup-header p{margin-top:4px;font-size:11px}
+.voe-levelup-close{margin-left:auto;padding:2px 0;border:0;background:transparent;color:#f4e9ce;cursor:pointer;text-align:right;text-decoration:underline;text-transform:uppercase;font-size:12px;font-weight:700}
+.voe-levelup-rewards{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:10px 12px;background:#d8c9aa;border-bottom:1px solid #a88d5b;font-size:11px}
+.voe-levelup-rewards strong{color:#173746}
+.voe-levelup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px}
+.voe-levelup-grid label,.voe-levelup-specialty label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.voe-levelup-grid select,.voe-levelup-specialty select{width:100%;margin-top:4px}
+.voe-levelup-specialty{margin:0 12px 12px;padding:12px;border:1px solid #aa9168;background:rgba(255,255,255,.55)}
+.voe-levelup-specialty h3{margin:0 0 8px;color:#173746}
+.voe-levelup-specialty>label{display:block;margin:7px 0}
+.voe-levelup-specialty textarea{width:100%;min-height:95px;margin-top:8px;resize:vertical}
+.voe-levelup-warning{min-height:18px;margin:0 12px 8px;color:#8b2e26;font-weight:700;white-space:pre-wrap}
+.voe-levelup-confirm{display:block;width:calc(100% - 24px);margin:0 12px 12px;min-height:38px}
+@media(max-width:900px){.voe-levelup-rewards,.voe-levelup-grid{grid-template-columns:1fr}}
+
+
+/* v2.6.0: Arcane Rank and Protocol Point allocation */
+.voe-protocol-budget-card{margin-bottom:10px}
+.voe-protocol-budget-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.voe-protocol-budget-grid label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.voe-protocol-budget-grid input{margin-top:4px;text-align:center;font-weight:700}
+.voe-protocol-budget-warning{min-height:18px;margin:8px 0 0;color:#8c2e28;font-weight:700;white-space:pre-wrap}
+.voe-protocol-rank-label{display:block;margin-top:6px;color:#dcc58d;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.voe-protocol-rank-select{width:100%;margin-top:4px;min-height:30px;border:1px solid #947334;background:#f5eedc;color:#1b2228;font-weight:700}
+.voe-library-protocol-card .voe-protocol-rank-label{color:#2c2a25}
+@media(max-width:900px){.voe-protocol-budget-grid{grid-template-columns:1fr 1fr}}
+
+
+/* v2.7.0: cleaner Agent dashboard and Identity tab */
+.voe-tab-input[value="identity"]:checked ~ .voe-tabs label[for="voe-tab-identity"]{background:var(--gold);color:#111}
+.voe-tab-input[value="identity"]:checked ~ .voe-page-identity{display:grid}
+.voe-header{grid-template-columns:190px minmax(330px,1fr) minmax(250px,315px)!important}
+.voe-identity-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.voe-summary-badge{display:inline-flex;align-items:baseline;justify-content:flex-end;gap:1px;min-width:58px}
+.voe-summary-badge input[type="number"]{width:46px!important;border:0!important;background:transparent!important;font-size:16px!important;font-weight:700;text-align:right}
+.voe-summary-badge em{color:#fff5dc;font-style:normal;font-size:13px}
+.voe-summary-xp{grid-template-columns:minmax(96px,1fr) minmax(96px,1fr)!important}
+.voe-summary-xp input{width:100%!important;min-width:86px!important;font-size:13px!important;font-weight:700}
+.voe-xp-meter{margin-top:6px;padding:3px 5px;border:1px solid rgba(222,197,135,.28);background:rgba(0,0,0,.25);color:var(--gold-light);font:700 13px/1 monospace;letter-spacing:2px;text-align:center}
+.voe-page-identity{grid-template-columns:minmax(0,1.6fr) minmax(280px,.8fr);gap:10px}
+.voe-identity-main,.voe-identity-side{display:flex;flex-direction:column;gap:10px;min-width:0}
+.voe-page-identity .voe-identity-engine-grid{grid-template-columns:1fr 1fr}
+.voe-secondary-specialty-card{grid-column:1/-1}
+.voe-page-identity label{display:block;margin-bottom:8px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.voe-page-identity input,.voe-page-identity select,.voe-page-identity textarea{width:100%;margin-top:4px}
+.voe-page-identity textarea{min-height:76px;resize:vertical}
+.voe-identity-bonus-summary{min-height:180px!important}
+.voe-agent-protocol-summary{grid-column:1/-1;margin-bottom:0}
+.voe-agent-protocol-budget{display:flex;justify-content:space-between;gap:10px;padding:6px 8px;background:rgba(20,50,63,.08);border:1px solid rgba(122,91,42,.28);font-size:11px}
+.voe-agent-protocol-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:7px}
+.voe-agent-protocol-list>div{min-height:32px;padding:7px;border:1px solid #ae9870;background:rgba(255,255,255,.45);text-align:center;font-size:11px}
+.voe-agent-protocol-link{display:block;margin-top:7px;color:#684912;cursor:pointer;font-size:10px;font-weight:700;text-align:right;text-decoration:underline;text-transform:uppercase}
+.voe-page-agent{grid-template-columns:.95fr 1.55fr .95fr!important;gap:8px}
+.voe-page-agent>.voe-agent-protocol-summary{grid-column:1/-1}
+@media(max-width:1050px){.voe-page-identity{grid-template-columns:1fr}.voe-identity-side{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.voe-identity-side,.voe-page-identity .voe-identity-engine-grid,.voe-agent-protocol-list{grid-template-columns:1fr}}
+
+
+/* v2.7.1: working Agent Protocol summary and Mission Status relocation */
+.voe-inline-readout {
+  display: inline-block;
+  width: 32px !important;
+  min-width: 32px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+  font-weight: 700;
+  text-align: center;
+  appearance: textfield;
+}
+.voe-inline-readout::-webkit-outer-spin-button,
+.voe-inline-readout::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+.voe-protocol-summary-readout {
+  width: 100% !important;
+  min-height: 28px;
+  padding: 3px 5px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #1e252a !important;
+  font-weight: 700;
+  text-align: center;
+}
+.voe-page-notes > .voe-panel:first-child {
+  margin-bottom: 10px;
+}
+
+
+/* v2.7.2: complete Agent Protocol summary */
+.voe-agent-protocol-list-readout {
+  width: 100% !important;
+  min-height: 78px;
+  margin-top: 7px;
+  padding: 7px 9px !important;
+  border: 1px solid #ae9870 !important;
+  background: rgba(255,255,255,.45) !important;
+  color: #1e252a !important;
+  font-weight: 700;
+  line-height: 1.45;
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
+/* v2.7.3 layout polish */
+.voe-agent-protocol-text-row{display:flex;align-items:center;gap:8px;margin-top:7px;padding:7px 9px;border:1px solid #ae9870;background:rgba(255,255,255,.45);overflow-x:auto;white-space:nowrap}
+.voe-agent-protocol-text-row span{display:inline-block;flex:0 0 auto;color:#1e252a;font-size:11px;font-weight:700}
+.voe-agent-protocol-text-row span:not(:empty)+span:not(:empty)::before{content:"•";margin-right:8px;color:#8c6a2f}
+.voe-agent-protocol-text-row span:empty{display:none}
+.voe-page-identity .voe-identity-engine{padding:10px}
+.voe-page-identity .voe-identity-engine-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:start;gap:10px}
+.voe-page-identity .voe-choice-card{display:flex;flex-direction:column;gap:7px;min-height:0;padding:10px}
+.voe-page-identity .voe-choice-card label{margin-bottom:0}
+.voe-page-identity .voe-choice-card textarea{flex:0 0 auto;min-height:88px;margin-top:0}
+.voe-page-identity .voe-secondary-specialty-card{grid-column:1/-1}
+.voe-page-identity .voe-secondary-specialty-card textarea{min-height:64px}
+@media(max-width:900px){.voe-agent-protocol-text-row{flex-wrap:wrap;white-space:normal}.voe-agent-protocol-text-row span{white-space:normal}}
+
+
+/* v2.7.4: two-column Agent dashboard and Protocol footer */
+.voe-page-agent {
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  align-items: start;
+  gap: 10px !important;
+}
+.voe-page-agent > .voe-column {
+  min-width: 0;
+}
+.voe-page-agent > .voe-left,
+.voe-page-agent > .voe-center {
+  grid-column: auto;
+}
+.voe-page-agent > .voe-right {
+  grid-column: 2;
+}
+.voe-agent-protocol-footer {
+  grid-column: 1 / -1 !important;
+  margin-top: 2px;
+}
+.voe-agent-protocol-footer .voe-agent-protocol-budget {
+  max-width: 420px;
+}
+.voe-agent-protocol-footer .voe-agent-protocol-text-row {
+  width: 100%;
+  min-height: 34px;
+  overflow-x: visible;
+  flex-wrap: wrap;
+  white-space: normal;
+}
+.voe-agent-protocol-footer .voe-agent-protocol-text-row span {
+  white-space: normal;
+}
+.voe-agent-protocol-footer .voe-agent-protocol-text-row span:empty {
+  display: none;
+}
+@media (max-width: 900px) {
+  .voe-page-agent {
+    grid-template-columns: 1fr !important;
+  }
+  .voe-page-agent > .voe-right,
+  .voe-agent-protocol-footer {
+    grid-column: 1 !important;
+  }
+}
+
+/* v2.7.5 exact approved Agent dashboard */
+.voe-page-agent.voe-agent-dashboard{display:block!important}
+.voe-agent-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr);grid-template-areas:"attributes skills combat" "health conditions round" "contingency defenses equipment";gap:10px;align-items:start}
+.voe-agent-cell{min-width:0}
+.voe-agent-cell>.voe-panel{height:100%;margin:0}
+.voe-cell-attributes{grid-area:attributes}.voe-cell-skills{grid-area:skills}.voe-cell-combat{grid-area:combat}
+.voe-cell-health{grid-area:health}.voe-cell-conditions{grid-area:conditions}.voe-cell-round-actions{grid-area:round}
+.voe-cell-contingency{grid-area:contingency}.voe-cell-defenses{grid-area:defenses}.voe-cell-equipment-summary{grid-area:equipment}
+.voe-agent-protocol-row{margin-top:10px}.voe-agent-protocol-row>.voe-panel{margin:0;width:100%}
+.voe-health-summary-grid,.voe-equipment-summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.voe-health-summary-grid label,.voe-equipment-summary-grid label{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.voe-health-summary-grid input,.voe-equipment-summary-grid input,.voe-equipment-summary-grid select{width:100%;margin-top:4px;text-align:center}
+.voe-equipment-summary-grid label span{display:flex;align-items:center;gap:2px;margin-top:4px}
+.voe-equipment-summary-grid label span input{margin-top:0}
+.voe-equipment-tab-link{display:block;margin-top:8px;color:#684912;cursor:pointer;font-size:10px;font-weight:700;text-align:right;text-decoration:underline;text-transform:uppercase}
+.voe-combat-quick-actions{margin-top:10px;padding-top:8px;border-top:1px solid rgba(123,93,47,.35)}
+.voe-combat-quick-actions h3{margin:0 0 6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:1100px){.voe-agent-grid{grid-template-columns:1fr 1fr;grid-template-areas:"attributes skills" "combat health" "conditions round" "contingency defenses" "equipment equipment"}}
+@media(max-width:760px){.voe-agent-grid{grid-template-columns:1fr;grid-template-areas:"attributes" "skills" "combat" "health" "conditions" "round" "contingency" "defenses" "equipment"}}
+
+
+/* v2.8.0: Agent Dashboard Polish */
+.voe-page-agent.voe-agent-dashboard {
+  --voe-gold: #c7a459;
+  --voe-steel: #234757;
+  --voe-parchment: #f3ead5;
+  --voe-bronze: #6d5129;
+}
+.voe-page-agent .voe-panel {
+  border-color: var(--voe-bronze);
+  background: linear-gradient(180deg, rgba(255,255,255,.5), rgba(236,224,198,.62));
+}
+.voe-page-agent .voe-panel > h2 {
+  margin: -8px -8px 9px;
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--voe-bronze);
+  background: linear-gradient(90deg, #173746, #244e60);
+  color: #f0dfb4;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+/* Compact Attributes */
+.voe-compact-attributes {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.voe-compact-attributes > div,
+.voe-compact-attributes > label {
+  display: grid !important;
+  grid-template-columns: 42px 1fr;
+  align-items: center;
+  min-height: 34px;
+  padding: 5px 7px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.45);
+}
+.voe-compact-attributes button,
+.voe-compact-attributes span:first-child {
+  min-width: 36px;
+  font-weight: 700;
+  text-align: center;
+}
+.voe-compact-attributes input {
+  width: 100% !important;
+  min-width: 0;
+  border: 0 !important;
+  background: transparent !important;
+  font-size: 15px !important;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Compact Defenses */
+.voe-compact-defenses {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.voe-compact-defenses > div,
+.voe-compact-defenses > label {
+  display: grid !important;
+  grid-template-columns: 1fr 54px;
+  align-items: center;
+  min-height: 32px;
+  padding: 5px 7px;
+  border-bottom: 1px solid rgba(109,81,41,.28);
+}
+.voe-compact-defenses input {
+  width: 50px !important;
+  border: 0 !important;
+  background: transparent !important;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Health dashboard */
+.voe-health-dashboard {
+  text-align: center;
+}
+.voe-health-bar-shell {
+  overflow: hidden;
+  padding: 5px 7px;
+  border: 1px solid #7a5b2d;
+  background: #132a35;
+}
+.voe-health-bar-fill {
+  display: block;
+  color: #d9b867;
+  font: 700 15px/1 monospace;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+.voe-health-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 9px 0 7px;
+}
+.voe-health-main input {
+  width: 64px !important;
+  border: 0 !important;
+  background: transparent !important;
+  font-size: 22px !important;
+  font-weight: 700;
+  text-align: center;
+}
+.voe-health-main span {
+  font-size: 18px;
+  color: #6d5129;
+}
+.voe-health-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+.voe-health-meta label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid rgba(109,81,41,.3);
+  background: rgba(255,255,255,.4);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.voe-health-meta input {
+  width: 48px !important;
+  border: 0 !important;
+  background: transparent !important;
+  font-weight: 700;
+  text-align: center;
+}
+.voe-health-meta span {
+  font-size: 10px;
+}
+
+/* Protocol badges */
+.voe-agent-protocol-footer {
+  border-top: 2px solid #7d5e2e;
+  border-bottom: 2px solid #7d5e2e;
+}
+.voe-agent-protocol-footer .voe-agent-protocol-text-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  padding: 8px 0 2px;
+}
+.voe-protocol-badge {
+  display: inline-flex !important;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border: 1px solid #8f713f;
+  border-radius: 14px;
+  background: linear-gradient(180deg,#294e5f,#173443);
+  color: #f2e2bd !important;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.voe-protocol-badge::before {
+  content: "◈";
+  margin-right: 6px;
+  color: #d8b768;
+}
+.voe-protocol-badge:empty {
+  display: none !important;
+}
+.voe-protocol-badge-extra {
+  white-space: normal;
+}
+
+/* Inputs and interactive controls */
+.voe-page-agent input:not([readonly]),
+.voe-page-agent select,
+.voe-page-agent textarea:not([readonly]) {
+  border-color: #9a7a43;
+  background: var(--voe-parchment);
+}
+.voe-page-agent button {
+  border-color: #8b692f;
+  background: linear-gradient(#d9bd75,#ad7d32);
+}
+
+/* Reduce noise */
+.voe-page-agent .voe-help,
+.voe-page-agent .voe-caption {
+  font-size: 10px;
+  color: #655c50;
+}
+.voe-page-agent .voe-panel {
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.3);
+}
+
+@media (max-width: 900px) {
+  .voe-compact-attributes,
+  .voe-compact-defenses {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* v2.8.2: safe compact pass, preserving the stable v2.8.0 grid */
+.voe-page-agent.voe-agent-dashboard {
+  gap: 6px !important;
+  align-items: start !important;
+}
+.voe-agent-grid {
+  gap: 6px !important;
+  align-items: start !important;
+}
+.voe-agent-cell {
+  align-self: start !important;
+  min-height: 0 !important;
+}
+.voe-agent-cell > .voe-panel {
+  height: auto !important;
+  min-height: 0 !important;
+}
+.voe-page-agent .voe-panel {
+  padding: 6px !important;
+}
+.voe-page-agent .voe-panel > h2 {
+  margin: -6px -6px 6px !important;
+  padding: 5px 7px !important;
+}
+.voe-page-agent .voe-compact-attributes,
+.voe-page-agent .voe-compact-defenses,
+.voe-page-agent .voe-health-meta,
+.voe-page-agent .voe-equipment-summary-grid,
+.voe-page-agent .voe-actions-grid,
+.voe-page-agent .voe-combat-grid,
+.voe-page-agent .voe-check-grid {
+  gap: 4px !important;
+}
+.voe-page-agent .voe-compact-attributes > div,
+.voe-page-agent .voe-compact-attributes > label,
+.voe-page-agent .voe-compact-defenses > div,
+.voe-page-agent .voe-compact-defenses > label {
+  min-height: 29px !important;
+  padding: 3px 5px !important;
+}
+.voe-page-agent .voe-health-bar-shell {
+  padding: 4px 6px !important;
+}
+.voe-page-agent .voe-health-main {
+  margin: 5px 0 4px !important;
+}
+.voe-page-agent .voe-health-main input {
+  font-size: 19px !important;
+}
+.voe-page-agent .voe-health-meta label {
+  padding: 3px !important;
+}
+.voe-page-agent .voe-agent-protocol-row {
+  margin-top: 6px !important;
+}
+.voe-page-agent .voe-agent-protocol-footer .voe-agent-protocol-text-row {
+  padding-top: 5px !important;
+}
+
+
+/* v2.8.3: two-row Agent dashboard and strict tab visibility */
+
+/* Override earlier display rules that leaked Agent content onto every tab. */
+.voe-sheet .voe-page {
+  display: none !important;
+}
+.voe-sheet #voe-tab-agent:checked ~ .voe-page-agent,
+.voe-sheet #voe-tab-identity:checked ~ .voe-page-identity,
+.voe-sheet #voe-tab-protocols:checked ~ .voe-page-protocols,
+.voe-sheet #voe-tab-gear:checked ~ .voe-page-gear,
+.voe-sheet #voe-tab-notes:checked ~ .voe-page-notes,
+.voe-sheet #voe-tab-rules:checked ~ .voe-page-rules {
+  display: grid !important;
+}
+
+/* Two visual rows, plus the full-width Protocol footer. */
+.voe-page-agent.voe-agent-two-row {
+  grid-template-columns: 1fr !important;
+  gap: 7px !important;
+}
+.voe-agent-two-row-grid {
+  display: grid;
+  grid-template-columns: minmax(0,.95fr) minmax(0,1.35fr) minmax(0,1fr);
+  grid-template-areas:
+    "character skills combat"
+    "resources contingency status";
+  gap: 7px;
+  align-items: start;
+}
+.voe-agent-character-zone { grid-area: character; }
+.voe-agent-skills-zone { grid-area: skills; }
+.voe-agent-combat-zone { grid-area: combat; }
+.voe-agent-resources-zone { grid-area: resources; }
+.voe-agent-contingency-zone { grid-area: contingency; }
+.voe-agent-status-zone { grid-area: status; }
+
+.voe-agent-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  align-self: start;
+}
+.voe-agent-zone > .voe-panel {
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0;
+}
+.voe-agent-two-row > .voe-agent-protocol-row {
+  margin-top: 0 !important;
+}
+.voe-agent-two-row > .voe-agent-protocol-row > .voe-panel {
+  margin: 0;
+  width: 100%;
+}
+
+/* Keep the polished palette while trimming excess space. */
+.voe-agent-two-row .voe-panel {
+  padding: 7px !important;
+}
+.voe-agent-two-row .voe-panel > h2 {
+  margin: -7px -7px 7px !important;
+  padding: 6px 8px !important;
+}
+.voe-agent-two-row .voe-compact-attributes,
+.voe-agent-two-row .voe-compact-defenses,
+.voe-agent-two-row .voe-health-meta,
+.voe-agent-two-row .voe-equipment-summary-grid,
+.voe-agent-two-row .voe-actions-grid,
+.voe-agent-two-row .voe-combat-grid,
+.voe-agent-two-row .voe-check-grid {
+  gap: 5px !important;
+}
+
+@media (max-width: 1100px) {
+  .voe-agent-two-row-grid {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:
+      "character skills"
+      "combat status"
+      "resources contingency";
+  }
+}
+@media (max-width: 760px) {
+  .voe-agent-two-row-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "character"
+      "skills"
+      "combat"
+      "status"
+      "resources"
+      "contingency";
+  }
+}
+
+
+/* v2.8.4: true two-row Agent page */
+.voe-page-agent.voe-agent-two-row {
+  display: block !important;
+}
+.voe-agent-two-row-grid {
+  display: grid;
+  grid-template-columns: minmax(0,.95fr) minmax(0,1.35fr) minmax(0,1fr);
+  grid-template-areas:
+    "character skills combat"
+    "resources contingency status";
+  gap: 7px;
+  align-items: start;
+}
+.voe-agent-contingency-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.voe-agent-contingency-zone > .voe-agent-protocol-footer {
+  margin: 0;
+}
+.voe-agent-contingency-zone .voe-agent-protocol-text-row {
+  flex-wrap: wrap;
+  white-space: normal;
+}
+.voe-agent-contingency-zone .voe-agent-protocol-budget {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.voe-agent-protocol-row {
+  display: none !important;
+}
+@media (max-width: 1100px) {
+  .voe-agent-two-row-grid {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:
+      "character skills"
+      "combat status"
+      "resources contingency";
+  }
+}
+@media (max-width: 760px) {
+  .voe-agent-two-row-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "character"
+      "skills"
+      "combat"
+      "status"
+      "resources"
+      "contingency";
+  }
+}
+
+
+/* v2.8.5: exact two-column Agent layout */
+.voe-page-agent.voe-agent-two-column {
+  display: grid !important;
+  grid-template-columns: minmax(0,.95fr) minmax(0,1.35fr);
+  gap: 8px !important;
+  align-items: start;
+}
+.voe-agent-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.voe-agent-column > .voe-panel {
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0;
+}
+.voe-agent-left-column .voe-agent-protocol-footer {
+  margin-top: 0;
+}
+.voe-agent-left-column .voe-agent-protocol-text-row {
+  flex-wrap: wrap;
+  white-space: normal;
+}
+.voe-agent-left-column .voe-agent-protocol-budget {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.voe-agent-two-column .voe-panel {
+  padding: 7px !important;
+}
+.voe-agent-two-column .voe-panel > h2 {
+  margin: -7px -7px 7px !important;
+  padding: 6px 8px !important;
+}
+.voe-agent-two-column .voe-compact-attributes,
+.voe-agent-two-column .voe-compact-defenses,
+.voe-agent-two-column .voe-health-meta,
+.voe-agent-two-column .voe-equipment-summary-grid,
+.voe-agent-two-column .voe-actions-grid,
+.voe-agent-two-column .voe-combat-grid,
+.voe-agent-two-column .voe-check-grid {
+  gap: 5px !important;
+}
+@media (max-width: 900px) {
+  .voe-page-agent.voe-agent-two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* v2.8.6: strict tab isolation and final two-column order */
+
+/* Hide every page by default, including Agent. */
+.voe-sheet > .voe-page,
+.voe-sheet .voe-page {
+  display: none !important;
+}
+
+/* Show only the selected page. */
+.voe-sheet #voe-tab-agent:checked ~ .voe-page-agent {
+  display: grid !important;
+}
+.voe-sheet #voe-tab-identity:checked ~ .voe-page-identity {
+  display: grid !important;
+}
+.voe-sheet #voe-tab-protocols:checked ~ .voe-page-protocols {
+  display: grid !important;
+}
+.voe-sheet #voe-tab-gear:checked ~ .voe-page-gear {
+  display: grid !important;
+}
+.voe-sheet #voe-tab-notes:checked ~ .voe-page-notes {
+  display: grid !important;
+}
+.voe-sheet #voe-tab-rules:checked ~ .voe-page-rules {
+  display: grid !important;
+}
+
+/* Exact Agent layout. */
+.voe-page-agent.voe-agent-two-column {
+  grid-template-columns: minmax(0,.95fr) minmax(0,1.35fr) !important;
+  gap: 8px !important;
+  align-items: start !important;
+}
+.voe-agent-left-column,
+.voe-agent-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.voe-agent-left-column > .voe-panel,
+.voe-agent-right-column > .voe-panel {
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .voe-page-agent.voe-agent-two-column {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* v2.8.8: compact top section */
+.voe-header {
+  grid-template-columns: 165px minmax(360px,1fr) minmax(260px,330px) !important;
+  align-items: center !important;
+}
+.voe-agent-summary-compact {
+  padding: 7px !important;
+  min-height: 0 !important;
+}
+.voe-agent-summary-compact h2,
+.voe-agent-summary-compact .voe-summary-grid {
+  display: none !important;
+}
+.voe-compact-advancement {
+  display: grid;
+  grid-template-columns: minmax(160px,1fr) auto;
+  grid-template-areas:
+    "xp level"
+    "meter level";
+  gap: 5px 8px;
+  align-items: center;
+}
+.voe-compact-advancement .voe-summary-xp {
+  grid-area: xp;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 6px;
+  margin: 0 !important;
+}
+.voe-compact-advancement .voe-summary-xp label {
+  margin: 0 !important;
+  font-size: 9px;
+}
+.voe-compact-advancement .voe-summary-xp input {
+  min-width: 72px !important;
+  width: 100% !important;
+  margin-top: 3px;
+}
+.voe-compact-advancement .voe-xp-meter {
+  grid-area: meter;
+  margin: 0 !important;
+  padding: 2px 4px !important;
+  font-size: 11px !important;
+  letter-spacing: 1px !important;
+}
+.voe-compact-advancement .voe-rank-controls {
+  grid-area: level;
+  display: flex !important;
+  align-items: center;
+  margin: 0 !important;
+}
+.voe-compact-advancement .voe-rank-controls span {
+  display: none !important;
+}
+.voe-compact-advancement .voe-level-up-button {
+  min-width: 100px;
+  padding: 7px 10px;
+}
+
+/* Rank and Mastery sit as a compact pair. */
+.voe-rank-mastery-pair {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 6px;
+  align-items: end;
+}
+.voe-rank-mastery-pair label {
+  display: grid !important;
+  grid-template-columns: auto 46px;
+  gap: 4px;
+  align-items: center;
+  margin: 0 !important;
+  white-space: nowrap;
+}
+.voe-rank-mastery-pair input {
+  width: 46px !important;
+  min-width: 46px !important;
+  padding: 3px 4px !important;
+  text-align: center;
+}
+
+@media (max-width: 950px) {
+  .voe-header {
+    grid-template-columns: 140px 1fr !important;
+  }
+  .voe-agent-summary-compact {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 650px) {
+  .voe-rank-mastery-pair {
+    grid-template-columns: 1fr;
+  }
+  .voe-compact-advancement {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "xp"
+      "meter"
+      "level";
+  }
+  .voe-compact-advancement .voe-level-up-button {
+    width: 100%;
+  }
+}
+
+/* v2.8.9 header layout correction */
+.voe-header{grid-template-columns:128px minmax(420px,1fr) minmax(250px,310px)!important;gap:10px!important;align-items:start!important}
+.voe-portrait,.voe-portrait-frame{width:120px!important;min-width:120px!important;max-width:120px!important}
+.voe-portrait img,.voe-portrait-frame img,.voe-character-image{width:120px!important;height:120px!important;max-width:120px!important;object-fit:cover!important}
+.voe-identity{min-width:0!important}
+.voe-identity-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px 8px!important}
+.voe-identity-grid>label:first-child{grid-column:1/-1}
+.voe-rank-mastery-pair{grid-column:1/-1;display:flex!important;align-items:center;gap:4px!important}
+.voe-rank-mastery-pair label{display:inline-flex!important;align-items:center;gap:3px!important;margin:0!important}
+.voe-rank-mastery-pair label+label::before{content:"•";margin:0 2px 0 0;color:#c7a459}
+.voe-rank-mastery-pair input{width:42px!important;min-width:42px!important;padding:2px 3px!important}
+.voe-agent-summary-compact{align-self:start!important}
+@media(max-width:980px){
+  .voe-header{grid-template-columns:110px minmax(0,1fr)!important}
+  .voe-agent-summary-compact{grid-column:1/-1}
+  .voe-portrait,.voe-portrait-frame{width:104px!important;min-width:104px!important;max-width:104px!important}
+  .voe-portrait img,.voe-portrait-frame img,.voe-character-image{width:104px!important;height:104px!important;max-width:104px!important}
+}
+
+
+/* v2.8.9.1: true square portrait */
+.voe-portrait,
+.voe-portrait-frame {
+  width: 120px !important;
+  height: 120px !important;
+  min-width: 120px !important;
+  min-height: 120px !important;
+  max-width: 120px !important;
+  max-height: 120px !important;
+  overflow: hidden !important;
+  aspect-ratio: 1 / 1 !important;
+}
+.voe-portrait img,
+.voe-portrait-frame img,
+.voe-character-image,
+.voe-portrait [name="attr_character_avatar"] {
+  display: block !important;
+  width: 120px !important;
+  height: 120px !important;
+  min-width: 120px !important;
+  min-height: 120px !important;
+  max-width: 120px !important;
+  max-height: 120px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  aspect-ratio: 1 / 1 !important;
+}
+@media (max-width: 980px) {
+  .voe-portrait,
+  .voe-portrait-frame {
+    width: 104px !important;
+    height: 104px !important;
+    min-width: 104px !important;
+    min-height: 104px !important;
+    max-width: 104px !important;
+    max-height: 104px !important;
+  }
+  .voe-portrait img,
+  .voe-portrait-frame img,
+  .voe-character-image,
+  .voe-portrait [name="attr_character_avatar"] {
+    width: 104px !important;
+    height: 104px !important;
+    min-width: 104px !important;
+    min-height: 104px !important;
+    max-width: 104px !important;
+    max-height: 104px !important;
+  }
+}
+
+
+/* v2.8.9.2: fit the complete avatar inside the square portrait */
+.voe-portrait,
+.voe-portrait-frame {
+  background: #102a36 !important;
+}
+.voe-portrait img,
+.voe-portrait-frame img,
+.voe-character-image,
+.voe-portrait [name="attr_character_avatar"] {
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #102a36 !important;
 }
