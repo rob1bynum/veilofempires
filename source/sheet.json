@@ -1,0 +1,11 @@
+{
+  "html": "veil-of-empires.html",
+  "css": "veil-of-empires.css",
+  "authors": "Rob Bynum",
+  "roll20userid": "",
+  "preview": "preview.png",
+  "version": "2.17.2",
+  "instructions": "Veil of Empires custom Roll20 character sheet. Includes guided character creation, Agent, Combat, Identity, Protocols, Equipment, Dossier, Rules, and Player PDF Export pages.",
+  "legacy": false,
+  "useroptions": []
+}
