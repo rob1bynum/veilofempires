@@ -4,7 +4,8 @@
   "authors": "Rob Bynum",
   "roll20userid": "",
   "preview": "preview.png",
-  "version": "2.8.9.2 Portrait Fit Fix",
-  "instructions": "Official Veil of Empires Roll20 sheet. Version 2.4.4 preserves the complete v2.4.3 interface and automation while adding Protocol quick-load dropdowns and selectable weapon, armor, and base-equipment catalogs.",
-  "legacy": false
+  "version": "2.17.2",
+  "instructions": "Veil of Empires custom Roll20 character sheet. Includes guided character creation, Agent, Combat, Identity, Protocols, Equipment, Dossier, Rules, and Player PDF Export pages.",
+  "legacy": false,
+  "useroptions": []
 }

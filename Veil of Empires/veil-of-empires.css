@@ -154,11 +154,13 @@
 .voe-tab-input { position: absolute; left: -10000px; }
 .voe-page { display: none; }
 .voe-tab-input[value="agent"]:checked ~ .voe-tabs label[for="voe-tab-agent"],
+.voe-tab-input[value="combat"]:checked ~ .voe-tabs label[for="voe-tab-combat"],
 .voe-tab-input[value="protocols"]:checked ~ .voe-tabs label[for="voe-tab-protocols"],
 .voe-tab-input[value="gear"]:checked ~ .voe-tabs label[for="voe-tab-gear"],
 .voe-tab-input[value="notes"]:checked ~ .voe-tabs label[for="voe-tab-notes"],
 .voe-tab-input[value="rules"]:checked ~ .voe-tabs label[for="voe-tab-rules"] { background: var(--gold); color: #111; }
 .voe-tab-input[value="agent"]:checked ~ .voe-page-agent,
+.voe-tab-input[value="combat"]:checked ~ .voe-page-combat,
 .voe-tab-input[value="protocols"]:checked ~ .voe-page-protocols,
 .voe-tab-input[value="gear"]:checked ~ .voe-page-gear,
 .voe-tab-input[value="notes"]:checked ~ .voe-page-notes,
@@ -1834,11 +1836,13 @@
   display: none !important;
 }
 .voe-sheet #voe-tab-agent:checked ~ .voe-page-agent,
+.voe-sheet #voe-tab-combat:checked ~ .voe-page-combat,
 .voe-sheet #voe-tab-identity:checked ~ .voe-page-identity,
 .voe-sheet #voe-tab-protocols:checked ~ .voe-page-protocols,
 .voe-sheet #voe-tab-gear:checked ~ .voe-page-gear,
 .voe-sheet #voe-tab-notes:checked ~ .voe-page-notes,
-.voe-sheet #voe-tab-rules:checked ~ .voe-page-rules {
+.voe-sheet #voe-tab-rules:checked ~ .voe-page-rules,
+.voe-sheet #voe-tab-export:checked ~ .voe-page-export {
   display: grid !important;
 }
 
@@ -2278,4 +2282,2660 @@
   object-fit: contain !important;
   object-position: center center !important;
   background: #102a36 !important;
+}
+
+
+/* v2.8.13: visible Condition column without changing Skill totals */
+.voe-skill-header,
+.voe-skill-grid .voe-skill {
+  grid-template-columns:
+    minmax(108px,1fr)
+    28px
+    43px
+    12px
+    43px
+    12px
+    43px
+    12px
+    48px
+    45px !important;
+}
+.voe-skill-condition-readout {
+  width: 100% !important;
+  min-width: 0 !important;
+  border: 1px solid #9b665d !important;
+  background: #f1dfda !important;
+  color: #8c2f27 !important;
+  font-weight: 700;
+  text-align: center;
+}
+.voe-skill-condition-readout[value="0"] {
+  border-color: #aa9b82 !important;
+  background: #eee8dc !important;
+  color: #777066 !important;
+}
+@media (max-width: 1050px) {
+  .voe-skill-header,
+  .voe-skill-grid .voe-skill {
+    grid-template-columns:
+      minmax(96px,1fr)
+      25px
+      38px
+      10px
+      38px
+      10px
+      38px
+      10px
+      43px
+      41px !important;
+  }
+}
+
+
+/* v2.8.14: Cond. before Total, tighter Skill headers */
+.voe-skill-header,
+.voe-skill-grid .voe-skill {
+  grid-template-columns:
+    minmax(108px,1fr)
+    28px
+    43px
+    12px
+    43px
+    12px
+    43px
+    12px
+    45px
+    48px !important;
+}
+.voe-skill-header span {
+  white-space: nowrap;
+}
+
+
+/* v2.9.0: Weapon Damage Foundation */
+.voe-damage-workbench,
+.voe-incoming-damage {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(109,81,41,.35);
+}
+.voe-damage-workbench h3,
+.voe-incoming-damage h3 {
+  margin: 0 0 7px;
+  color: #173746;
+  font-size: 11px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.voe-damage-grid {
+  display: grid;
+  grid-template-columns: 1.4fr .8fr .8fr 1.2fr;
+  gap: 6px;
+}
+.voe-incoming-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 6px;
+}
+.voe-damage-grid label,
+.voe-incoming-grid label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.voe-damage-grid input,
+.voe-damage-grid select,
+.voe-incoming-grid input {
+  width: 100%;
+  margin-top: 3px;
+}
+.voe-damage-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 7px;
+}
+.voe-incoming-damage button {
+  width: 100%;
+  margin-top: 7px;
+}
+@media(max-width:900px) {
+  .voe-damage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* v2.9.2: armor mobility comparison */
+.voe-target-modifiers {
+  grid-template-columns: minmax(120px,1fr) minmax(105px,.75fr) minmax(180px,1.35fr) minmax(110px,.8fr) !important;
+}
+.voe-target-modifiers input[name="attr_armor_difference_modifier"] {
+  font-weight: 700;
+  text-align: center;
+}
+
+
+/* v2.9.3: combat flow and target modifier cleanup */
+.voe-target-modifiers-clean {
+  display: grid !important;
+  grid-template-columns: minmax(145px,1.1fr) minmax(140px,1fr) minmax(120px,.8fr) minmax(120px,.8fr) !important;
+  gap: 8px !important;
+  align-items: end;
+}
+.voe-target-modifiers-clean label {
+  display: flex !important;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.voe-target-modifiers-clean select,
+.voe-target-modifiers-clean input[type="number"] {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+.voe-target-check-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 4px 7px;
+  border: 1px solid #9a7a43;
+  background: #f3ead5;
+}
+.voe-target-check-control input {
+  width: auto !important;
+  margin: 0 !important;
+}
+.voe-target-check-control em {
+  font-style: normal;
+  font-weight: 700;
+}
+.voe-combat-buttons + .voe-damage-workbench {
+  margin-top: 8px;
+}
+.voe-damage-grid {
+  grid-template-columns: minmax(145px,1.1fr) repeat(2,minmax(85px,.7fr)) minmax(125px,1fr) repeat(2,minmax(90px,.7fr)) !important;
+}
+@media(max-width:1100px) {
+  .voe-target-modifiers-clean {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .voe-damage-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+
+/* v2.9.5: target modifier grid after Evasion removal */
+.voe-target-modifiers-clean {
+  grid-template-columns: minmax(160px,1.1fr) minmax(130px,.85fr) minmax(130px,.85fr) !important;
+}
+
+
+/* v2.10.0: Reaction System */
+.voe-reaction-system {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(109,81,41,.35);
+}
+.voe-reaction-system h3 {
+  margin: 0 0 6px;
+  color: #173746;
+  font-size: 11px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.voe-reaction-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding: 5px 7px;
+  border: 1px solid #9a7a43;
+  background: #f3ead5;
+}
+.voe-reaction-grid {
+  display: grid;
+  grid-template-columns: minmax(150px,1.2fr) minmax(135px,1fr) minmax(75px,.55fr);
+  gap: 6px;
+}
+.voe-reaction-grid label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.voe-reaction-grid select,
+.voe-reaction-grid input {
+  width: 100%;
+  margin-top: 3px;
+}
+.voe-reaction-system button {
+  width: 100%;
+  margin-top: 6px;
+}
+
+
+/* v2.10.1: expanded Reaction library */
+.voe-reaction-grid {
+  grid-template-columns: minmax(180px,1.15fr) minmax(135px,.8fr) minmax(75px,.45fr) !important;
+}
+.voe-reaction-description {
+  grid-column: 1 / -1;
+}
+.voe-reaction-description textarea {
+  width: 100%;
+  min-height: 44px;
+  resize: vertical;
+}
+.voe-reaction-grid optgroup {
+  font-weight: 700;
+}
+
+
+/* v2.10.2: Tactical dual-mode Reactions */
+.voe-reaction-grid {
+  grid-template-columns:
+    minmax(180px,1.15fr)
+    minmax(145px,.9fr)
+    minmax(78px,.48fr)
+    minmax(92px,.55fr)
+    minmax(125px,.72fr) !important;
+}
+.voe-reaction-grid input[name="attr_selected_reaction_archetype"],
+.voe-reaction-grid input[name="attr_selected_reaction_timing"] {
+  text-align: center;
+}
+.sheet-rolltemplate-voe .sheet-voe-roll-kind {
+  letter-spacing: .08em;
+}
+@media(max-width:1100px) {
+  .voe-reaction-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .voe-reaction-description {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* v2.10.3: balanced Agent columns */
+.voe-page-agent.voe-agent-two-column {
+  grid-template-columns: minmax(0,1fr) minmax(0,1.08fr) !important;
+  gap: 7px !important;
+}
+.voe-agent-left-column,
+.voe-agent-right-column {
+  gap: 6px !important;
+}
+.voe-agent-two-column .voe-panel {
+  padding: 6px !important;
+}
+.voe-agent-two-column .voe-panel > h2 {
+  margin: -6px -6px 6px !important;
+  padding: 5px 7px !important;
+}
+.voe-damage-panel .voe-damage-workbench {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-top: 0 !important;
+}
+.voe-damage-panel .voe-damage-workbench h3 {
+  display: none !important;
+}
+.voe-damage-panel .voe-damage-grid {
+  grid-template-columns:
+    minmax(140px,1.2fr)
+    minmax(78px,.65fr)
+    minmax(88px,.7fr)
+    minmax(120px,1fr)
+    minmax(88px,.7fr)
+    minmax(88px,.7fr) !important;
+}
+.voe-damage-panel .voe-damage-buttons {
+  margin-top: 6px !important;
+}
+.voe-agent-right-column .voe-reaction-system {
+  margin-top: 6px !important;
+  padding-top: 6px !important;
+}
+.voe-agent-right-column .voe-actions-panel {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 1100px) {
+  .voe-damage-panel .voe-damage-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+@media (max-width: 900px) {
+  .voe-page-agent.voe-agent-two-column {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* v2.10.4: unified Attack and Damage chat styling */
+.sheet-rolltemplate-voe .sheet-voe-roll-result-row {
+  margin-top: 6px;
+  border-top: 1px solid rgba(218,184,103,.35);
+  border-bottom: 1px solid rgba(218,184,103,.35);
+  background: rgba(23,55,70,.72);
+}
+.sheet-rolltemplate-voe .sheet-voe-roll-result-row span {
+  color: #d9b867;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.sheet-rolltemplate-voe .sheet-voe-roll-result-row strong {
+  color: #f4e4bc;
+  font-size: 16px;
+}
+
+
+/* v2.11.0: Character and Combat tab split */
+
+/* Active tab treatment */
+.voe-tab-input[value="combat"]:checked ~ .voe-tabs label[for="voe-tab-combat"] {
+  background: var(--gold);
+  color: #111;
+}
+
+/* Strict page visibility */
+.voe-sheet #voe-tab-combat:checked ~ .voe-page-combat {
+  display: grid !important;
+}
+
+/* Character dashboard */
+.voe-character-dashboard {
+  grid-template-columns: minmax(0,.95fr) minmax(0,1.35fr);
+  gap: 7px;
+  align-items: start;
+}
+.voe-character-column {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+.voe-character-column > .voe-panel {
+  height: auto;
+  min-height: 0;
+  margin: 0;
+}
+.voe-contingency-preparation .voe-prepared-contingency-list {
+  display: grid;
+  gap: 7px;
+}
+.voe-prepared-contingency-list label {
+  display: grid;
+  gap: 4px;
+}
+.voe-prepared-contingency-list textarea {
+  min-height: 48px;
+  resize: vertical;
+}
+
+/* Combat dashboard */
+.voe-combat-dashboard {
+  grid-template-columns: 1fr;
+  gap: 7px;
+}
+.voe-combat-dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr);
+  gap: 7px;
+  align-items: start;
+}
+.voe-combat-column {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+.voe-combat-column > .voe-panel {
+  margin: 0;
+  height: auto;
+}
+.voe-combat-status-grid {
+  display: grid;
+  grid-template-columns: repeat(7,minmax(80px,1fr));
+  gap: 6px;
+}
+.voe-combat-status-grid label {
+  display: grid;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.voe-combat-status-grid label span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.voe-combat-status-grid input {
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+}
+.voe-combat-incoming-panel .voe-incoming-damage {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.voe-combat-incoming-panel .voe-incoming-damage h3 {
+  display: none;
+}
+.voe-combat-contingency-list {
+  display: grid;
+  gap: 7px;
+}
+.voe-combat-contingency-list > div {
+  display: grid;
+  grid-template-columns: minmax(120px,.75fr) minmax(180px,1.4fr) auto;
+  gap: 6px;
+  align-items: center;
+  padding: 6px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.22);
+}
+.voe-combat-contingency-list input,
+.voe-combat-contingency-list textarea {
+  width: 100%;
+  min-width: 0;
+}
+.voe-combat-contingency-list textarea {
+  min-height: 38px;
+  resize: none;
+}
+.voe-reset-encounter {
+  width: 100%;
+  margin-top: 7px;
+}
+
+@media(max-width:1100px) {
+  .voe-combat-status-grid {
+    grid-template-columns: repeat(4,1fr);
+  }
+}
+@media(max-width:900px) {
+  .voe-character-dashboard,
+  .voe-combat-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .voe-combat-contingency-list > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* v2.11.1: clean Character and Combat tab layouts */
+
+/* Character */
+.voe-character-layout-clean {
+  grid-template-columns: minmax(0,.92fr) minmax(0,1.38fr) !important;
+  gap: 7px !important;
+}
+.voe-character-left-column,
+.voe-character-right-column {
+  gap: 7px !important;
+}
+.voe-character-right-column .voe-contingency-preparation {
+  margin-top: 0 !important;
+}
+
+/* Combat */
+.voe-combat-layout-clean {
+  grid-template-columns: 1fr !important;
+}
+.voe-combat-layout-clean .voe-combat-dashboard-grid {
+  grid-template-columns: minmax(0,.98fr) minmax(0,1.02fr) !important;
+  gap: 7px !important;
+}
+.voe-combat-left-column,
+.voe-combat-right-column {
+  gap: 7px !important;
+}
+.voe-reactions-panel .voe-reaction-system {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-top: 0 !important;
+}
+.voe-reactions-panel .voe-reaction-system > h3 {
+  display: none !important;
+}
+.voe-actions-panel .voe-combat-buttons {
+  margin-bottom: 0 !important;
+}
+.voe-combat-right-column .voe-damage-panel,
+.voe-combat-right-column .voe-combat-incoming-panel,
+.voe-combat-right-column .voe-combat-contingencies {
+  margin: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .voe-character-layout-clean,
+  .voe-combat-layout-clean .voe-combat-dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* v2.11.2: unified sheet theme and Combat cleanup */
+
+/* Use the Character tab's panel language across all pages. */
+.voe-page-identity,
+.voe-page-protocols,
+.voe-page-gear,
+.voe-page-notes,
+.voe-page-rules,
+.voe-page-combat {
+  gap: 7px !important;
+}
+.voe-page-identity .voe-panel,
+.voe-page-protocols .voe-panel,
+.voe-page-gear .voe-panel,
+.voe-page-notes .voe-panel,
+.voe-page-rules .voe-panel,
+.voe-page-combat .voe-panel {
+  padding: 7px !important;
+  border: 1px solid #9d8865 !important;
+  background: rgba(255,255,255,.36) !important;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.4) !important;
+}
+.voe-page-identity .voe-panel > h2,
+.voe-page-protocols .voe-panel > h2,
+.voe-page-gear .voe-panel > h2,
+.voe-page-notes .voe-panel > h2,
+.voe-page-rules .voe-panel > h2,
+.voe-page-combat .voe-panel > h2 {
+  margin: -7px -7px 7px !important;
+  padding: 6px 8px !important;
+  color: #173746 !important;
+  background: linear-gradient(180deg, rgba(226,213,180,.9), rgba(205,187,145,.72)) !important;
+  border-bottom: 1px solid #ad9872 !important;
+  text-align: center;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: .10em !important;
+  text-transform: uppercase;
+}
+.voe-page-identity input,
+.voe-page-identity select,
+.voe-page-identity textarea,
+.voe-page-protocols input,
+.voe-page-protocols select,
+.voe-page-protocols textarea,
+.voe-page-gear input,
+.voe-page-gear select,
+.voe-page-gear textarea,
+.voe-page-notes input,
+.voe-page-notes select,
+.voe-page-notes textarea,
+.voe-page-rules input,
+.voe-page-rules select,
+.voe-page-rules textarea,
+.voe-page-combat input,
+.voe-page-combat select,
+.voe-page-combat textarea {
+  border-color: #9d8865 !important;
+  background: rgba(250,247,238,.88) !important;
+  color: #173746 !important;
+}
+
+/* Combat Status dashboard */
+.voe-combat-status-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(90px,1fr)) !important;
+  gap: 7px !important;
+}
+.voe-combat-status-card {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid #9d8865;
+  background: linear-gradient(180deg, rgba(245,238,218,.95), rgba(229,218,190,.82));
+  text-align: center;
+}
+.voe-combat-status-card > span {
+  color: #6d5129;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.voe-combat-status-card strong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+}
+.voe-combat-status-card input {
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 4px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #173746 !important;
+  font-size: 15px !important;
+  font-weight: 800;
+  text-align: center;
+}
+.voe-status-health strong input {
+  width: 42% !important;
+}
+.voe-status-weapon input {
+  font-size: 14px !important;
+}
+
+/* Targeting moved into the right column below Contingencies. */
+.voe-targeting-panel .voe-target-modifiers-sidebar {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 7px !important;
+}
+.voe-targeting-panel .voe-target-modifiers-sidebar label {
+  display: grid !important;
+  gap: 4px !important;
+  min-width: 0;
+}
+.voe-targeting-panel .voe-target-modifiers-sidebar select,
+.voe-targeting-panel .voe-target-modifiers-sidebar input {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+.voe-targeting-panel input[name="attr_armor_difference_modifier"] {
+  font-weight: 800;
+  text-align: center;
+}
+.voe-combat-right-column .voe-targeting-panel {
+  margin: 0 !important;
+}
+
+/* The Attack panel no longer needs the old targeting-grid spacing. */
+.voe-combat-left-column .voe-combat-panel .voe-target-modifiers {
+  margin: 0 !important;
+}
+
+@media (max-width: 1180px) {
+  .voe-combat-status-grid {
+    grid-template-columns: repeat(4,1fr) !important;
+  }
+}
+@media (max-width: 760px) {
+  .voe-combat-status-grid {
+    grid-template-columns: repeat(2,1fr) !important;
+  }
+}
+
+
+/* v2.11.3: filtered Reaction pickers and complete Protocol summary */
+.voe-reaction-grid > label:first-child,
+.voe-reaction-mode-field {
+  display: grid;
+  gap: 4px;
+}
+.voe-reaction-picker,
+.voe-reaction-mode-picker {
+  display: grid;
+  gap: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 5px;
+  border: 1px solid #9d8865;
+  background: rgba(250,247,238,.88);
+}
+.voe-reaction-availability,
+.voe-mode-availability {
+  position: absolute;
+  left: -10000px;
+}
+.voe-reaction-choice,
+.voe-mode-choice {
+  display: none;
+}
+.voe-reaction-choice-none {
+  display: block;
+}
+.voe-reaction-choice input,
+.voe-mode-choice input {
+  position: absolute;
+  left: -10000px;
+}
+.voe-reaction-choice label,
+.voe-mode-choice label {
+  display: block;
+  padding: 5px 7px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: none;
+}
+.voe-reaction-choice input:checked + label,
+.voe-mode-choice input:checked + label {
+  border-color: #9a7434;
+  background: #173746;
+  color: #f4e4bc;
+}
+.voe-reaction-choice label:hover,
+.voe-mode-choice label:hover {
+  background: rgba(217,184,103,.2);
+}
+
+/* Show only abilities made available by the worker. */
+input[name="attr_reaction_available_glimpse_future"]:checked ~ .voe-reaction-choice-glimpse_future,
+input[name="attr_reaction_available_coiled_reflexes"]:checked ~ .voe-reaction-choice-coiled_reflexes,
+input[name="attr_reaction_available_predators_turn"]:checked ~ .voe-reaction-choice-predators_turn,
+input[name="attr_reaction_available_warning_cry"]:checked ~ .voe-reaction-choice-warning_cry,
+input[name="attr_reaction_available_stand_firm"]:checked ~ .voe-reaction-choice-stand_firm,
+input[name="attr_reaction_available_slipstream"]:checked ~ .voe-reaction-choice-slipstream,
+input[name="attr_reaction_available_read_the_tell"]:checked ~ .voe-reaction-choice-read_the_tell,
+input[name="attr_reaction_available_vanish"]:checked ~ .voe-reaction-choice-vanish,
+input[name="attr_reaction_available_brace"]:checked ~ .voe-reaction-choice-brace,
+input[name="attr_reaction_available_rapid_analysis"]:checked ~ .voe-reaction-choice-rapid_analysis,
+input[name="attr_reaction_available_scatter"]:checked ~ .voe-reaction-choice-scatter,
+input[name="attr_reaction_available_intercept"]:checked ~ .voe-reaction-choice-intercept,
+input[name="attr_reaction_available_phase_step"]:checked ~ .voe-reaction-choice-phase_step,
+input[name="attr_reaction_available_read_the_weave"]:checked ~ .voe-reaction-choice-read_the_weave,
+input[name="attr_reaction_available_harden"]:checked ~ .voe-reaction-choice-harden,
+input[name="attr_reaction_available_anchor"]:checked ~ .voe-reaction-choice-anchor,
+input[name="attr_reaction_available_center_mind"]:checked ~ .voe-reaction-choice-center_mind,
+input[name="attr_reaction_available_measured_guard"]:checked ~ .voe-reaction-choice-measured_guard {
+  display: block;
+}
+
+/* Show only modes belonging to the selected dual-mode Reaction. */
+input[name="attr_reaction_mode_forewarned_visible"]:checked ~ .voe-mode-forewarned,
+input[name="attr_reaction_mode_exploit_visible"]:checked ~ .voe-mode-exploit,
+input[name="attr_reaction_mode_guarded_visible"]:checked ~ .voe-mode-guarded,
+input[name="attr_reaction_mode_relentless_visible"]:checked ~ .voe-mode-relentless,
+input[name="attr_reaction_mode_disrupt_visible"]:checked ~ .voe-mode-disrupt,
+input[name="attr_reaction_mode_expose_visible"]:checked ~ .voe-mode-expose {
+  display: block;
+}
+.voe-mode-unavailable {
+  padding: 6px;
+  color: #5d5447;
+  font-size: 10px;
+  font-style: italic;
+  text-align: center;
+}
+.voe-protocol-loadout-full {
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+}
+.voe-legacy-protocol-output {
+  display: none !important;
+}
+
+
+/* v2.11.4: compact Reaction dropdowns and protocol initialization */
+.voe-reaction-dropdown { position: relative; width: 100%; }
+.voe-reaction-dropdown > summary {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding: 6px 26px 6px 8px;
+  border: 1px solid #9d8865;
+  background: rgba(250,247,238,.88);
+  color: #173746;
+  font-size: 10px;
+  font-weight: 700;
+}
+.voe-reaction-dropdown > summary::-webkit-details-marker { display: none; }
+.voe-reaction-dropdown > summary::after { content: "▾"; position: absolute; right: 8px; }
+.voe-reaction-dropdown[open] > summary::after { content: "▴"; }
+.voe-reaction-dropdown > .voe-reaction-picker,
+.voe-reaction-dropdown > .voe-reaction-mode-picker {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  max-height: 210px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,.24);
+}
+.voe-reaction-grid {
+  grid-template-columns: minmax(180px,1.15fr) minmax(145px,.9fr) minmax(78px,.48fr) !important;
+}
+.voe-reaction-meta-row {
+  grid-column: 2 / 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.voe-reaction-description { grid-column: 1 / -1; }
+@media(max-width:1100px) {
+  .voe-reaction-meta-row { grid-column: 1 / -1; }
+}
+
+
+/* v2.11.5: global layout alignment and armor wording cleanup */
+.voe-sheet label { min-width: 0; }
+.voe-sheet label > input,
+.voe-sheet label > select,
+.voe-sheet label > textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+.voe-aligned-form-grid { align-items: end !important; }
+.voe-aligned-form-grid > label {
+  display: grid !important;
+  grid-template-rows: auto minmax(30px,auto);
+  gap: 4px !important;
+  min-width: 0;
+}
+.voe-aligned-form-grid input,
+.voe-aligned-form-grid select { min-height: 30px; }
+.voe-aligned-form-grid textarea { min-height: 46px; }
+
+.voe-compact-attributes.voe-derived-header,
+.voe-attribute-list .voe-stat-derived {
+  display: grid !important;
+  grid-template-columns: 42px minmax(88px,1.2fr) minmax(70px,.8fr) 14px minmax(64px,.72fr) 14px minmax(64px,.72fr) !important;
+  gap: 5px !important;
+  align-items: center !important;
+}
+.voe-compact-attributes.voe-derived-header {
+  padding: 0 2px 4px;
+  color: #6d5129;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.voe-compact-attributes.voe-derived-header span:nth-child(2) { text-align: left; }
+.voe-attribute-list .voe-stat-derived > * {
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+.voe-attribute-list .voe-stat-derived > span:nth-child(2) {
+  text-align: left;
+  line-height: 1.15;
+}
+.voe-attribute-list .voe-stat-derived input {
+  width: 100% !important;
+  text-align: center;
+}
+.voe-attribute-list .voe-math { text-align: center !important; }
+
+.voe-skill-header,
+.voe-skill-grid .voe-skill {
+  display: grid !important;
+  grid-template-columns: minmax(110px,1.4fr) 34px 46px 14px 46px 14px 46px 14px 46px 50px !important;
+  gap: 4px !important;
+  align-items: center !important;
+}
+.voe-skill-header { padding: 0 2px 4px; text-align: center; }
+.voe-skill-grid .voe-skill > * {
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+.voe-skill-grid .voe-skill input {
+  width: 100% !important;
+  text-align: center;
+}
+
+.voe-compact-defenses,
+.voe-equipment-summary-grid,
+.voe-health-meta,
+.voe-resource-row { align-items: end !important; }
+.voe-compact-defenses label,
+.voe-equipment-summary-grid label,
+.voe-health-meta label,
+.voe-resource-row label {
+  display: grid !important;
+  gap: 4px !important;
+}
+.voe-compact-defenses input,
+.voe-equipment-summary-grid input,
+.voe-equipment-summary-grid select,
+.voe-health-meta input,
+.voe-resource-row input {
+  width: 100% !important;
+  min-height: 30px;
+}
+
+.voe-reaction-grid {
+  grid-template-columns: minmax(170px,1.2fr) minmax(140px,1fr) minmax(72px,.45fr) !important;
+}
+.voe-reaction-meta-row { grid-column: 2 / 4 !important; }
+.voe-reaction-meta-row input { min-height: 30px; }
+
+.voe-target-modifiers-sidebar label,
+.voe-damage-grid label,
+.voe-incoming-grid label {
+  display: grid !important;
+  gap: 4px !important;
+}
+.voe-target-modifiers-sidebar input,
+.voe-target-modifiers-sidebar select,
+.voe-damage-grid input,
+.voe-damage-grid select,
+.voe-incoming-grid input { min-height: 30px; }
+
+.voe-page-identity input,
+.voe-page-identity select,
+.voe-page-protocols input,
+.voe-page-protocols select,
+.voe-page-gear input,
+.voe-page-gear select,
+.voe-page-notes input,
+.voe-page-notes select,
+.voe-page-rules input,
+.voe-page-rules select { min-height: 30px; }
+
+.voe-derived-header span,
+.voe-skill-header span,
+.voe-combat-status-card > span { white-space: nowrap; }
+
+@media(max-width:1050px) {
+  .voe-compact-attributes.voe-derived-header,
+  .voe-attribute-list .voe-stat-derived {
+    grid-template-columns: 38px minmax(78px,1fr) 62px 12px 58px 12px 58px !important;
+  }
+  .voe-skill-header,
+  .voe-skill-grid .voe-skill {
+    grid-template-columns: minmax(96px,1.2fr) 30px 42px 12px 42px 12px 42px 12px 42px 46px !important;
+  }
+}
+
+
+/* v2.11.6: unified green-and-gold banners and form alignment */
+
+/* Apply the Character tab's green banner with gold text everywhere. */
+.voe-sheet .voe-panel > h2.voe-panel-banner {
+  margin: -7px -7px 7px !important;
+  padding: 7px 9px !important;
+  border-bottom: 1px solid #b8913f !important;
+  background: linear-gradient(180deg, #274f43 0%, #1f4037 100%) !important;
+  color: #e8c56a !important;
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,.08) !important;
+  text-align: center !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: .11em !important;
+  line-height: 1.15 !important;
+  text-transform: uppercase !important;
+}
+
+/* Weapon Damage: every label and control starts on the same baseline. */
+.voe-damage-panel .voe-damage-grid {
+  display: grid !important;
+  grid-template-columns:
+    minmax(150px,1.25fr)
+    minmax(82px,.7fr)
+    minmax(90px,.76fr)
+    minmax(130px,1fr)
+    minmax(95px,.76fr)
+    minmax(95px,.76fr) !important;
+  gap: 7px !important;
+  align-items: end !important;
+}
+.voe-damage-panel .voe-damage-grid > label {
+  display: grid !important;
+  grid-template-rows: 28px 30px !important;
+  gap: 4px !important;
+  align-items: end !important;
+  margin: 0 !important;
+  line-height: 1.1 !important;
+}
+.voe-damage-panel .voe-damage-grid > label > input,
+.voe-damage-panel .voe-damage-grid > label > select {
+  width: 100% !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+.voe-damage-panel .voe-damage-grid > label:first-child {
+  align-self: end !important;
+}
+
+/* Reactions: Ability, Mode, and Modifier occupy one clean row. */
+.voe-reactions-panel .voe-reaction-grid {
+  display: grid !important;
+  grid-template-columns:
+    minmax(190px,1.2fr)
+    minmax(170px,1fr)
+    minmax(90px,.52fr) !important;
+  grid-template-areas:
+    "ability mode modifier"
+    "meta meta meta"
+    "effect effect effect" !important;
+  gap: 7px !important;
+  align-items: end !important;
+}
+.voe-reactions-panel .voe-reaction-grid > label:nth-of-type(1) {
+  grid-area: ability !important;
+}
+.voe-reactions-panel .voe-reaction-mode-field {
+  grid-area: mode !important;
+}
+.voe-reactions-panel .voe-reaction-grid > label:nth-of-type(2) {
+  grid-area: modifier !important;
+}
+.voe-reactions-panel .voe-reaction-meta-row {
+  grid-area: meta !important;
+  grid-column: auto !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 7px !important;
+}
+.voe-reactions-panel .voe-reaction-description {
+  grid-area: effect !important;
+  grid-column: auto !important;
+}
+.voe-reactions-panel .voe-reaction-grid > label,
+.voe-reactions-panel .voe-reaction-meta-row > label {
+  display: grid !important;
+  grid-template-rows: 18px 30px !important;
+  gap: 4px !important;
+  margin: 0 !important;
+  align-items: end !important;
+}
+.voe-reactions-panel .voe-reaction-dropdown,
+.voe-reactions-panel .voe-reaction-grid input,
+.voe-reactions-panel .voe-reaction-grid textarea {
+  margin: 0 !important;
+}
+.voe-reactions-panel .voe-reaction-dropdown > summary,
+.voe-reactions-panel .voe-reaction-grid input {
+  min-height: 30px !important;
+  box-sizing: border-box !important;
+}
+
+/* Identity: Heritage and Specialty cards line up and match in height. */
+.voe-page-identity .voe-identity-engine-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+}
+.voe-page-identity .voe-choice-card-aligned {
+  display: grid !important;
+  grid-template-rows:
+    52px
+    32px
+    22px
+    minmax(96px,1fr)
+    auto !important;
+  gap: 7px !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  padding: 9px !important;
+  box-sizing: border-box !important;
+}
+.voe-page-identity .voe-choice-card-aligned > label {
+  display: grid !important;
+  grid-template-rows: 18px 30px !important;
+  gap: 4px !important;
+  margin: 0 !important;
+  align-items: end !important;
+}
+.voe-page-identity .voe-choice-card-aligned > label select {
+  height: 30px !important;
+  margin: 0 !important;
+}
+.voe-page-identity .voe-choice-card-aligned .voe-card-title {
+  height: 32px !important;
+  margin: 0 !important;
+}
+.voe-page-identity .voe-choice-card-aligned > span {
+  min-height: 22px !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+.voe-page-identity .voe-choice-card-aligned > textarea {
+  width: 100% !important;
+  min-height: 96px !important;
+  height: 96px !important;
+  margin: 0 !important;
+  resize: vertical !important;
+  box-sizing: border-box !important;
+}
+.voe-page-identity .voe-contact-grant {
+  align-self: end !important;
+  margin-top: 0 !important;
+}
+
+/* Responsive fallbacks */
+@media(max-width:1100px) {
+  .voe-damage-panel .voe-damage-grid {
+    grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:900px) {
+  .voe-reactions-panel .voe-reaction-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas:
+      "ability mode"
+      "modifier modifier"
+      "meta meta"
+      "effect effect" !important;
+  }
+  .voe-page-identity .voe-identity-engine-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* v2.11.7: UI repair */
+.voe-reactions-panel .voe-reaction-grid {
+  display:grid !important;
+  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(90px,.45fr) !important;
+  grid-template-areas:"ability mode modifier" "meta meta meta" "effect effect effect" !important;
+  gap:8px !important;
+  align-items:start !important;
+}
+.voe-reactions-panel .voe-reaction-grid > label:nth-of-type(1){grid-area:ability !important;}
+.voe-reactions-panel .voe-reaction-mode-field{grid-area:mode !important;}
+.voe-reactions-panel .voe-reaction-grid > label:nth-of-type(2){grid-area:modifier !important;}
+.voe-reactions-panel .voe-reaction-meta-row{
+  grid-area:meta !important;
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:8px !important;
+  margin:0 !important;
+}
+.voe-reactions-panel .voe-reaction-description{grid-area:effect !important;margin:0 !important;}
+.voe-reactions-panel .voe-reaction-grid > label,
+.voe-reactions-panel .voe-reaction-meta-row > label,
+.voe-reactions-panel .voe-reaction-description{
+  display:grid !important;
+  grid-template-rows:auto auto !important;
+  gap:4px !important;
+  min-width:0 !important;
+}
+.voe-reactions-panel .voe-reaction-grid label{
+  font-size:9px !important;
+  line-height:1.15 !important;
+  letter-spacing:.04em !important;
+}
+.voe-reactions-panel .voe-reaction-dropdown,
+.voe-reactions-panel .voe-reaction-dropdown > summary,
+.voe-reactions-panel input,
+.voe-reactions-panel textarea{
+  box-sizing:border-box !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+.voe-reactions-panel .voe-reaction-dropdown > summary,
+.voe-reactions-panel input{min-height:32px !important;}
+.voe-reactions-panel textarea{min-height:58px !important;}
+
+.voe-page-gear label[for="voe-catalog-toggle"],
+.voe-page-gear .voe-catalog-open,
+.voe-page-gear .voe-equipment-catalog-open,
+.voe-page-gear .voe-open-catalog{
+  background:#274f43 !important;
+  color:#f4d878 !important;
+  border-color:#b8913f !important;
+  font-weight:800 !important;
+  text-shadow:0 1px 0 rgba(0,0,0,.35) !important;
+}
+
+.voe-health-meta{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:8px !important;
+}
+.voe-health-meta label{
+  display:grid !important;
+  grid-template-columns:auto minmax(0,1fr) auto !important;
+  align-items:center !important;
+  gap:5px !important;
+}
+.voe-health-meta input{
+  width:100% !important;
+  min-width:0 !important;
+  height:32px !important;
+  box-sizing:border-box !important;
+  text-align:center !important;
+}
+
+.voe-compact-defenses{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:8px !important;
+}
+.voe-compact-defenses label{
+  display:grid !important;
+  grid-template-columns:minmax(110px,1.35fr) minmax(84px,.8fr) !important;
+  align-items:center !important;
+  gap:8px !important;
+  min-width:0 !important;
+  white-space:normal !important;
+}
+.voe-compact-defenses input{
+  width:100% !important;
+  min-width:84px !important;
+  height:32px !important;
+  box-sizing:border-box !important;
+  text-align:center !important;
+}
+@media(max-width:900px){
+  .voe-reactions-panel .voe-reaction-grid{
+    grid-template-columns:1fr 1fr !important;
+    grid-template-areas:"ability mode" "modifier modifier" "meta meta" "effect effect" !important;
+  }
+  .voe-compact-defenses{grid-template-columns:1fr !important;}
+}
+
+
+/* v2.11.8: Defenses card layout */
+/* Labels sit above full-width controls, matching the approved visual reference. */
+.voe-compact-defenses.voe-defense-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  gap: 0 14px !important;
+  align-items: start !important;
+}
+.voe-compact-defenses.voe-defense-grid .voe-defense-row {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto 34px !important;
+  gap: 5px !important;
+  min-width: 0 !important;
+  min-height: 70px !important;
+  padding: 8px 6px 10px !important;
+  border-bottom: 1px solid rgba(109,81,41,.32) !important;
+  box-sizing: border-box !important;
+}
+.voe-compact-defenses.voe-defense-grid .voe-defense-row label {
+  display: block !important;
+  margin: 0 !important;
+  color: #7b6d59 !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  line-height: 1.15 !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+}
+.voe-compact-defenses.voe-defense-grid .voe-defense-row input,
+.voe-compact-defenses.voe-defense-grid .voe-defense-row select {
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  margin: 0 !important;
+  padding: 5px 9px !important;
+  border: 1px solid #b79b65 !important;
+  background: rgba(255,255,255,.58) !important;
+  color: #17130d !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+}
+.voe-compact-defenses.voe-defense-grid .voe-defense-row select,
+.voe-compact-defenses.voe-defense-grid .voe-defense-row input[type="text"] {
+  text-align: left !important;
+}
+.voe-compact-defenses.voe-defense-grid .voe-defense-row input[type="number"] {
+  text-align: center !important;
+  font-size: 14px !important;
+}
+@media(max-width: 780px) {
+  .voe-compact-defenses.voe-defense-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* v2.12.0: Initiative skill popup */
+.voe-popup-state {
+  position: absolute;
+  left: -10000px;
+}
+.voe-popup-overlay {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(9,20,25,.68);
+  box-sizing: border-box;
+}
+.voe-popup-state:checked + .voe-popup-overlay {
+  display: flex;
+}
+.voe-popup-card {
+  width: min(420px,92vw);
+  padding: 14px;
+  border: 2px solid #b8913f;
+  background: #efe6cf;
+  box-shadow: 0 8px 28px rgba(0,0,0,.42);
+  color: #173746;
+}
+.voe-popup-card h3 {
+  margin: -14px -14px 12px;
+  padding: 9px 12px;
+  border-bottom: 1px solid #b8913f;
+  background: #274f43;
+  color: #e8c56a;
+  text-align: center;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.voe-popup-card p {
+  margin: 0 0 12px;
+  text-align: center;
+}
+.voe-popup-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.voe-popup-actions button:last-child {
+  grid-column: 1 / -1;
+}
+
+
+/* v2.12.1: redesigned Initiative result */
+.sheet-rolltemplate-voe .sheet-voe-roll-section-title {
+  margin: 7px -8px 5px;
+  padding: 6px 8px;
+  border-top: 1px solid rgba(217,184,103,.4);
+  border-bottom: 1px solid rgba(217,184,103,.4);
+  background: rgba(23,55,70,.72);
+  color: #d9b867;
+  font-weight: 800;
+  letter-spacing: .10em;
+  text-align: center;
+}
+
+
+/* v2.12.2: Initiative popup visibility fix */
+/*
+ * Use the general-sibling selector so the popup opens even if Roll20 or a
+ * future build inserts harmless hidden fields between the state control and
+ * the overlay.
+ */
+.voe-popup-state:checked ~ .voe-popup-overlay {
+  display: flex !important;
+}
+
+
+/* v2.12.3: Reactions-only cleanup */
+.voe-reactions-panel .voe-reaction-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  grid-template-areas:
+    "ability mode"
+    "meta meta"
+    "effect effect" !important;
+  gap: 8px !important;
+  align-items: start !important;
+}
+
+.voe-reactions-panel .voe-reaction-grid > label:nth-of-type(1) {
+  grid-area: ability !important;
+}
+
+.voe-reactions-panel .voe-reaction-mode-field {
+  grid-area: mode !important;
+}
+
+.voe-reactions-panel .voe-reaction-meta-row {
+  grid-area: meta !important;
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  gap: 8px !important;
+  grid-column: auto !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-description {
+  grid-area: effect !important;
+  grid-column: auto !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-grid > label,
+.voe-reactions-panel .voe-reaction-meta-row > label,
+.voe-reactions-panel .voe-reaction-description {
+  display: grid !important;
+  grid-template-rows: auto auto !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-dropdown,
+.voe-reactions-panel .voe-reaction-dropdown > summary,
+.voe-reactions-panel .voe-reaction-grid input,
+.voe-reactions-panel .voe-reaction-grid textarea {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-dropdown > summary,
+.voe-reactions-panel .voe-reaction-grid input {
+  min-height: 32px !important;
+}
+
+.voe-reactions-panel .voe-reaction-grid textarea {
+  min-height: 58px !important;
+}
+
+@media(max-width: 780px) {
+  .voe-reactions-panel .voe-reaction-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "ability"
+      "mode"
+      "meta"
+      "effect" !important;
+  }
+}
+
+
+/* v2.13.0: core character creation refactor */
+.voe-creation-budget {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 7px;
+  padding: 6px 8px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.36);
+  color: #173746;
+  font-size: 10px;
+  font-weight: 700;
+}
+.voe-creation-budget strong {
+  color: #6d5129;
+}
+.voe-creation-budget > span:last-child {
+  text-align: right;
+  font-weight: 400;
+}
+.voe-skill-budget {
+  margin-top: 6px;
+}
+
+
+/* v2.14.0: Character Builder */
+.voe-sheet #voe-tab-builder:checked ~ .voe-page-builder {
+  display: grid !important;
+}
+.voe-tab-input[value="builder"]:checked ~ .voe-tabs label[for="voe-tab-builder"] {
+  background: var(--gold);
+  color: #111;
+}
+.voe-builder-page {
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+.voe-builder-grid {
+  display: grid;
+  grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+  gap: 8px;
+  align-items: start;
+}
+.voe-builder-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.voe-builder-progress {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+.voe-builder-progress span {
+  padding: 6px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.42);
+  text-align: center;
+  font-size: 9px;
+  font-weight: 700;
+}
+.voe-builder-list {
+  display: grid;
+  gap: 5px;
+}
+.voe-builder-skill-list {
+  grid-template-columns: 1fr 1fr;
+}
+.voe-builder-row {
+  display: grid;
+  grid-template-columns: minmax(100px,1fr) 30px 48px 30px minmax(90px,.85fr);
+  gap: 5px;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid rgba(109,81,41,.25);
+}
+.voe-builder-row button {
+  min-width: 0 !important;
+  padding: 4px !important;
+}
+.voe-builder-row input {
+  width: 100% !important;
+  min-width: 0 !important;
+  text-align: center;
+}
+.voe-builder-name {
+  font-weight: 700;
+}
+.voe-builder-bonus {
+  font-size: 9px;
+  color: #6d5129;
+  text-align: right;
+}
+.voe-builder-budget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 7px;
+  padding: 6px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.4);
+  font-size: 10px;
+  font-weight: 700;
+}
+.voe-builder-protocols {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 80px;
+  gap: 7px;
+}
+.voe-builder-protocols label {
+  display: grid;
+  gap: 4px;
+}
+.voe-builder-page textarea {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+@media(max-width:1000px) {
+  .voe-builder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media(max-width:760px) {
+  .voe-builder-progress,
+  .voe-builder-skill-list {
+    grid-template-columns: 1fr;
+  }
+  .voe-builder-row {
+    grid-template-columns: minmax(90px,1fr) 30px 44px 30px;
+  }
+  .voe-builder-bonus {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+}
+
+
+/* v2.14.1: Finish Character workflow */
+.voe-builder-finish-panel {
+  margin-top: 0;
+}
+.voe-builder-validation {
+  display: grid;
+  grid-template-columns: 110px minmax(0,1fr);
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.4);
+}
+.voe-builder-validation strong {
+  color: #6d5129;
+  text-transform: uppercase;
+}
+.voe-builder-validation p {
+  margin: 0;
+}
+.voe-builder-finish-actions {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 8px;
+}
+.voe-builder-finish-actions button {
+  width: 100%;
+}
+@media(max-width:760px) {
+  .voe-builder-validation,
+  .voe-builder-finish-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* v2.14.2: Builder allocation feedback */
+.voe-builder-row button:active {
+  transform: translateY(1px);
+}
+
+
+/* v2.14.3: dedicated Builder point counters */
+.voe-builder-budget .voe-builder-points-remaining {
+  box-sizing: border-box;
+  width: 52px !important;
+  min-width: 52px !important;
+  height: 30px !important;
+  margin: 0 !important;
+  padding: 4px 6px !important;
+  border: 1px solid #b79b65 !important;
+  background: rgba(255,255,255,.72) !important;
+  color: #173746 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+}
+
+
+/* v2.14.4: Builder Protocol counter */
+.voe-builder-budget input[name="attr_builder_protocol_points_used"],
+.voe-builder-budget input[name="attr_builder_protocol_points_available"] {
+  width: 46px !important;
+  min-width: 46px !important;
+}
+
+
+/* v2.15.0: Guided Character Creation Wizard */
+.voe-wizard-step-input {
+  position: absolute;
+  left: -10000px;
+}
+.voe-wizard-step {
+  display: none !important;
+}
+#voe-wizard-step-1:checked ~ .voe-wizard-step-panel-1,
+#voe-wizard-step-2:checked ~ .voe-wizard-step-panel-2,
+#voe-wizard-step-3:checked ~ .voe-wizard-step-panel-3,
+#voe-wizard-step-4:checked ~ .voe-wizard-step-panel-4,
+#voe-wizard-step-5:checked ~ .voe-wizard-step-panel-5,
+#voe-wizard-step-6:checked ~ .voe-wizard-step-panel-6 {
+  display: block !important;
+}
+.voe-wizard-page {
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+.voe-wizard-header > p {
+  margin: 0 0 8px;
+  text-align: center;
+}
+.voe-wizard-progress {
+  display: grid;
+  grid-template-columns: repeat(6,minmax(0,1fr));
+  gap: 5px;
+}
+.voe-wizard-progress button {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 2px;
+  min-width: 0 !important;
+  padding: 6px 3px !important;
+}
+.voe-wizard-progress button span {
+  font-size: 8px;
+  font-weight: 700;
+}
+#voe-wizard-step-1:checked ~ .voe-wizard-header .voe-wizard-progress button:nth-child(1),
+#voe-wizard-step-2:checked ~ .voe-wizard-header .voe-wizard-progress button:nth-child(2),
+#voe-wizard-step-3:checked ~ .voe-wizard-header .voe-wizard-progress button:nth-child(3),
+#voe-wizard-step-4:checked ~ .voe-wizard-header .voe-wizard-progress button:nth-child(4),
+#voe-wizard-step-5:checked ~ .voe-wizard-header .voe-wizard-progress button:nth-child(5),
+#voe-wizard-step-6:checked ~ .voe-wizard-header .voe-wizard-progress button:nth-child(6) {
+  border-color: #b8913f !important;
+  background: #274f43 !important;
+  color: #f4d878 !important;
+}
+.voe-wizard-message {
+  margin-top: 7px;
+  padding: 7px 9px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.42);
+  color: #173746;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+.voe-wizard-lead {
+  margin: 0 0 10px;
+  text-align: center;
+}
+.voe-wizard-primary-field {
+  display: grid !important;
+  grid-template-columns: 140px minmax(0,1fr);
+  gap: 8px;
+  align-items: center;
+  max-width: 620px;
+  margin: 0 auto 10px !important;
+}
+.voe-wizard-primary-field select {
+  width: 100% !important;
+  min-height: 34px;
+}
+.voe-wizard-preview {
+  display: grid;
+  gap: 7px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.voe-wizard-preview input,
+.voe-wizard-preview textarea {
+  box-sizing: border-box;
+  width: 100% !important;
+}
+.voe-wizard-preview input {
+  font-weight: 800;
+}
+.voe-wizard-protocol-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 90px;
+  gap: 8px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.voe-wizard-protocol-grid label {
+  display: grid;
+  gap: 4px;
+}
+.voe-wizard-budget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px auto;
+  padding: 8px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.42);
+  font-weight: 800;
+}
+.voe-wizard-budget input {
+  width: 55px !important;
+  height: 32px !important;
+  text-align: center;
+}
+.voe-wizard-allocation-list {
+  display: grid;
+  gap: 5px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.voe-wizard-skill-list {
+  grid-template-columns: 1fr 1fr;
+}
+.voe-wizard-allocation-row {
+  display: grid;
+  grid-template-columns: minmax(110px,1fr) 32px 52px 32px minmax(88px,.72fr);
+  gap: 5px;
+  align-items: center;
+  padding: 5px 6px;
+  border-bottom: 1px solid rgba(109,81,41,.24);
+}
+.voe-wizard-allocation-row button {
+  min-width: 0 !important;
+  padding: 4px !important;
+}
+.voe-wizard-allocation-row input {
+  width: 100% !important;
+  text-align: center;
+}
+.voe-wizard-allocation-name {
+  font-weight: 700;
+}
+.voe-wizard-derived {
+  color: #6d5129;
+  font-size: 9px;
+  text-align: right;
+}
+.voe-wizard-nav {
+  display: grid;
+  grid-template-columns: minmax(120px,.35fr) minmax(190px,.65fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+.voe-wizard-nav button {
+  width: 100%;
+}
+.voe-wizard-review-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 8px;
+}
+.voe-wizard-review-grid > div {
+  display: grid;
+  grid-template-columns: minmax(100px,.8fr) minmax(0,1.2fr);
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(109,81,41,.3);
+  background: rgba(255,255,255,.38);
+}
+.voe-wizard-review-grid span {
+  color: #6d5129;
+  font-weight: 700;
+}
+.voe-wizard-review-message {
+  margin-top: 10px;
+  padding: 9px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.45);
+  text-align: center;
+}
+.voe-wizard-finish-nav {
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+@media(max-width:800px) {
+  .voe-wizard-progress {
+    grid-template-columns: repeat(3,1fr);
+  }
+  .voe-wizard-skill-list,
+  .voe-wizard-review-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media(max-width:560px) {
+  .voe-wizard-primary-field,
+  .voe-wizard-protocol-grid,
+  .voe-wizard-nav,
+  .voe-wizard-finish-nav {
+    grid-template-columns: 1fr;
+  }
+  .voe-wizard-allocation-row {
+    grid-template-columns: minmax(90px,1fr) 30px 46px 30px;
+  }
+  .voe-wizard-derived {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+}
+
+
+/* v2.15.4: Reactions layout matched to approved reference */
+/*
+ * Desktop layout:
+ *
+ * Ability | Effect
+ * Mode    | Effect
+ *         | Type + Timing
+ *
+ * Use Reaction remains full width beneath the grid.
+ */
+.voe-reactions-panel .voe-reaction-grid {
+  display: grid !important;
+  grid-template-columns: minmax(190px,.78fr) minmax(250px,1.22fr) !important;
+  grid-template-rows: auto auto auto !important;
+  grid-template-areas:
+    "ability effect"
+    "mode effect"
+    ". meta" !important;
+  column-gap: 28px !important;
+  row-gap: 16px !important;
+  align-items: start !important;
+}
+
+.voe-reactions-panel .voe-reaction-grid > label:nth-of-type(1) {
+  grid-area: ability !important;
+  align-self: start !important;
+}
+
+.voe-reactions-panel .voe-reaction-mode-field {
+  grid-area: mode !important;
+  align-self: start !important;
+}
+
+.voe-reactions-panel .voe-reaction-description {
+  grid-area: effect !important;
+  grid-column: auto !important;
+  align-self: stretch !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-meta-row {
+  grid-area: meta !important;
+  grid-column: auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  gap: 18px !important;
+  align-items: end !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-grid > label,
+.voe-reactions-panel .voe-reaction-meta-row > label,
+.voe-reactions-panel .voe-reaction-description {
+  display: grid !important;
+  grid-template-rows: auto auto !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-grid label {
+  font-size: 9px !important;
+  line-height: 1.15 !important;
+  letter-spacing: .05em !important;
+}
+
+.voe-reactions-panel .voe-reaction-dropdown,
+.voe-reactions-panel .voe-reaction-dropdown > summary,
+.voe-reactions-panel .voe-reaction-grid input,
+.voe-reactions-panel .voe-reaction-grid textarea {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-dropdown > summary,
+.voe-reactions-panel .voe-reaction-grid input {
+  height: 34px !important;
+  min-height: 34px !important;
+}
+
+.voe-reactions-panel .voe-reaction-description textarea {
+  height: 150px !important;
+  min-height: 150px !important;
+  resize: vertical !important;
+}
+
+.voe-reactions-panel .voe-reaction-meta-row input {
+  text-align: center !important;
+}
+
+.voe-reactions-panel .voe-reaction-system > button[name="act_use_reaction"] {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 18px 0 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-system > .voe-help {
+  margin: 5px 0 0 !important;
+  text-align: center !important;
+}
+
+@media(max-width: 860px) {
+  .voe-reactions-panel .voe-reaction-grid {
+    grid-template-columns: minmax(160px,.85fr) minmax(220px,1.15fr) !important;
+    column-gap: 16px !important;
+  }
+}
+
+@media(max-width: 680px) {
+  .voe-reactions-panel .voe-reaction-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "ability"
+      "mode"
+      "effect"
+      "meta" !important;
+    gap: 10px !important;
+  }
+
+  .voe-reactions-panel .voe-reaction-description textarea {
+    height: 110px !important;
+    min-height: 110px !important;
+  }
+}
+
+
+/* v2.15.5: structural Reactions rebuild from approved mockup */
+.voe-reactions-panel,
+.voe-reactions-panel .voe-reaction-system {
+  overflow: visible !important;
+}
+
+.voe-reactions-panel .voe-reaction-layout {
+  display: grid !important;
+  grid-template-columns: minmax(190px,.78fr) minmax(260px,1.22fr) !important;
+  gap: 28px !important;
+  align-items: start !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: 8px !important;
+}
+
+.voe-reactions-panel .voe-reaction-left,
+.voe-reactions-panel .voe-reaction-right {
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-left {
+  gap: 26px !important;
+}
+
+.voe-reactions-panel .voe-reaction-right {
+  gap: 18px !important;
+}
+
+.voe-reactions-panel .voe-reaction-left > label,
+.voe-reactions-panel .voe-reaction-right > label,
+.voe-reactions-panel .voe-reaction-meta-row > label {
+  display: grid !important;
+  grid-template-rows: auto auto !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-left > label,
+.voe-reactions-panel .voe-reaction-right > label,
+.voe-reactions-panel .voe-reaction-meta-row > label {
+  font-size: 9px !important;
+  line-height: 1.15 !important;
+  letter-spacing: .05em !important;
+}
+
+.voe-reactions-panel .voe-reaction-dropdown {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-dropdown > summary {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  margin: 0 !important;
+  padding: 8px 28px 8px 9px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.voe-reactions-panel .voe-reaction-dropdown > .voe-reaction-picker,
+.voe-reactions-panel .voe-reaction-dropdown > .voe-reaction-mode-picker {
+  position: absolute !important;
+  z-index: 100 !important;
+  top: calc(100% + 2px) !important;
+  left: 0 !important;
+  right: auto !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  max-height: 210px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.voe-reactions-panel .voe-reaction-choice label,
+.voe-reactions-panel .voe-mode-choice label,
+.voe-reactions-panel .voe-mode-unavailable {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+
+.voe-reactions-panel .voe-reaction-description {
+  display: grid !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-description textarea {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 150px !important;
+  min-height: 150px !important;
+  margin: 0 !important;
+  resize: vertical !important;
+}
+
+.voe-reactions-panel .voe-reaction-meta-row {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  gap: 18px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-meta-row input {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.voe-reactions-panel .voe-reaction-system > button[name="act_use_reaction"] {
+  display: block !important;
+  clear: both !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 30px 0 0 !important;
+}
+
+.voe-reactions-panel .voe-reaction-system > .voe-help {
+  display: block !important;
+  clear: both !important;
+  margin: 7px 0 0 !important;
+  text-align: center !important;
+}
+
+.voe-reactions-panel + .voe-action-reference,
+.voe-reactions-panel .voe-action-reference {
+  clear: both !important;
+  position: static !important;
+  margin-top: 14px !important;
+}
+
+@media(max-width: 720px) {
+  .voe-reactions-panel .voe-reaction-layout {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .voe-reactions-panel .voe-reaction-left {
+    gap: 12px !important;
+  }
+
+  .voe-reactions-panel .voe-reaction-description textarea {
+    height: 115px !important;
+    min-height: 115px !important;
+  }
+}
+
+
+/* v2.15.8: Starting Protocol details */
+.voe-wizard-protocol-grid {
+  grid-template-columns: minmax(0,1fr) 90px !important;
+  align-items: start !important;
+}
+.voe-wizard-protocol-grid > label input[readonly] {
+  width: 100% !important;
+  height: 34px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+}
+.voe-wizard-protocol-details {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  gap: 5px !important;
+  margin: -1px 0 8px !important;
+  padding: 8px !important;
+  border: 1px solid rgba(109,81,41,.30) !important;
+  background: rgba(255,255,255,.34) !important;
+}
+.voe-wizard-protocol-details strong { color:#173746 !important; font-size:11px !important; }
+.voe-wizard-protocol-details > span { color:#6d5129 !important; font-size:9px !important; font-weight:700 !important; }
+.voe-wizard-protocol-details textarea {
+  width: 100% !important;
+  min-height: 72px !important;
+  box-sizing: border-box !important;
+  resize: vertical !important;
+}
+
+
+/* v2.16.1: Player PDF export */
+#voe-tab-export:checked ~ .voe-page-export,
+.voe-sheet #voe-tab-export:checked ~ .voe-page-export {
+  display: grid !important;
+}
+
+.voe-page-export {
+  gap: 12px;
+}
+
+.voe-export-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 10px 16px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid rgba(109,81,41,.35);
+  background: rgba(255,255,255,.72);
+}
+
+.voe-export-toolbar h2,
+.voe-export-toolbar p {
+  margin: 0;
+}
+
+.voe-export-toolbar button {
+  min-height: 38px;
+}
+
+.voe-export-instructions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 9px;
+  background: rgba(23,55,70,.08);
+}
+
+.voe-export-status {
+  grid-column: 1 / -1;
+  color: #6d5129;
+  font-weight: 700;
+}
+
+.voe-player-export {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: .35in;
+  color: #17252d;
+  background: #fff;
+  border: 1px solid rgba(109,81,41,.35);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.voe-export-header {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 110px;
+  gap: 18px;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 3px double #6d5129;
+}
+
+.voe-export-title > span {
+  color: #6d5129;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.voe-export-title h1 {
+  margin: 3px 0 2px;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.voe-export-title p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.voe-export-portrait {
+  width: 104px;
+  height: 104px;
+  border: 2px solid #6d5129;
+  background: #f3efe5;
+  overflow: hidden;
+}
+
+.voe-export-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.voe-export-identity {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.voe-export-identity > div,
+.voe-export-stat-grid > div,
+.voe-export-skill-grid > div {
+  display: grid;
+  gap: 2px;
+  padding: 6px;
+  border: 1px solid #c8baa1;
+  background: #faf8f2;
+}
+
+.voe-export-identity span,
+.voe-export-stat-grid span,
+.voe-export-skill-grid span {
+  color: #6d5129;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.voe-export-columns {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.voe-export-column {
+  display: grid;
+  gap: 10px;
+}
+
+.voe-export-section {
+  break-inside: avoid;
+  padding: 9px;
+  border: 1px solid #b9a98d;
+}
+
+.voe-export-section h2 {
+  margin: -9px -9px 8px;
+  padding: 5px 8px;
+  color: #fff;
+  background: #173746;
+  font-size: 12px;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+.voe-export-section h3 {
+  margin: 4px 0;
+  font-size: 11px;
+}
+
+.voe-export-section h3 small {
+  float: right;
+  color: #6d5129;
+  font-size: 8px;
+}
+
+.voe-export-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 5px;
+}
+
+.voe-export-stat-grid-4 {
+  grid-template-columns: repeat(4,minmax(0,1fr));
+}
+
+.voe-export-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 4px;
+}
+
+.voe-export-skill-grid > div {
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: center;
+  padding: 4px 5px;
+}
+
+.voe-export-skill-grid strong::after {
+  content: "%";
+}
+
+.voe-export-subtitle {
+  margin: 0 0 5px;
+  color: #6d5129;
+  font-size: 9px;
+  font-style: italic;
+}
+
+.voe-export-longtext,
+.voe-export-text,
+.voe-export-preformatted {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.voe-export-protocol + .voe-export-protocol,
+.voe-export-section article + article {
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px dotted #b9a98d;
+}
+
+.voe-export-carry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid #b9a98d;
+  font-size: 9px;
+}
+
+.voe-export-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 7px;
+  border-top: 1px solid #6d5129;
+  color: #6d5129;
+  font-size: 8px;
+}
+
+@page {
+  size: Letter portrait;
+  margin: .35in;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .voe-sheet > * {
+    display: none !important;
+  }
+
+  .voe-sheet .voe-page-export {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .voe-page-export .voe-no-print,
+  .voe-sheet .voe-banner,
+  .voe-sheet .voe-header,
+  .voe-sheet .voe-tabs {
+    display: none !important;
+  }
+
+  .voe-player-export {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .voe-export-page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .voe-export-section {
+    box-shadow: none !important;
+  }
+}
+
+
+/* v2.16.2: Export tab visibility repair */
+.voe-sheet #voe-tab-export:checked ~ .voe-page-export,
+#voe-tab-export:checked ~ .voe-page-export {
+  display: grid !important;
+}
+
+.voe-sheet #voe-tab-export:checked ~ .voe-page-export .voe-player-export {
+  display: block !important;
+}
+
+.voe-sheet #voe-tab-export:checked ~ .voe-page-export .voe-export-toolbar {
+  display: grid !important;
+}
+
+
+/* v2.16.3: Clear manual PDF workflow */
+.voe-export-instructions {
+  align-items: center;
+}
+
+.voe-export-instructions strong {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: #173746;
+}
+
+.voe-export-status {
+  padding: 8px 10px;
+  border-left: 4px solid #6d5129;
+  background: rgba(109,81,41,.08);
+}
+
+
+/* v2.17.0: First-class Rules and Player Export pages */
+.voe-sheet > .voe-page-rules,
+.voe-sheet > .voe-page-export {
+  display: none !important;
+}
+
+.voe-sheet > #voe-tab-rules:checked ~ .voe-page-rules,
+.voe-sheet > #voe-tab-export:checked ~ .voe-page-export {
+  display: grid !important;
+}
+
+.voe-sheet > #voe-tab-export:checked ~ .voe-page-export > .voe-export-toolbar {
+  display: grid !important;
+}
+
+.voe-sheet > #voe-tab-export:checked ~ .voe-page-export > .voe-player-export {
+  display: block !important;
+}
+
+
+/* v2.17.1: PDF print isolation for Roll20 pop-out window */
+@media print {
+  @page {
+    size: Letter portrait;
+    margin: 0.35in;
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .charsheet,
+  .sheetform,
+  .ui-dialog-content,
+  .charactereditor,
+  .character-sheet,
+  .voe-sheet {
+    position: static !important;
+    inset: auto !important;
+    float: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  .voe-sheet > * {
+    display: none !important;
+  }
+
+  .voe-sheet > .voe-page-export {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .voe-sheet > .voe-page-export > * {
+    display: none !important;
+  }
+
+  .voe-sheet > .voe-page-export > .voe-player-export {
+    display: block !important;
+  }
+
+  .voe-player-export {
+    position: static !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #17252d !important;
+    transform: none !important;
+  }
+
+  .voe-export-section,
+  .voe-export-protocol,
+  .voe-export-header,
+  .voe-export-identity {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .voe-export-page-break {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  .voe-no-print,
+  .voe-export-toolbar {
+    display: none !important;
+  }
 }
