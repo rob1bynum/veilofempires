@@ -1,0 +1,20 @@
+{
+  "version": "3.0.9",
+  "channel": "Public Release Candidate Bugfix",
+  "schemaVersion": 6,
+  "baseline": "3.0.8",
+  "files": {
+    "Veil of Empires/veil-of-empires.html": {
+      "sha256": "bd88f5b31152f1b66906dce788e6a46e4819aeaba1b9e2912ab67a5ecf4c06a0",
+      "bytes": 348703
+    },
+    "Veil of Empires/veil-of-empires.css": {
+      "sha256": "90d4656ce4d7204c0263a0cebd3a8a417b0557242ab24deec6bc45958105d1ff",
+      "bytes": 160076
+    },
+    "source/workers/sheet-worker.js": {
+      "sha256": "ab50fba6dcaad94eec537b99ffccac0aae5dcda3498b57c8d64fe4f9cc8599f8",
+      "bytes": 176637
+    }
+  }
+}

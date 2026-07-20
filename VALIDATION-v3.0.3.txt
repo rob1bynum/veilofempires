@@ -1,0 +1,13 @@
+Veil of Empires v3.0.3 validation
+
+PASS: Affiliation-exclusive Protocols identified from Affiliation data
+PASS: Exclusive Protocols removed from Builder slot 1
+PASS: Exclusive Protocols removed from Builder slot 2
+PASS: Exclusive Protocols removed from Builder slot 3
+PASS: General Protocol choices retained
+PASS: Signature Protocol automatic grant retained
+PASS: Exclusive Protocol records retained elsewhere in sheet
+PASS: Worker JavaScript syntax validation
+PASS: Production/source HTML synchronized
+PASS: Production/source CSS synchronized
+PASS: Standalone worker synchronized

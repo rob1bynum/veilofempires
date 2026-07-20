@@ -1,0 +1,11 @@
+Veil of Empires v3.0.9 validation
+
+PASS: Redundant Step 4 Signature Protocol banner removed
+PASS: Protocol 1 Affiliation field preserved
+PASS: Skill values right-aligned
+PASS: Refresh Review button removed
+PASS: Check Character button removed
+PASS: Finish Character button preserved
+PASS: Back button preserved
+PASS: Worker JavaScript syntax validation
+PASS: Production/source parity

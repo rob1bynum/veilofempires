@@ -1,0 +1,36 @@
+{
+  "version": "3.0.3",
+  "channel": "Public Release Candidate Bugfix",
+  "schemaVersion": 6,
+  "baseline": "3.0.2",
+  "exclusiveProtocolsFiltered": [
+    "adaptive_flesh",
+    "alchemical_blood",
+    "arcane_seal",
+    "clockwork_precision",
+    "hunters_fury",
+    "living_bark",
+    "perfect_recall",
+    "purifying_flame",
+    "silent_hunter",
+    "silver_tongue",
+    "stone_memory",
+    "storm_leap",
+    "veiled_cipher",
+    "whisper_beyond"
+  ],
+  "files": {
+    "Veil of Empires/veil-of-empires.html": {
+      "sha256": "d7aa54eb8e623c6406c2dd3c176a46550813924c0efbf59d17554b1908a7d2f0",
+      "bytes": 334997
+    },
+    "Veil of Empires/veil-of-empires.css": {
+      "sha256": "d921a169a07451636ed0182fa3da0839f5015424911f316236ebd46df1f32638",
+      "bytes": 153527
+    },
+    "source/workers/sheet-worker.js": {
+      "sha256": "ead45ccb61abcb0b0b4b5980e0738d88249139603013b7d6717c0c1e4431b509",
+      "bytes": 168325
+    }
+  }
+}

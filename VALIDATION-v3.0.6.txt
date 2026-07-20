@@ -1,0 +1,15 @@
+Veil of Empires v3.0.6 validation
+
+PASS: Affiliation selector labels arranged above dropdowns
+PASS: Protocol 1 dropdown removed from Builder
+PASS: Protocol 1 reserved for Signature Protocol
+PASS: Signature Protocol display populated from Affiliation
+PASS: Clockwork Precision assigned to slot 1 for House Veylan
+PASS: Protocol 2 choice preserved
+PASS: Protocol 3 choice preserved
+PASS: Step 4 validation requires two additional choices
+PASS: Worker JavaScript syntax validation
+PASS: Production/source parity
+
+Runtime:
+{"signature":"Clockwork Precision","slot1":"clockwork_precision","slot2":"ghost_step","slot3":"iron_heart"}

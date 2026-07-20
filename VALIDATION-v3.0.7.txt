@@ -1,0 +1,19 @@
+Veil of Empires v3.0.7 validation
+
+PASS: Protocol 1 dropdown absent
+PASS: Dedicated Signature Protocol display
+PASS: Review instruction hidden on Step 7
+PASS: Dedicated Identity review fields
+PASS: Dedicated Protocol review fields
+PASS: Dedicated Skill review fields
+PASS: Runtime Heritage review
+PASS: Runtime Affiliation review
+PASS: Runtime Specialty review
+PASS: Runtime Signature Protocol review
+PASS: Runtime three-Protocol review
+PASS: Runtime Skill percentage review
+PASS: Worker JavaScript syntax
+PASS: Production/source parity
+
+Runtime:
+{"heritage":"Rajah","affiliation":"House Veylan","specialty":"Investigator","signature":"Clockwork Precision","protocols":["Clockwork Precision","Ghost Step","Iron Heart"],"athletics":17,"message":""}

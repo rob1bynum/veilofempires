@@ -1,0 +1,18 @@
+Veil of Empires v3.0.4 validation
+
+PASS: Full Builder Step 7 Review restored
+PASS: Review includes Identity, Attributes, Protocols, Skills, and derived profile
+PASS: Agent Dossier strip removed
+PASS: Movement defaults to 30 feet
+PASS: Movement excludes raw Agility
+PASS: Heritage/Specialty/Protocol Movement bonuses supported
+PASS: Incapacitated sets Actions to 0
+PASS: Incapacitated removes Reaction
+PASS: Incapacitated restores saved resources when cleared
+PASS: Protocol Capacity defaults to 3
+PASS: Equipment Catalog button uses black text
+PASS: NPC Combat Profile aligned
+PASS: NPC Attributes aligned
+PASS: Worker JavaScript syntax validation
+PASS: Worker runtime condition and Movement test
+PASS: Production/source files synchronized

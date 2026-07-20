@@ -1,0 +1,19 @@
+Veil of Empires v3.0.8 validation
+
+PASS: Identity review uses readonly form bindings
+PASS: Starting Protocol review uses readonly form bindings
+PASS: Skill review uses readonly numeric bindings
+PASS: Derived profile uses readonly form bindings
+PASS: Explicit Refresh Review action
+PASS: Automatic refresh while Step 7 is active
+PASS: Runtime Heritage review
+PASS: Runtime Affiliation review
+PASS: Runtime Specialty review
+PASS: Runtime Signature Protocol review
+PASS: Runtime three-Protocol review
+PASS: Runtime Skill percentage review
+PASS: Worker JavaScript syntax validation
+PASS: Production/source parity
+
+Runtime:
+{"heritage":"Rajah","affiliation":"House Veylan","specialty":"Investigator","signature":"Clockwork Precision","protocols":["Clockwork Precision","Ghost Step","Iron Heart"],"athletics":17}

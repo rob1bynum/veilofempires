@@ -1,0 +1,17 @@
+Veil of Empires v3.0.5 validation
+
+PASS: Step 7 rendering selector
+PASS: Seven-step progress ribbon
+PASS: Full review refresh routine
+PASS: Correct final validation fields
+PASS: Check Character button
+PASS: Finish Character button
+PASS: Runtime Step 6 to Step 7 advance
+PASS: Runtime Heritage review
+PASS: Runtime Affiliation review
+PASS: Runtime Specialty review
+PASS: Worker syntax validation
+PASS: Production/source parity
+
+Runtime:
+{"step":7,"heritage":"Rajah","affiliation":"House Veylan","specialty":"Investigator"}
