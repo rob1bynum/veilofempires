@@ -4,8 +4,8 @@
   "authors": "Rob Bynum",
   "roll20userid": "",
   "preview": "preview.png",
-  "version": "2.17.2",
-  "instructions": "Veil of Empires custom Roll20 character sheet. Includes guided character creation, Agent, Combat, Identity, Protocols, Equipment, Dossier, Rules, and Player PDF Export pages.",
+  "version": "3.0.10",
+  "instructions": "Veil of Empires Roll20 3.0.10 with corrected right-edge alignment for Step 7 Skill values.",
   "legacy": false,
   "useroptions": []
 }

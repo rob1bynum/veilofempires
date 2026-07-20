@@ -1,5 +1,37 @@
 const HERITAGES = {"":{"name":"None","lineage":"Choose a Heritage","attributes":{},"skills":{},"armor":0,"health":0,"special":"No Heritage selected."},"rajah":{"name":"Rajah","lineage":"Snake Lineage","attributes":{"dexterity":5,"charisma":5},"skills":{"stealth":5,"deception":5},"armor":5,"health":0,"special":"Natural Scales: counts as Light Armor, imposing -5% on attackers."},"balam":{"name":"Balam","lineage":"Jaguar Lineage","attributes":{"strength":5,"dexterity":5},"skills":{"athletics":5,"close_combat":5},"armor":0,"health":0,"special":"Pounce: Once per round, move up to 5 feet immediately before a Close Combat attack without spending an action."},"hrafn":{"name":"Hrafn","lineage":"Raven Lineage","attributes":{"intelligence":5,"wisdom":5},"skills":{"investigation":5,"perception":5},"armor":0,"health":0,"special":"Keen Eyes: Gain +10 on Perception tests made to notice distant or hidden details."},"ursa":{"name":"Ursa","lineage":"Bear Lineage","attributes":{"strength":5,"endurance":5},"skills":{"athletics":5,"survival":5},"armor":0,"health":5,"special":"Massive Frame: +5 Maximum Health and count as one size larger when lifting, carrying, or resisting forced movement."},"zephyr":{"name":"Zephyr","lineage":"Wind Lineage","attributes":{"dexterity":5,"wisdom":5},"skills":{"acrobatics":5,"stealth":5},"armor":0,"health":0,"special":"Airborne Step: Ignore ordinary difficult terrain and reduce falling harm at the Director's discretion."}};
-const PROTOCOLS = {"":{"name":"None","attributes":{},"skills":{},"temporary_health":0,"special":"No Protocol prepared."},"glimpse_future":{"name":"Glimpse the Future","attributes":{},"skills":{},"temporary_health":0,"special":"Reaction: choose Forewarned to impose -5% on one attack against you, or Exploit the Opening to gain +5% on your next attack."},"ghost_step":{"name":"Ghost Step","attributes":{"wisdom":5},"skills":{"stealth":10},"temporary_health":0,"special":"Observers suffer -5 to Perception tests made to locate you."},"arcane_sight":{"name":"Arcane Sight","attributes":{"intelligence":5},"skills":{"investigation":10},"temporary_health":0,"special":"You can perceive active magic and magical residue, even through thin barriers at short range."},"iron_heart":{"name":"Iron Heart","attributes":{"endurance":5},"skills":{"survival":10},"temporary_health":0,"special":"Ignore the first fatigue or exhaustion penalty you would suffer each scene."},"titan_frame":{"name":"Titan Frame","attributes":{"strength":5},"skills":{"athletics":10},"temporary_health":5,"special":"Gain +5 Temporary Health while this Protocol is prepared."},"calm_mind":{"name":"Calm Mind","attributes":{"wisdom":5},"skills":{"insight":10},"temporary_health":0,"special":"Once per scene, clear Frightened or gain +10 to resist mental or emotional influence."},"battle_focus":{"name":"Battle Focus","attributes":{"charisma":5},"skills":{"close_combat":10},"temporary_health":0,"special":"Your second Close Combat attack each round ignores the normal -10% multiple-attack penalty."}};
+
+const AFFILIATIONS = {
+  "":{city:"",groupLabel:"Organization",name:"No Affiliation",skill:"",skillBonus:0,lore:"",protocol:"",description:"Choose an Affiliation to define who trained and shaped the Agent."},
+  house_veylan:{city:"imperium",groupLabel:"House",name:"House Veylan",skill:"engineering",skillBonus:5,lore:"Imperium Lore",protocol:"clockwork_precision",description:"Engineers and systems philosophers who treat precision as a moral discipline."},
+  house_thalric:{city:"imperium",groupLabel:"House",name:"House Thalric",skill:"medicine",skillBonus:5,lore:"Relic Lore",protocol:"alchemical_blood",description:"Physicians and relic-alchemists who believe the body is the first machine an Agent must master."},
+  house_nachtforge:{city:"imperium",groupLabel:"House",name:"House Nachtforge",skill:"deception",skillBonus:5,lore:"Espionage Lore",protocol:"veiled_cipher",description:"Masters of espionage, covert influence, and the careful weaponization of secrets."},
+  house_corvaine:{city:"imperium",groupLabel:"House",name:"House Corvaine",skill:"persuasion",skillBonus:5,lore:"Political Lore",protocol:"silver_tongue",description:"Diplomats and political architects trained to turn conversation into leverage."},
+  house_serelith:{city:"imperium",groupLabel:"House",name:"House Serelith",skill:"medicine",skillBonus:5,lore:"Biological Lore",protocol:"adaptive_flesh",description:"Biological artisans who reshape living systems to survive a changing world."},
+
+  first_flame:{city:"covenant",groupLabel:"Faith",name:"Path of the First Flame",skill:"medicine",skillBonus:5,lore:"Theology",protocol:"purifying_flame",description:"A faith of humility and sacrifice that teaches the Bloom was born from unchecked arrogance."},
+  last_word:{city:"covenant",groupLabel:"Faith",name:"Keepers of the Last Word",skill:"investigation",skillBonus:5,lore:"Ancient History",protocol:"perfect_recall",description:"Archivists dedicated to ensuring no truth, warning, or hard-won lesson is ever lost again."},
+  chorus_echoes:{city:"covenant",groupLabel:"Faith",name:"Chorus of Echoes",skill:"perception",skillBonus:5,lore:"Mysticism",protocol:"whisper_beyond",description:"Dreamers and visionaries who believe the Concordants still speak through echoes and prophecy."},
+  wardens_veil:{city:"covenant",groupLabel:"Faith",name:"Wardens of the Veil",skill:"arcana",skillBonus:5,lore:"Protocol Lore",protocol:"arcane_seal",description:"Guardians and regulators sworn to prevent another arcane catastrophe."},
+
+  clan_thornweave:{city:"wild_compact",groupLabel:"Clan",name:"Clan Thornweave",skill:"medicine",skillBonus:5,lore:"Flora Lore",protocol:"living_bark",description:"Healers who cultivate living armor, medicinal gardens, and symbiotic fieldcraft."},
+  clan_stormhowl:{city:"wild_compact",groupLabel:"Clan",name:"Clan Stormhowl",skill:"acrobatics",skillBonus:5,lore:"Sky Lore",protocol:"storm_leap",description:"Cliff-runners and storm readers who train movement as a dialogue with wind and terrain."},
+  clan_nightscale:{city:"wild_compact",groupLabel:"Clan",name:"Clan Nightscale",skill:"stealth",skillBonus:5,lore:"Predator Lore",protocol:"silent_hunter",description:"Patient hunters who study concealment, pursuit, and the instincts of apex predators."},
+  clan_deeproot:{city:"wild_compact",groupLabel:"Clan",name:"Clan Deeproot",skill:"survival",skillBonus:5,lore:"Underground Lore",protocol:"stone_memory",description:"Delvers and pathfinders who read caverns, buried ruins, and stone as living maps."},
+  clan_bloodtusk:{city:"wild_compact",groupLabel:"Clan",name:"Clan Bloodtusk",skill:"close_combat",skillBonus:5,lore:"Beast Lore",protocol:"hunters_fury",description:"Warrior-hunters who prize direct action, controlled ferocity, and respect for worthy prey."}
+};
+
+const CITY_NAMES = {
+  "":"No City Selected",
+  imperium:"The Imperium",
+  covenant:"The Covenant",
+  wild_compact:"The Wild Compact"
+};
+
+const AFFILIATION_PROTOCOL_KEYS = new Set(
+  Object.values(AFFILIATIONS).map(a=>a.protocol).filter(Boolean)
+);
+
+const PROTOCOLS = {"":{"name":"None","attributes":{},"skills":{},"temporary_health":0,"special":"No Protocol prepared."},"glimpse_future":{"name":"Glimpse the Future","attributes":{},"skills":{},"temporary_health":0,"special":"Reaction: choose Forewarned to impose -5% on one attack against you, or Exploit the Opening to gain +5% on your next attack."},"ghost_step":{"name":"Ghost Step","attributes":{"wisdom":5},"skills":{"stealth":10},"temporary_health":0,"special":"Observers suffer -5 to Perception tests made to locate you."},"arcane_sight":{"name":"Arcane Sight","attributes":{"intelligence":5},"skills":{"investigation":10},"temporary_health":0,"special":"You can perceive active magic and magical residue, even through thin barriers at short range."},"iron_heart":{"name":"Iron Heart","attributes":{"endurance":5},"skills":{"survival":10},"temporary_health":0,"special":"Ignore the first fatigue or exhaustion penalty you would suffer each scene."},"titan_frame":{"name":"Titan Frame","attributes":{"strength":5},"skills":{"athletics":10},"temporary_health":5,"special":"Gain +5 Temporary Health while this Protocol is prepared."},"calm_mind":{"name":"Calm Mind","attributes":{"wisdom":5},"skills":{"insight":10},"temporary_health":0,"special":"Once per scene, clear Frightened or gain +10 to resist mental or emotional influence."},"battle_focus":{"name":"Battle Focus","attributes":{"charisma":5},"skills":{"close_combat":10},"temporary_health":0,"special":"Your second Close Combat attack each round ignores the normal -10% multiple-attack penalty."},"clockwork_precision":{"name":"Clockwork Precision","attributes":{"dexterity":5},"skills":{"engineering":10},"temporary_health":0,"special":"Once per encounter, reroll a failed Engineering or Security-related test."},"alchemical_blood":{"name":"Alchemical Blood","attributes":{"endurance":5},"skills":{"medicine":10},"temporary_health":0,"special":"Whenever you receive healing, recover 1 additional Health."},"veiled_cipher":{"name":"Veiled Cipher","attributes":{"intelligence":5},"skills":{"stealth":10},"temporary_health":0,"special":"Once per scene, after succeeding on a Stealth test, remain hidden until you perform an overt action."},"silver_tongue":{"name":"Silver Tongue","attributes":{"charisma":5},"skills":{"persuasion":10},"temporary_health":0,"special":"Once per conversation, reroll a failed Persuasion or Leadership test."},"adaptive_flesh":{"name":"Adaptive Flesh","attributes":{"endurance":5},"skills":{"medicine":10},"temporary_health":0,"special":"The first Condition you would suffer each encounter is ignored until the end of your next turn."},"purifying_flame":{"name":"Purifying Flame","attributes":{"charisma":5},"skills":{"medicine":10},"temporary_health":0,"special":"Once per mission, remove one Fear or Charm effect from an ally."},"perfect_recall":{"name":"Perfect Recall","attributes":{"intelligence":5},"skills":{"investigation":10},"temporary_health":0,"special":"Once per encounter, ask the Director one factual question about your surroundings."},"whisper_beyond":{"name":"Whisper Beyond","attributes":{"intelligence":5},"skills":{"perception":10},"temporary_health":0,"special":"Once per session, receive a cryptic but truthful vision from the Director."},"arcane_seal":{"name":"Arcane Seal","attributes":{"endurance":5},"skills":{"arcana":10},"temporary_health":0,"special":"Once per encounter, reduce the effects of a hostile Protocol by one step."},"living_bark":{"name":"Living Bark","attributes":{"endurance":5},"skills":{"medicine":10},"temporary_health":5,"special":"Gain 5 Temporary Health whenever combat begins."},"storm_leap":{"name":"Storm Leap","attributes":{"wisdom":5},"skills":{"acrobatics":10},"temporary_health":0,"special":"Ignore difficult terrain while moving."},"silent_hunter":{"name":"Silent Hunter","attributes":{"dexterity":5},"skills":{"stealth":10},"temporary_health":0,"special":"The first attack you make from hiding gains +10%."},"stone_memory":{"name":"Stone Memory","attributes":{"intelligence":5},"skills":{"survival":10},"temporary_health":0,"special":"You cannot become lost underground except through supernatural means."},"hunters_fury":{"name":"Hunter's Fury","attributes":{"strength":5},"skills":{"close_combat":10},"temporary_health":0,"special":"The first successful melee attack you make each encounter deals +1 damage."}};
 const SPECIALTIES = {"":{"name":"None","tagline":"Choose an Agent Specialty","skills":{},"movement":0,"contacts":0,"health":0,"contact_types":[],"special":"No Specialty selected."},"investigator":{"name":"Investigator","tagline":"The truth has a habit of hiding behind lies.","skills":{"perception":5,"investigation":5,"deception":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Detective","Professor","Informant"],"special":"Once per mission, ask the Director one focused investigative question. The answer must be truthful, though it may be incomplete."},"infiltrator":{"name":"Infiltrator","tagline":"Some doors were never meant to open.","skills":{"stealth":5,"acrobatics":5,"sleight_of_hand":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Spy","Fence","Safehouse Keeper"],"special":"After using a Move action, you may immediately attempt to Hide when suitable cover or concealment is available."},"vanguard":{"name":"Vanguard","tagline":"When the plan breaks, the Vanguard holds.","skills":{"athletics":5,"survival":5,"intimidation":5,"close_combat":5,"ranged_combat":5},"movement":5,"contacts":1,"health":5,"contact_types":["Officer","Veteran","Quartermaster"],"special":"Hardened Operative: +5 Maximum Health."},"scholar":{"name":"Scholar","tagline":"Every ruin is a library with sharper shelves.","skills":{"investigation":5,"arcana":5,"engineering":5,"technology":5,"medicine":5},"movement":5,"contacts":1,"health":0,"contact_types":["Archivist","Researcher","Librarian"],"special":"After one minute of examination, identify the broad purpose, origin, or danger of an unknown artifact or arcane device."},"pathfinder":{"name":"Pathfinder","tagline":"The Wilds are only unmapped until you survive them.","skills":{"survival":5,"perception":5,"athletics":5,"animal_handling":5,"ranged_combat":5},"movement":5,"contacts":1,"health":0,"contact_types":["Hunter","Scout","Guide"],"special":"Ordinary difficult terrain does not reduce your movement."},"warden":{"name":"Warden","tagline":"Stand behind me.","skills":{"athletics":5,"close_combat":5,"intimidation":5,"survival":5,"ranged_combat":5},"movement":5,"contacts":1,"health":5,"contact_types":["Veteran Commander","Master Smith","Expedition Marshal"],"special":"Hold the Line: Once each round after a successful adjacent Close Combat hit, force the target to remain engaged until its next turn unless it succeeds on an Athletics test."}};
 
 const PROTOCOLS_RANK_2 = {
@@ -258,13 +290,34 @@ const formatProtocolBonusSummary = protocol => {
 };
 
 const refreshBuilderProtocolDetails = (callback=null) => {
-  getAttrs(["protocol_slot_1","protocol_slot_2","protocol_slot_3"],values=>{
+  getAttrs([
+    "rank",
+    "protocol_slot_1","protocol_rank_1",
+    "protocol_slot_2","protocol_rank_2",
+    "protocol_slot_3","protocol_rank_3"
+  ],values=>{
     const updates = {};
+    const agentRank = Math.max(1,Math.trunc(numberValue(values.rank,1)));
+    const arcaneRank = arcaneRankFor(agentRank);
+
     [1,2,3].forEach(slot=>{
       const key = values[`protocol_slot_${slot}`] || "";
-      const protocol = PROTOCOLS[key] || PROTOCOLS[""];
-      updates[`builder_protocol_rank_${slot}`] = 1;
-      updates[`protocol_rank_${slot}`] = key ? 1 : 0;
+      const currentRank = Math.trunc(numberValue(values[`protocol_rank_${slot}`],0));
+      const selectedRank = key
+        ? clampProtocolRank(currentRank > 0 ? currentRank : 1,arcaneRank)
+        : 0;
+      const protocol = protocolForSelectedRank(key,selectedRank);
+
+      // The Builder display mirrors the selected loadout Rank. It must never
+      // force an established Rank back to 1 when the sheet refreshes.
+      updates[`builder_protocol_rank_${slot}`] = selectedRank;
+
+      // Initialize a newly selected Protocol at Rank 1, or clear an empty slot.
+      // Existing valid Rank selections are preserved.
+      if ((!key && currentRank !== 0) || (key && currentRank <= 0)) {
+        updates[`protocol_rank_${slot}`] = selectedRank;
+      }
+
       updates[`builder_protocol_${slot}_name`] =
         key && protocol.name ? protocol.name : "No Protocol Selected";
       updates[`builder_protocol_${slot}_bonuses`] =
@@ -390,12 +443,24 @@ const flipPercentile = roll => {
 
 const ATTRIBUTE_KEYS = ["strength","dexterity","endurance","intelligence","wisdom","charisma"];
 const SKILL_ATTRIBUTE_MAP = {
-  athletics: ["athletics", "strength"], acrobatics: ["acrobatics", "wisdom"], stealth: ["stealth", "wisdom"],
-  investigation: ["investigation", "intelligence"], arcana: ["arcana", "intelligence"], engineering: ["engineering", "intelligence"],
-  medicine: ["medicine", "intelligence"], survival: ["survival", "endurance"], perception: ["skill_perception", "intelligence"],
-  insight: ["insight", "intelligence"], persuasion: ["persuasion", "charisma"], deception: ["deception", "charisma"],
-  intimidation: ["intimidation", "charisma"], sleight_of_hand: ["sleight_of_hand", "dexterity"], technology: ["technology", "dexterity"],
-  animal_handling: ["animal_handling", "charisma"], close_combat: ["close_combat", "strength"], ranged_combat: ["ranged_combat", "dexterity"]
+  athletics: ["athletics", "strength"],
+  acrobatics: ["acrobatics", "wisdom"],
+  stealth: ["stealth", "wisdom"],
+  investigation: ["investigation", "intelligence"],
+  arcana: ["arcana", "intelligence"],
+  engineering: ["engineering", "dexterity"],
+  medicine: ["medicine", "dexterity"],
+  survival: ["survival", "endurance"],
+  perception: ["skill_perception", "intelligence"],
+  insight: ["insight", "intelligence"],
+  persuasion: ["persuasion", "charisma"],
+  deception: ["deception", "charisma"],
+  intimidation: ["intimidation", "charisma"],
+  sleight_of_hand: ["sleight_of_hand", "dexterity"],
+  technology: ["technology", "dexterity"],
+  animal_handling: ["animal_handling", "charisma"],
+  close_combat: ["close_combat", "strength"],
+  ranged_combat: ["ranged_combat", "dexterity"]
 };
 
 const CONDITION_KEYS = ["blinded","charmed","deafened","exhausted","frightened","incapacitated","poisoned","restrained","shocked","stunned"];
@@ -408,7 +473,7 @@ const CONDITION_LABELS = {
   incapacitated:"Incapacitated: 0 Actions and no Reaction.",
   poisoned:"Poisoned: -10% to all Attribute and Skill tests.",
   restrained:"Restrained: Movement 0; -10% Dexterity-based Skills, Close Combat, and Ranged Combat.",
-  shocked:"Shocked: -10% Awareness- and Wisdom-based tests and no Reaction.",
+  shocked:"Shocked: -10% Awareness- and Agility-based tests and no Reaction.",
   stunned:"Stunned: 0 Actions, no Reaction, and -20% to all Attribute and Skill tests."
 };
 
@@ -443,8 +508,8 @@ const CONDITION_RULES = Object.freeze({
  */
 const VOE_DATA = Object.freeze({
   meta: Object.freeze({
-    schemaVersion: 1,
-    sheetVersion: "2.4.0",
+    schemaVersion: 2,
+    sheetVersion: "2.22.0",
     baselineVersion: "2.3.3"
   }),
   heritages: HERITAGES,
@@ -842,9 +907,172 @@ on("clicked:builder_skill_ranged_combat_minus",()=>adjustBuilderSkill("ranged_co
 
 
 
+
+const summarizeAffiliation = affiliation => {
+  if (!affiliation || !affiliation.name || affiliation.name === "No Affiliation") return "Choose an Affiliation to see its benefits.";
+  const skillName = affiliation.skill ? affiliation.skill.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase()) : "None";
+  const protocol = PROTOCOLS[affiliation.protocol] || PROTOCOLS[""];
+  return `+${affiliation.skillBonus || 0} ${skillName} • ${affiliation.lore || "No Lore"} • ${protocol.name || "No Protocol"}`;
+};
+
+const normalizeAffiliationForCity = (city,key) => {
+  const affiliation = AFFILIATIONS[key] || AFFILIATIONS[""];
+  return affiliation.city === city ? key : "";
+};
+
+const refreshAffiliation = (grantProtocol=false,callback=null) => {
+  getAttrs([
+    "affiliation_city","affiliation",
+    "protocol_slot_1","protocol_rank_1",
+    "protocol_slot_2","protocol_rank_2",
+    "protocol_slot_3","protocol_rank_3",
+    "affiliation_protocol_previous"
+  ],values=>{
+    const city = values.affiliation_city || "";
+    const key = normalizeAffiliationForCity(city,values.affiliation || "");
+    const affiliation = AFFILIATIONS[key] || AFFILIATIONS[""];
+    const protocol = PROTOCOLS[affiliation.protocol] || PROTOCOLS[""];
+    const updates = {
+      content_schema_version:GAME_DATA.meta.schemaVersion,
+      content_library_status:contentLibraryAudit().valid ? "Ready" : "Incomplete",
+      affiliation:key,
+      origin:key ? `${CITY_NAMES[city]} — ${affiliation.name}` : (CITY_NAMES[city] || ""),
+      affiliation_display:affiliation.name || "No Affiliation",
+      affiliation_city_display:CITY_NAMES[city] || "No City Selected",
+      affiliation_skill_display:affiliation.skill ? `+${affiliation.skillBonus} ${affiliation.skill.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase())}` : "No Skill Bonus",
+      affiliation_lore:affiliation.lore || "No Lore",
+      affiliation_protocol_display:protocol.name || "No Protocol",
+      affiliation_description:affiliation.description || "No Affiliation selected.",
+      affiliation_benefits_summary:summarizeAffiliation(affiliation),
+      affiliation_protocol:affiliation.protocol || "",
+      builder_affiliation_filter:city,
+      builder_signature_protocol_name:key && protocol.name && protocol.name!=="None" ? protocol.name : "No Signature Protocol",
+      builder_signature_protocol_value:key && protocol.name && protocol.name!=="None" ? protocol.name : "No Signature Protocol",
+      builder_signature_protocol_summary:key && protocol.name && protocol.name!=="None"
+        ? `${summarizeProtocol(protocol)} This Protocol is granted automatically by ${affiliation.name}.`
+        : "Choose an Affiliation to reveal its Signature Protocol.",
+      builder_signature_protocol_summary_value:key && protocol.name && protocol.name!=="None"
+        ? `${summarizeProtocol(protocol)} This Protocol is granted automatically by ${affiliation.name}.`
+        : "Choose an Affiliation to reveal its Signature Protocol."
+    };
+
+    if (grantProtocol) {
+      const oldProtocol = values.affiliation_protocol_previous || "";
+      const nonSignatureChoices = [1,2,3]
+        .map(slot=>values[`protocol_slot_${slot}`] || "")
+        .filter(protocolKey=>protocolKey && protocolKey!==oldProtocol && protocolKey!==affiliation.protocol);
+      const uniqueChoices=[...new Set(nonSignatureChoices)].slice(0,2);
+
+      updates.protocol_slot_1=affiliation.protocol || "";
+      updates.protocol_rank_1=affiliation.protocol ? 1 : 0;
+      updates.protocol_slot_2=uniqueChoices[0] || "";
+      updates.protocol_rank_2=uniqueChoices[0] ? 1 : 0;
+      updates.protocol_slot_3=uniqueChoices[1] || "";
+      updates.protocol_rank_3=uniqueChoices[1] ? 1 : 0;
+      updates.affiliation_protocol_previous=affiliation.protocol || "";
+    }
+
+    if(key && affiliation.protocol) {
+      updates.protocol_slot_1=affiliation.protocol;
+      updates.protocol_rank_1=1;
+      updates.affiliation_protocol_previous=affiliation.protocol;
+    }
+
+    setAttrs(updates,{silent:true},()=>{
+      recalculateCharacter(()=>{
+        refreshAllProtocolState();
+        refreshBuilderReviewIdentity();
+        if (callback) callback();
+      });
+    });
+  });
+};
+
+
+const BUILDER_AFFILIATION_FIELD_BY_CITY = Object.freeze({
+  imperium:"builder_affiliation_imperium",
+  covenant:"builder_affiliation_covenant",
+  wild_compact:"builder_affiliation_wild_compact"
+});
+
+const syncBuilderAffiliationForCity = (grantProtocol=true) => {
+  getAttrs([
+    "affiliation_city","affiliation",
+    "builder_affiliation_imperium",
+    "builder_affiliation_covenant",
+    "builder_affiliation_wild_compact"
+  ],values=>{
+    const city=values.affiliation_city || "";
+    const field=BUILDER_AFFILIATION_FIELD_BY_CITY[city] || "";
+    const selected=field ? (values[field] || "") : "";
+    const current=normalizeAffiliationForCity(city,values.affiliation || "");
+    const affiliation=selected || current || "";
+    const updates={
+      builder_affiliation_filter:city,
+      affiliation
+    };
+    if(field && affiliation) updates[field]=affiliation;
+    setAttrs(updates,{silent:true},()=>refreshAffiliation(grantProtocol));
+  });
+};
+
+const syncCanonicalAffiliationFromBuilder = city => {
+  const field=BUILDER_AFFILIATION_FIELD_BY_CITY[city];
+  if(!field) return;
+  getAttrs(["affiliation_city",field],values=>{
+    if((values.affiliation_city || "")!==city) return;
+    setAttrs({affiliation:values[field] || ""},{silent:true},()=>refreshAffiliation(true));
+  });
+};
+
+const refreshBuilderSelections = (callback=null) => {
+  getAttrs(["heritage","heritage_mirror","affiliation_city","affiliation","specialty"],values=>{
+    const heritageKey=values.heritage_mirror || values.heritage || "";
+    const heritage=getGameContent("heritages",heritageKey) || HERITAGES[""];
+    const city=values.affiliation_city || "";
+    const affiliationKey=normalizeAffiliationForCity(city,values.affiliation || "");
+    const affiliation=getGameContent("affiliations",affiliationKey) || AFFILIATIONS[""];
+    const specialtyKey=values.specialty || "";
+    const specialty=getGameContent("specialties",specialtyKey) || SPECIALTIES[""];
+    const protocol=getGameContent("protocols",affiliation.protocol || "") || PROTOCOLS[""];
+    const cityField=BUILDER_AFFILIATION_FIELD_BY_CITY[city] || "";
+    const updates={
+      heritage_display:heritageKey ? heritage.name : "No Heritage",
+      heritage_lineage:heritageKey ? (heritage.lineage || "Heritage selected") : "Choose a Heritage",
+      heritage_summary:heritageKey ? summarizeHeritage(heritage) : "No Heritage selected.",
+      affiliation_display:affiliationKey ? affiliation.name : "No Affiliation",
+      affiliation_benefits_summary:affiliationKey ? summarizeAffiliation(affiliation) : "Choose an Affiliation to see its benefits.",
+      affiliation_description:affiliationKey ? affiliation.description : "No Affiliation selected.",
+      specialty_display:specialtyKey ? specialty.name : "No Specialty",
+      specialty_tagline:specialtyKey ? (specialty.tagline || "Agent Specialty") : "Choose an Agent Specialty",
+      specialty_summary:specialtyKey ? summarizeSpecialty(specialty) : "No Specialty selected.",
+      builder_affiliation_filter:city,
+      builder_signature_protocol_name:affiliationKey && protocol.name && protocol.name!=="None" ? protocol.name : "No Signature Protocol",
+      builder_signature_protocol_value:affiliationKey && protocol.name && protocol.name!=="None" ? protocol.name : "No Signature Protocol",
+      builder_signature_protocol_summary:affiliationKey && protocol.name && protocol.name!=="None"
+        ? `${summarizeProtocol(protocol)} This Protocol is granted by ${affiliation.name} and is included automatically in the starting loadout.`
+        : "Choose an Affiliation to reveal its Signature Protocol. It will be included automatically in the starting loadout.",
+      builder_signature_protocol_summary_value:affiliationKey && protocol.name && protocol.name!=="None"
+        ? `${summarizeProtocol(protocol)} This Protocol is granted by ${affiliation.name} and is included automatically in the starting loadout.`
+        : "Choose an Affiliation to reveal its Signature Protocol."
+    };
+    if(cityField) updates[cityField]=affiliationKey;
+    setAttrs(updates,{silent:true},()=>{
+      refreshBuilderReviewIdentity();
+      refreshBuilderProtocolDetails(()=>{
+        refreshBuilderProtocolCounter(()=>{
+          if(callback) callback();
+        });
+      });
+    });
+  });
+};
+
 const refreshBuilderReviewIdentity = () => {
-  getAttrs(["heritage","heritage_mirror","specialty"],values=>{
+  getAttrs(["heritage","heritage_mirror","affiliation_city","affiliation","specialty"],values=>{
     const heritageKey = values.heritage_mirror || values.heritage || "";
+    const affiliationKey = values.affiliation || "";
+    const affiliation = AFFILIATIONS[affiliationKey] || AFFILIATIONS[""];
     const specialtyKey = values.specialty || "";
     const heritage = HERITAGES[heritageKey] || HERITAGES[""];
     const specialty = SPECIALTIES[specialtyKey] || SPECIALTIES[""];
@@ -854,6 +1082,7 @@ const refreshBuilderReviewIdentity = () => {
         heritageKey && heritage && heritage.name
           ? heritage.name
           : "No Heritage",
+      builder_review_affiliation: affiliationKey ? affiliation.name : "No Affiliation",
       builder_review_specialty:
         specialtyKey && specialty && specialty.name
           ? specialty.name
@@ -864,26 +1093,107 @@ const refreshBuilderReviewIdentity = () => {
 
 const BUILDER_STEP_MESSAGES = {
   1:"Choose the Agent's Heritage.",
-  2:"Choose the Agent's Specialty.",
-  3:"Spend all available Protocol points.",
-  4:"Spend all 10 Attribute points.",
-  5:"Spend all 30 Skill points.",
-  6:"Review the completed Agent and finish character creation."
+  2:"Choose the Agent's Affiliation.",
+  3:"Choose the Agent's Specialty.",
+  4:"Spend all available Protocol points.",
+  5:"Spend all 10 Attribute points.",
+  6:"Spend all 30 Skill points.",
+  7:"Review the completed Agent and finish character creation."
 };
 
+
+
+const refreshBuilderFinalReview = (callback=null) => {
+  recalculateCharacter(()=>{
+    const reviewFields=[
+      "heritage","heritage_mirror","affiliation_city","affiliation","specialty",
+      "affiliation_protocol","protocol_slot_1","protocol_slot_2","protocol_slot_3",
+      "strength","dexterity","endurance","intelligence","wisdom","charisma",
+      "attribute_points_used","skill_points_used",
+      "builder_protocol_points_used","builder_protocol_points_available",
+      "health_max","speed","contacts_granted","protocol_points_max",
+      "athletics_total","acrobatics_total","stealth_total","investigation_total",
+      "arcana_total","engineering_total","medicine_total","survival_total",
+      "perception_total","insight_total","persuasion_total","deception_total",
+      "intimidation_total","close_combat_total","ranged_combat_total"
+    ];
+    getAttrs(reviewFields,values=>{
+      const heritageKey=values.heritage_mirror || values.heritage || "";
+      const affiliationKey=normalizeAffiliationForCity(values.affiliation_city || "",values.affiliation || "");
+      const specialtyKey=values.specialty || "";
+      const heritage=HERITAGES[heritageKey] || HERITAGES[""];
+      const affiliation=AFFILIATIONS[affiliationKey] || AFFILIATIONS[""];
+      const specialty=SPECIALTIES[specialtyKey] || SPECIALTIES[""];
+      const signatureKey=affiliation.protocol || values.affiliation_protocol || values.protocol_slot_1 || "";
+      const signature=PROTOCOLS[signatureKey] || PROTOCOLS[""];
+
+      const updates={
+        builder_review_heritage_value:heritageKey ? heritage.name : "No Heritage",
+        builder_review_affiliation_value:affiliationKey ? affiliation.name : "No Affiliation",
+        builder_review_specialty_value:specialtyKey ? specialty.name : "No Specialty",
+        builder_review_signature_value:signatureKey && signature.name && signature.name!=="None" ? signature.name : "No Signature Protocol",
+        builder_signature_protocol_value:signatureKey && signature.name && signature.name!=="None" ? signature.name : "No Signature Protocol",
+        builder_signature_protocol_summary_value:signatureKey && signature.name && signature.name!=="None"
+          ? `${summarizeProtocol(signature)} This Protocol is granted automatically by ${affiliation.name}.`
+          : "Choose an Affiliation to reveal its Signature Protocol.",
+        builder_review_strength:numberValue(values.strength,5),
+        builder_review_dexterity:numberValue(values.dexterity,5),
+        builder_review_endurance:numberValue(values.endurance,5),
+        builder_review_intelligence:numberValue(values.intelligence,5),
+        builder_review_wisdom:numberValue(values.wisdom,5),
+        builder_review_charisma:numberValue(values.charisma,5),
+        builder_review_attribute_points:numberValue(values.attribute_points_used,0),
+        builder_review_skill_points:numberValue(values.skill_points_used,0),
+        builder_review_protocol_used:numberValue(values.builder_protocol_points_used,0),
+        builder_review_protocol_available:numberValue(values.builder_protocol_points_available,3),
+        builder_review_health_max:numberValue(values.health_max,10),
+        builder_review_speed:numberValue(values.speed,30),
+        builder_review_contacts:numberValue(values.contacts_granted,0),
+        builder_review_capacity:numberValue(values.protocol_points_max,3),
+        builder_wizard_message:""
+      };
+
+      [1,2,3].forEach(slot=>{
+        const protocolKey=values[`protocol_slot_${slot}`] || "";
+        const protocol=PROTOCOLS[protocolKey] || PROTOCOLS[""];
+        updates[`builder_review_protocol_${slot}_name`]=protocolKey && protocol.name && protocol.name!=="None"
+          ? protocol.name
+          : "No Protocol Selected";
+        updates[`builder_review_protocol_${slot}_summary`]=protocolKey && protocol.name && protocol.name!=="None"
+          ? summarizeProtocol(protocol)
+          : "No Protocol selected.";
+      });
+
+      [
+        "athletics","acrobatics","stealth","investigation","arcana","engineering",
+        "medicine","survival","perception","insight","persuasion","deception",
+        "intimidation","close_combat","ranged_combat"
+      ].forEach(skill=>{
+        updates[`builder_review_skill_${skill}`]=numberValue(values[`${skill}_total`],0);
+      });
+
+      setAttrs(updates,{silent:true},()=>{
+        validateCharacterBuilder(()=>{
+          if(callback) callback();
+        });
+      });
+    });
+  });
+};
+
+
 const setBuilderStep = (step,message=null) => {
-  const safeStep = Math.max(1,Math.min(6,Math.trunc(numberValue(step,1))));
-  setAttrs({
-    builder_step:safeStep,
-    builder_wizard_message:message || BUILDER_STEP_MESSAGES[safeStep]
-  },{silent:true},()=>{
-    if (safeStep === 6) refreshBuilderReviewIdentity();
+  const safeStep = Math.max(1,Math.min(7,Math.trunc(numberValue(step,1))));
+  const updates={builder_step:safeStep};
+  if(safeStep !== 7) updates.builder_wizard_message=message || BUILDER_STEP_MESSAGES[safeStep];
+  setAttrs(updates,{silent:true},()=>{
+    if(safeStep === 7) refreshBuilderFinalReview();
   });
 };
 
 const validateBuilderStep = (step,callback) => {
   const fields = [
-    "heritage","heritage_mirror","specialty",
+    "heritage","heritage_mirror","affiliation_city","affiliation","specialty",
     "protocol_slot_1","protocol_slot_2","protocol_slot_3",
     "protocol_rank_1","protocol_rank_2","protocol_rank_3",
     "builder_protocol_points_used","builder_protocol_points_available",
@@ -901,25 +1211,32 @@ const validateBuilderStep = (step,callback) => {
     if (step === 1 && !heritage) {
       valid = false;
       message = "Choose a Heritage before continuing.";
-    } else if (step === 2 && !values.specialty) {
+    } else if (step === 2 && (!values.affiliation_city || !values.affiliation)) {
+      valid = false;
+      message = "Choose a City and matching Affiliation before continuing.";
+    } else if (step === 3 && !values.specialty) {
       valid = false;
       message = "Choose a Specialty before continuing.";
-    } else if (step === 3) {
-      const selectedProtocols = [1,2,3].filter(slot =>
-        Boolean(values[`protocol_slot_${slot}`])
-      );
-      const allRankOne = [1,2,3].every(slot =>
+    } else if (step === 4) {
+      const signatureSelected=Boolean(values.protocol_slot_1);
+      const extraSelections=[values.protocol_slot_2,values.protocol_slot_3].filter(Boolean);
+      const allRankOne=[1,2,3].every(slot =>
         values[`protocol_slot_${slot}`] &&
-        Math.trunc(numberValue(values[`protocol_rank_${slot}`],0)) === 1
+        Math.trunc(numberValue(values[`protocol_rank_${slot}`],0))===1
       );
-      if (selectedProtocols.length !== 3 || !allRankOne || protocolUsed !== 3) {
-        valid = false;
-        message = `Choose three Rank 1 Protocols before continuing (${selectedProtocols.length}/3 selected).`;
+      const uniqueSelections=new Set([
+        values.protocol_slot_1,
+        values.protocol_slot_2,
+        values.protocol_slot_3
+      ].filter(Boolean));
+      if(!signatureSelected || extraSelections.length!==2 || uniqueSelections.size!==3 || !allRankOne || protocolUsed!==3) {
+        valid=false;
+        message=`Confirm the Affiliation Protocol and choose two different Rank 1 Protocols (${extraSelections.length}/2 additional Protocols selected).`;
       }
-    } else if (step === 4 && attributeUsed !== ATTRIBUTE_POINT_BUDGET) {
+    } else if (step === 5 && attributeUsed !== ATTRIBUTE_POINT_BUDGET) {
       valid = false;
       message = `Spend all Attribute points before continuing (${attributeUsed}/${ATTRIBUTE_POINT_BUDGET}).`;
-    } else if (step === 5 && skillUsed !== SKILL_POINT_BUDGET) {
+    } else if (step === 6 && skillUsed !== SKILL_POINT_BUDGET) {
       valid = false;
       message = `Spend all Skill points before continuing (${skillUsed}/${SKILL_POINT_BUDGET}).`;
     }
@@ -934,23 +1251,23 @@ const validateBuilderStep = (step,callback) => {
 
 on("clicked:wizard_next",()=>{
   getAttrs(["builder_step"],values=>{
-    const current = Math.max(1,Math.min(6,Math.trunc(numberValue(values.builder_step,1))));
+    const current = Math.max(1,Math.min(7,Math.trunc(numberValue(values.builder_step,1))));
     validateBuilderStep(current,valid=>{
-      if (valid) setBuilderStep(Math.min(6,current+1));
+      if (valid) setBuilderStep(Math.min(7,current+1));
     });
   });
 });
 
 on("clicked:wizard_back",()=>{
   getAttrs(["builder_step"],values=>{
-    const current = Math.max(1,Math.min(6,Math.trunc(numberValue(values.builder_step,1))));
+    const current = Math.max(1,Math.min(7,Math.trunc(numberValue(values.builder_step,1))));
     setBuilderStep(Math.max(1,current-1));
   });
 });
 
 const goToBuilderStep = target => {
   getAttrs(["builder_step"],values=>{
-    const current = Math.max(1,Math.min(6,Math.trunc(numberValue(values.builder_step,1))));
+    const current = Math.max(1,Math.min(7,Math.trunc(numberValue(values.builder_step,1))));
     if (target <= current) return setBuilderStep(target);
     const validateRange = step => {
       if (step >= target) return setBuilderStep(target);
@@ -962,8 +1279,36 @@ const goToBuilderStep = target => {
   });
 };
 
-on("change:heritage change:heritage_mirror change:specialty",refreshBuilderReviewIdentity);
-on("sheet:opened",refreshBuilderReviewIdentity);
+on("change:heritage change:heritage_mirror change:specialty",()=>refreshBuilderSelections());
+on("change:heritage change:heritage_mirror change:affiliation_city change:affiliation change:specialty change:protocol_slot_1 change:protocol_slot_2 change:protocol_slot_3 change:attribute_points_used change:skill_points_used",()=>{
+  getAttrs(["builder_step"],values=>{
+    if(Math.trunc(numberValue(values.builder_step,1))===7) refreshBuilderFinalReview();
+  });
+});
+on("change:affiliation_city",()=>syncBuilderAffiliationForCity(true));
+on("change:builder_affiliation_imperium",()=>syncCanonicalAffiliationFromBuilder("imperium"));
+on("change:builder_affiliation_covenant",()=>syncCanonicalAffiliationFromBuilder("covenant"));
+on("change:builder_affiliation_wild_compact",()=>syncCanonicalAffiliationFromBuilder("wild_compact"));
+on("change:affiliation",()=>refreshBuilderSelections());
+on("sheet:opened",()=>refreshAffiliation(false));
+on("sheet:opened",()=>setAttrs({npc_sheet_version:1,director_tools_version:1},{silent:true},refreshDirectorClock));
+on("sheet:opened",()=>initializeReleaseCandidate());
+on("sheet:opened",()=>{
+  refreshRequisitionPreview("weapon");
+  refreshRequisitionPreview("armor");
+  refreshRequisitionPreview("equipment");
+  getAttrs(["requisition_budget","requisition_spent"],v=>setAttrs({
+    requisition_remaining:numberValue(v.requisition_budget,20)-numberValue(v.requisition_spent,0),
+    requisition_catalog_version:1
+  },{silent:true}));
+});
+on("sheet:opened",()=>{
+  getAttrs(["builder_step"],values=>{
+    const step=Math.max(1,Math.min(7,Math.trunc(numberValue(values.builder_step,1))));
+    if(step===7) refreshBuilderFinalReview();
+    else refreshBuilderSelections();
+  });
+});
 
 on("clicked:wizard_go_1",()=>goToBuilderStep(1));
 on("clicked:wizard_go_2",()=>goToBuilderStep(2));
@@ -971,11 +1316,12 @@ on("clicked:wizard_go_3",()=>goToBuilderStep(3));
 on("clicked:wizard_go_4",()=>goToBuilderStep(4));
 on("clicked:wizard_go_5",()=>goToBuilderStep(5));
 on("clicked:wizard_go_6",()=>goToBuilderStep(6));
+on("clicked:wizard_go_7",()=>goToBuilderStep(7));
 
 const validateCharacterBuilder = (callback=null) => {
   const fields = [
-    "heritage_mirror","heritage","specialty",
-    "protocol_points_used","protocol_points_available",
+    "heritage_mirror","heritage","affiliation_city","affiliation","specialty",
+    "builder_protocol_points_used","builder_protocol_points_available",
     "attribute_points_used","skill_points_used",
     ...ATTRIBUTE_KEYS.flatMap(k=>[`${k}_base`,`${k}_heritage_applied`]),
     ...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0])
@@ -986,10 +1332,11 @@ const validateCharacterBuilder = (callback=null) => {
     const heritageKey = values.heritage_mirror || values.heritage || "";
 
     if (!heritageKey) issues.push("Choose a Heritage.");
+    if (!values.affiliation_city || !values.affiliation) issues.push("Choose an Affiliation.");
     if (!values.specialty) issues.push("Choose a Specialty.");
 
-    const protocolUsed = Math.max(0,Math.trunc(numberValue(values.protocol_points_used,0)));
-    const protocolAvailable = Math.max(0,Math.trunc(numberValue(values.protocol_points_available,3)));
+    const protocolUsed = Math.max(0,Math.trunc(numberValue(values.builder_protocol_points_used,0)));
+    const protocolAvailable = Math.max(0,Math.trunc(numberValue(values.builder_protocol_points_available,3)));
     if (protocolUsed !== protocolAvailable) {
       issues.push(`Spend all Protocol points (${protocolUsed}/${protocolAvailable}).`);
     }
@@ -1044,24 +1391,32 @@ const validateCharacterBuilder = (callback=null) => {
   });
 };
 
-on("clicked:validate_character",()=>validateCharacterBuilder((valid,issues)=>{
+on("clicked:validate_character",()=>refreshBuilderFinalReview(()=>validateCharacterBuilder((valid,issues)=>{
   postNotice(
     valid ? "Character Ready" : "Character Incomplete",
     valid ? "All Builder requirements are complete." : issues.join(" "),
     "Builder"
   );
-}));
+})));
 
-on("clicked:finish_character",()=>validateCharacterBuilder((valid,issues)=>{
-  if (!valid) return postNotice("Character Incomplete",issues.join(" "),"Builder");
+on("clicked:finish_character",()=>refreshBuilderFinalReview(()=>validateCharacterBuilder((valid,issues)=>{
+  if (!valid) {
+    setAttrs({
+      builder_validation_state:"Incomplete",
+      builder_validation_message:issues.join(" "),
+      builder_wizard_message:"The character is not complete. Review the warnings below."
+    },{silent:true});
+    return postNotice("Character Incomplete",issues.join(" "),"Builder");
+  }
   setAttrs({
     character_creation_complete:1,
     builder_validation_state:"Complete",
     builder_validation_message:"Character creation complete. The Agent is ready for play.",
+    builder_wizard_message:"Character complete. Opening the Character page.",
     sheet_tab:"agent",
-    builder_step:6
+    builder_step:7
   },{},()=>postNotice("Character Complete","The Agent is ready for play.","Builder"));
-}));
+})));
 
 on("clicked:reopen_character_builder",()=>{
   setAttrs({
@@ -1077,7 +1432,7 @@ on("clicked:reopen_character_builder",()=>{
 const migrateCharacterCreationState = () => {
   getAttrs(["character_creation_complete","voe_sheet_version","builder_step"],values=>{
     const state = values.character_creation_complete;
-    const step = Math.max(1,Math.min(6,Math.trunc(numberValue(values.builder_step,1))));
+    const step = Math.max(1,Math.min(7,Math.trunc(numberValue(values.builder_step,1))));
     if (!values.builder_step) setAttrs({builder_step:step,builder_wizard_message:BUILDER_STEP_MESSAGES[step]},{silent:true});
     if (state === "0" || state === "1") {
       validateCharacterBuilder();
@@ -1087,15 +1442,50 @@ const migrateCharacterCreationState = () => {
   });
 };
 
+
+const enforceIncapacitatedCondition = () => {
+  getAttrs([
+    "condition_incapacitated","condition_stunned",
+    "actions_current","reaction_available",
+    "condition_lock_active","condition_saved_actions","condition_saved_reaction"
+  ],values=>{
+    const incapacitated=String(values.condition_incapacitated || "0")==="1";
+    const stunned=String(values.condition_stunned || "0")==="1";
+    const locked=incapacitated || stunned;
+    const wasLocked=String(values.condition_lock_active || "0")==="1";
+    const updates={};
+
+    if(locked) {
+      if(!wasLocked) {
+        updates.condition_saved_actions=Math.max(0,Math.trunc(numberValue(values.actions_current,3)));
+        updates.condition_saved_reaction=String(values.reaction_available || "1")==="0" ? 0 : 1;
+      }
+      updates.condition_lock_active=1;
+      updates.actions_current=0;
+      updates.reaction_available=0;
+      updates.reaction_status_text="Unavailable";
+    } else if(wasLocked) {
+      updates.condition_lock_active=0;
+      updates.actions_current=Math.max(0,Math.trunc(numberValue(values.condition_saved_actions,3)));
+      updates.reaction_available=String(values.condition_saved_reaction || "1")==="0" ? 0 : 1;
+      updates.reaction_status_text=String(values.condition_saved_reaction || "1")==="0" ? "Unavailable" : "Available";
+    }
+
+    setAttrs(updates,{silent:true},()=>recalculateCharacter());
+  });
+};
+
 const recalculateCharacter = (callback=null) => {
-  const fields = ["heritage","heritage_mirror","specialty","secondary_specialty","specialty_rank","rank","rank_health_bonus","experience","experience_next","protocol_rank_1","protocol_rank_2","protocol_rank_3","protocol_slot_1","protocol_slot_2","protocol_slot_3", "armor_type", "carry_capacity_base", "health", "health_max", "temporary_health", "temporary_health_max", "temporary_health_applied","actions_current","reaction_available","condition_lock_active","condition_saved_actions","condition_saved_reaction", ...ATTRIBUTE_KEYS.flatMap(k=>[`${k}_base`,`${k}_heritage_applied`]), ...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0]), ...CONDITION_KEYS.map(k=>`condition_${k}`)];
+  const fields = ["character_name","heritage","heritage_mirror","affiliation_city","affiliation","specialty","secondary_specialty","specialty_rank","rank","rank_health_bonus","experience","experience_next","protocol_rank_1","protocol_rank_2","protocol_rank_3","protocol_slot_1","protocol_slot_2","protocol_slot_3", "armor_type", "carry_capacity_base", "health", "health_max", "temporary_health", "temporary_health_max", "temporary_health_applied","actions_current","reaction_available","condition_lock_active","condition_saved_actions","condition_saved_reaction", ...ATTRIBUTE_KEYS.flatMap(k=>[`${k}_base`,`${k}_heritage_applied`]), ...Object.values(SKILL_ATTRIBUTE_MAP).map(v=>v[0]), ...CONDITION_KEYS.map(k=>`condition_${k}`)];
   getAttrs([...new Set(fields)], values => {
     const heritageKey = values.heritage_mirror || values.heritage || "";
-    const heritage = HERITAGES[heritageKey] || HERITAGES[""];
+    const heritage = getGameContent("heritages",heritageKey) || HERITAGES[""];
+    const affiliationKey = normalizeAffiliationForCity(values.affiliation_city || "",values.affiliation || "");
+    const affiliation = getGameContent("affiliations",affiliationKey) || AFFILIATIONS[""];
     const specialtyKey = values.specialty || "";
-    const specialty = SPECIALTIES[specialtyKey] || SPECIALTIES[""];
+    const specialty = getGameContent("specialties",specialtyKey) || SPECIALTIES[""];
     const secondarySpecialtyKey = values.secondary_specialty || "";
-    const secondarySpecialty = SPECIALTIES[secondarySpecialtyKey] || SPECIALTIES[""];
+    const secondarySpecialty = getGameContent("specialties",secondarySpecialtyKey) || SPECIALTIES[""];
     const specialtyRank = Math.max(1,Math.trunc(numberValue(values.specialty_rank,1)));
     const agentRank = Math.max(1,Math.trunc(numberValue(values.rank,1)));
     const specialtyRank2 = specialtyRank >= 2 ? SPECIALTIES_RANK_2[specialtyKey] : null;
@@ -1112,6 +1502,7 @@ const recalculateCharacter = (callback=null) => {
     const protocolAttrBonuses = Object.fromEntries(ATTRIBUTE_KEYS.map(k=>[k,0]));
     const skillBonuses = Object.fromEntries(Object.keys(SKILL_ATTRIBUTE_MAP).map(k=>[k,0]));
     Object.entries(heritage.skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
+    if (affiliation.skill) skillBonuses[affiliation.skill]=(skillBonuses[affiliation.skill]||0)+numberValue(affiliation.skillBonus,0);
     Object.entries(specialty.skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
     Object.entries(secondarySpecialty.skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
     Object.entries((specialtyRank2 || {}).skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
@@ -1119,8 +1510,24 @@ const recalculateCharacter = (callback=null) => {
       Object.entries(p.attributes || {}).forEach(([k,v])=>protocolAttrBonuses[k]=(protocolAttrBonuses[k]||0)+v);
       Object.entries(p.skills || {}).forEach(([k,v])=>skillBonuses[k]=(skillBonuses[k]||0)+v);
     });
+    const characterSummary = buildCharacterSummary({
+      name:values.character_name,
+      heritage,
+      affiliation,
+      specialty
+    });
     const updates = {
       heritage: heritageKey, heritage_mirror: heritageKey,
+      affiliation: affiliationKey,
+      origin: affiliationKey ? `${CITY_NAMES[affiliation.city]} — ${affiliation.name}` : "",
+      affiliation_display: affiliation.name || "No Affiliation",
+      affiliation_city_display: CITY_NAMES[affiliation.city] || "No City Selected",
+      affiliation_skill_display: affiliation.skill ? `+${affiliation.skillBonus} ${affiliation.skill.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase())}` : "No Skill Bonus",
+      affiliation_lore: affiliation.lore || "No Lore",
+      affiliation_protocol_display: (PROTOCOLS[affiliation.protocol] || PROTOCOLS[""]).name,
+      affiliation_description: affiliation.description || "No Affiliation selected.",
+      affiliation_benefits_summary: summarizeAffiliation(affiliation),
+      lore_skill_total: clampPercent(numberValue(values.lore_skill_base,BASE_SKILL_VALUE) + (affiliationKey ? 5 : 0)),
       specialty: specialtyKey,
       heritage_display: heritage.name === "None" ? "No Heritage" : heritage.name,
       heritage_lineage: heritage.lineage || "",
@@ -1141,7 +1548,6 @@ const recalculateCharacter = (callback=null) => {
       protocol_slot_3_summary: values.protocol_slot_3 && selectedProtocolRanks[2] > 0 ? summarizeProtocol(protocolForSelectedRank(values.protocol_slot_3,selectedProtocolRanks[2])) : "No Protocol prepared.",
       current_bonuses_summary: summarizeCurrentBonuses(heritage,specialty,selectedProtocols),
       heritage_armor_display: numberValue(heritage.armor,0) ? `Natural Light (-${heritage.armor}%)` : "None",
-      speed: conditionMovement(35 + numberValue(specialty.movement,0) + numberValue(secondarySpecialty.movement,0), activeConditions),
       condition_summary: activeConditions.length ? activeConditions.map(k=>CONDITION_LABELS[k]).join("\n") : "No active condition penalties."
     };
     ATTRIBUTE_KEYS.forEach(k=>{
@@ -1159,6 +1565,16 @@ const recalculateCharacter = (callback=null) => {
       updates[`${k}_bonus`] = protocolBonus;
       updates[k] = clampPercent(adjustedBase + protocolBonus);
     });
+    // Movement is now grounded in Agility while preserving the familiar 35-foot
+    // baseline for an Agent with Agility 5.
+    updates.speed = conditionMovement(
+      30 +
+      numberValue(heritage.movement,0) +
+      numberValue(specialty.movement,0) +
+      numberValue(secondarySpecialty.movement,0) +
+      selectedProtocols.reduce((sum,protocol)=>sum+numberValue(protocol.movement,0),0),
+      activeConditions
+    );
     Object.entries(SKILL_ATTRIBUTE_MAP).forEach(([skill,[baseField,attribute]])=>{
       const base = Math.max(BASE_SKILL_VALUE,numberValue(values[baseField],BASE_SKILL_VALUE));
       const attrTotal = updates[attribute];
@@ -1972,13 +2388,14 @@ on("clicked:reset_encounter",()=>getAttrs(["contingency_max"],values=>{
 }));
 
 on("change:armor_type",recalculateCharacter);
-on("change:heritage",e=>setAttrs({heritage_mirror:e.newValue},{silent:true}));
-on("change:heritage_mirror",e=>setAttrs({heritage:e.newValue},{silent:true}));
-const generalRecalcEvents=["heritage","heritage_mirror","specialty","protocol_slot_1","protocol_slot_2","protocol_slot_3","armor_type",...CONDITION_KEYS.map(k=>`condition_${k}`)].map(f=>`change:${f}`).join(" ");
+on("change:heritage",e=>setAttrs({heritage_mirror:e.newValue},{silent:true},()=>{recalculateCharacter(()=>refreshBuilderSelections());}));
+on("change:heritage_mirror",e=>setAttrs({heritage:e.newValue},{silent:true},()=>{recalculateCharacter(()=>refreshBuilderSelections());}));
+/* Builder-specific Affiliation handlers are registered above. */
+const generalRecalcEvents=["character_name","heritage","heritage_mirror","affiliation_city","affiliation","lore_skill_base","specialty","protocol_slot_1","protocol_slot_2","protocol_slot_3","armor_type",...CONDITION_KEYS.map(k=>`condition_${k}`)].map(f=>`change:${f}`).join(" ");
 on(generalRecalcEvents,()=>{recalculateCharacter();refreshCreationBudgets();});
 on(ATTRIBUTE_KEYS.map(k=>`change:${k}_base`).join(" "),enforceAttributeBudget);
 on(Object.values(SKILL_ATTRIBUTE_MAP).map(v=>`change:${v[0]}`).join(" "),enforceSkillBudget);
-on("change:specialty", ()=>{recalculateCharacter();refreshCreationBudgets();});
+on("change:specialty", ()=>{recalculateCharacter(()=>refreshBuilderSelections());refreshCreationBudgets();});
 on("sheet:opened",()=>{
   const migrationFields = [
     "sheet_version","actions_current","attacks_made","attacks_remaining","reaction_available",
@@ -2162,6 +2579,411 @@ const EQUIPMENT_CATALOG = {
   map_case:{name:"Survey Map Case",type:"Navigation",weight:0.5,notes:"Weatherproof case with writing tools and measurement instruments."}
 };
 
+
+/*
+ * Version 2.22 unified game-content library.
+ *
+ * This is the canonical public facade for all selectable rules content.
+ * Existing constants remain as compatibility aliases so established
+ * characters and older worker functions continue to operate safely.
+ */
+
+const CREATURE_ARCHETYPES = Object.freeze({
+  "":Object.freeze({
+    name:"Custom NPC",category:"Custom",threat:1,role:"Unassigned",
+    health:10,armor:0,dr:0,movement:30,actions:3,reactions:1,
+    attributes:{strength:10,dexterity:10,endurance:10,intelligence:10,wisdom:10,charisma:10},
+    skills:{close_combat:35,ranged_combat:35,perception:30,survival:25,stealth:25},
+    attacks:[
+      {name:"Basic Strike",target:35,damage:"2",range:"Close",traits:"Simple attack"},
+      {name:"Thrown Weapon",target:30,damage:"2",range:"30 ft",traits:"Improvised ranged attack"}
+    ],
+    abilities:["Adaptable: Customize this profile to suit the encounter."],
+    description:"A blank operational profile for a custom NPC or creature."
+  }),
+  agency_trooper:Object.freeze({
+    name:"Agency Trooper",category:"Humanoid",threat:1,role:"Skirmisher",
+    health:12,armor:5,dr:1,movement:30,actions:3,reactions:1,
+    attributes:{strength:10,dexterity:15,endurance:10,intelligence:10,wisdom:10,charisma:5},
+    skills:{close_combat:40,ranged_combat:50,perception:40,survival:30,stealth:35},
+    attacks:[
+      {name:"Service Carbine",target:50,damage:"4",range:"90 ft",traits:"Two-handed, reliable"},
+      {name:"Utility Blade",target:40,damage:"2",range:"Close",traits:"Concealable"}
+    ],
+    abilities:["Coordinated Fire: Gain +5% to attacks against a target already attacked by an ally this round."],
+    description:"A disciplined field operative used as security, escort, or organized opposition."
+  }),
+  covenant_warden:Object.freeze({
+    name:"Covenant Veil Warden",category:"Humanoid",threat:2,role:"Controller",
+    health:18,armor:10,dr:2,movement:25,actions:3,reactions:1,
+    attributes:{strength:10,dexterity:10,endurance:15,intelligence:15,wisdom:10,charisma:15},
+    skills:{close_combat:45,ranged_combat:35,perception:50,arcana:60,investigation:45},
+    attacks:[
+      {name:"Seal Staff",target:45,damage:"4",range:"Close",traits:"Arcane focus"},
+      {name:"Binding Sigil",target:55,damage:"2",range:"40 ft",traits:"On hit, target is Restrained until it spends an action to escape"}
+    ],
+    abilities:["Arcane Seal: Once per round as a Reaction, reduce a hostile Protocol's effect by one step.","Ward Circle: Allies within 10 feet gain +5% against hostile Protocols."],
+    description:"A trained regulator of dangerous magic, equally comfortable suppressing rituals and unruly Agents."
+  }),
+  compact_hunter:Object.freeze({
+    name:"Compact Thorn Hunter",category:"Humanoid",threat:2,role:"Ambusher",
+    health:16,armor:5,dr:1,movement:35,actions:3,reactions:1,
+    attributes:{strength:15,dexterity:15,endurance:10,intelligence:10,wisdom:15,charisma:5},
+    skills:{close_combat:55,ranged_combat:45,perception:55,survival:60,stealth:55},
+    attacks:[
+      {name:"Thorn Spear",target:55,damage:"5",range:"Close / 20 ft",traits:"Piercing, throwable"},
+      {name:"Briar Snare",target:50,damage:"1",range:"30 ft",traits:"Restrains on hit"}
+    ],
+    abilities:["Silent Hunter: The first attack made from hiding gains +10%.","Wild Step: Ignores ordinary difficult terrain."],
+    description:"A patient tracker shaped by the dangerous borderlands of the Wild Compact."
+  }),
+  bloom_stalker:Object.freeze({
+    name:"Bloom Stalker",category:"Horror",threat:2,role:"Predator",
+    health:20,armor:5,dr:1,movement:40,actions:3,reactions:1,
+    attributes:{strength:15,dexterity:15,endurance:15,intelligence:5,wisdom:15,charisma:0},
+    skills:{close_combat:60,ranged_combat:0,perception:60,survival:55,stealth:65},
+    attacks:[
+      {name:"Rending Claws",target:60,damage:"5",range:"Close",traits:"Bleeding wound"},
+      {name:"Spore Burst",target:50,damage:"3",range:"15-ft burst",traits:"Endurance test or Poisoned"}
+    ],
+    abilities:["Camouflage Flesh: Gain +10% Stealth while motionless.","Unnatural Scent: Automatically notices wounded creatures within 30 feet."],
+    description:"A low, many-jointed predator grown around the instincts of a hunting animal and the anatomy of a nightmare."
+  }),
+  glass_grove_sentinel:Object.freeze({
+    name:"Glass Grove Sentinel",category:"Construct",threat:3,role:"Brute",
+    health:32,armor:15,dr:3,movement:20,actions:3,reactions:1,
+    attributes:{strength:20,dexterity:5,endurance:20,intelligence:5,wisdom:10,charisma:0},
+    skills:{close_combat:65,ranged_combat:40,perception:45,survival:0,stealth:0},
+    attacks:[
+      {name:"Crystal Maul",target:65,damage:"8",range:"Close",traits:"Heavy, knocks target 10 feet"},
+      {name:"Shard Volley",target:40,damage:"5",range:"60 ft",traits:"Targets up to two creatures"}
+    ],
+    abilities:["Crystal Carapace: Damage Reduction 3.","Resonant Fracture: Arcane damage ignores 1 point of its DR but causes a shard burst dealing 1 damage to adjacent creatures."],
+    description:"A towering mineral guardian whose body rings like a cathedral bell when struck."
+  }),
+  kaigu_behemoth:Object.freeze({
+    name:"Kaigu Behemoth",category:"Kaigu",threat:5,role:"Boss",
+    health:75,armor:15,dr:4,movement:35,actions:4,reactions:2,
+    attributes:{strength:25,dexterity:10,endurance:25,intelligence:5,wisdom:15,charisma:10},
+    skills:{close_combat:75,ranged_combat:55,perception:65,survival:70,stealth:10},
+    attacks:[
+      {name:"Titanic Claw",target:75,damage:"12",range:"Close",traits:"Sweeping; may strike two adjacent targets"},
+      {name:"Aether Roar",target:60,damage:"7",range:"60-ft cone",traits:"Presence test or Frightened"},
+      {name:"Ground Rupture",target:55,damage:"9",range:"30-ft line",traits:"Area becomes difficult terrain"}
+    ],
+    abilities:["Colossal: Cannot be moved by ordinary effects.","Boss Tempo: Begins each round with 4 Actions and 2 Reactions.","Catastrophic Wound: At half Health, immediately uses Aether Roar without spending an Action."],
+    description:"A city-threatening giant born from the oldest scars of the Bloom."
+  })
+});
+
+
+const DIRECTOR_MISSION_TEMPLATES = Object.freeze({
+  "":Object.freeze({
+    name:"Custom Mission",objective:"Define the operation's primary objective.",
+    location:"Unassigned",stakes:"Unknown",clockMax:6,
+    complications:["Unexpected opposition","Environmental hazard","Political consequence"],
+    beats:["Briefing","Insertion","Complication","Confrontation","Extraction"]
+  }),
+  relic_recovery:Object.freeze({
+    name:"Relic Recovery",objective:"Locate, secure, and extract a dangerous pre-Bloom relic before a rival faction reaches it.",
+    location:"Ruins in the Wilds",stakes:"Arcane contamination and factional escalation",clockMax:6,
+    complications:["The relic is active","A rival team has already entered","The structure is collapsing"],
+    beats:["Receive fragmented coordinates","Cross hostile terrain","Identify the true relic","Survive activation","Extract before containment fails"]
+  }),
+  urban_infiltration:Object.freeze({
+    name:"Urban Infiltration",objective:"Enter a secured district, acquire restricted intelligence, and leave without exposing the Agency.",
+    location:"One of the Three Cities",stakes:"Political exposure and diplomatic retaliation",clockMax:6,
+    complications:["Identity checks intensify","A contact changes sides","Security seals the district"],
+    beats:["Establish cover identities","Reach the target site","Bypass internal security","Acquire the intelligence","Escape the lockdown"]
+  }),
+  horror_containment:Object.freeze({
+    name:"Horror Containment",objective:"Identify and contain a Bloom-born threat before it reaches a populated district.",
+    location:"Border settlement or transit corridor",stakes:"Civilian casualties and spreading corruption",clockMax:8,
+    complications:["The creature reproduces","The corruption alters the terrain","A civilian group refuses evacuation"],
+    beats:["Investigate disappearances","Track the contamination","Discover the creature's behavior","Contain or destroy the source","Cleanse the affected zone"]
+  }),
+  diplomatic_crisis:Object.freeze({
+    name:"Diplomatic Crisis",objective:"Prevent negotiations between rival powers from collapsing into open conflict.",
+    location:"Neutral diplomatic enclave",stakes:"War between the Three Survivors",clockMax:6,
+    complications:["An assassination attempt","Forged evidence appears","A delegate vanishes"],
+    beats:["Assess each delegation","Identify hidden agendas","Stop the first provocation","Expose the true instigator","Secure a workable accord"]
+  })
+});
+
+const DIRECTOR_COMPLICATIONS = Object.freeze([
+  "A trusted contact provides incomplete information.",
+  "The environment becomes actively hazardous.",
+  "A rival faction arrives with a competing objective.",
+  "An innocent person becomes trapped in the operation.",
+  "The enemy learns one of the Agents' identities.",
+  "A Protocol behaves unpredictably near the objective.",
+  "The safest route closes behind the team.",
+  "The mission clock advances by two instead of one.",
+  "Local authorities mistake the Agents for the threat.",
+  "The apparent objective is only a decoy.",
+  "A defeated foe offers valuable but dangerous information.",
+  "Extraction becomes a separate mission of its own."
+]);
+
+const DIRECTOR_SCENE_TYPES = Object.freeze({
+  investigation:["A damaged scene with one obvious clue and one hidden contradiction.","A witness knows the truth but fears the consequences.","Evidence points toward the wrong faction unless carefully examined."],
+  combat:["Opposition controls favorable terrain.","A second threat enters after the first round.","The battlefield contains a volatile arcane feature."],
+  social:["Every participant wants something different from the stated purpose.","A public audience makes failure politically costly.","One negotiator is secretly acting under coercion."],
+  exploration:["The route is shorter but far more dangerous than expected.","A landmark has moved or been altered since the map was made.","The environment offers a useful resource guarded by a serious risk."]
+});
+
+const GAME_DATA = Object.freeze({
+  meta:Object.freeze({
+    schemaVersion:6,
+    sheetVersion:"3.0.0",
+    compatibilityBaseline:"2.25.0",
+    families:Object.freeze([
+      "heritages","affiliations","specialties","protocols",
+      "weapons","armor","equipment","conditions","attributes",
+      "skills","ranks","cities","creatures","missions"
+    ])
+  }),
+  heritages:Object.freeze(HERITAGES),
+  affiliations:Object.freeze(AFFILIATIONS),
+  specialties:Object.freeze(SPECIALTIES),
+  protocols:Object.freeze(PROTOCOLS),
+  weapons:Object.freeze(WEAPON_CATALOG),
+  armor:Object.freeze(ARMOR_CATALOG),
+  equipment:Object.freeze(EQUIPMENT_CATALOG),
+  conditions:VOE_DATA.conditions,
+  attributes:VOE_DATA.attributes,
+  skills:VOE_DATA.skills,
+  ranks:Object.freeze(RANK_DATA),
+  cities:Object.freeze(CITY_NAMES),
+  creatures:CREATURE_ARCHETYPES,
+  missions:DIRECTOR_MISSION_TEMPLATES
+});
+
+const REQUISITION_DATA = Object.freeze({
+  weapons:Object.freeze({utility_knife:1,service_sword:3,war_hammer:3,compact_pistol:3,service_carbine:5,long_rifle:5,scattergun:5,arc_caster:7}),
+  armor:Object.freeze({field_coat:3,lamellar_vest:6,bulwark_harness:9}),
+  equipment:Object.freeze({agent_pack:1,commlink:2,field_rations:1,medical_kit:3,bypass_kit:3,climbing_kit:3,binoculars:2,lantern:1,rope:1,disguise_kit:3,protocol_toolkit:4,map_case:1})
+});
+
+const getGameContent = (family,id="") => {
+  const catalog=GAME_DATA[family];
+  if (!catalog) return null;
+  if (Array.isArray(catalog)) return catalog.find(record=>record.id===id) || null;
+  return catalog[id] || catalog[""] || null;
+};
+
+const listGameContent = family => {
+  const catalog=GAME_DATA[family];
+  if (!catalog) return [];
+  if (Array.isArray(catalog)) return catalog.slice();
+  return Object.entries(catalog).map(([id,record])=>Object.assign({id},record));
+};
+
+const contentLibraryAudit = () => {
+  const required=["heritages","affiliations","specialties","protocols","weapons","armor","equipment","conditions"];
+  const missing=required.filter(family=>!GAME_DATA[family]);
+  return {
+    valid:missing.length===0,
+    missing,
+    counts:required.reduce((result,family)=>{
+      result[family]=listGameContent(family).filter(record=>record.id!=="").length;
+      return result;
+    },{})
+  };
+};
+
+
+/*
+ * Veil of Empires 3.0 expansion API.
+ * Expansion packs may register additional records without modifying the
+ * core calculation engine. The registry is deliberately small and stable.
+ */
+const VOE_EXTENSION_REGISTRY = {
+  packs:{},
+  register(pack){
+    if(!pack || !pack.id || !pack.content) return {ok:false,error:"Invalid expansion pack."};
+    if(this.packs[pack.id]) return {ok:false,error:`Expansion ${pack.id} is already registered.`};
+    const allowed=["heritages","affiliations","specialties","protocols","weapons","armor","equipment","conditions","creatures","missions"];
+    const rejected=Object.keys(pack.content).filter(key=>!allowed.includes(key));
+    if(rejected.length) return {ok:false,error:`Unsupported content families: ${rejected.join(", ")}`};
+    this.packs[pack.id]=Object.freeze({
+      id:pack.id,
+      name:pack.name || pack.id,
+      version:pack.version || "1.0.0",
+      content:Object.freeze(pack.content)
+    });
+    return {ok:true,pack:this.packs[pack.id]};
+  },
+  list(){ return Object.values(this.packs); },
+  records(family){
+    return this.list().flatMap(pack=>{
+      const records=pack.content[family] || {};
+      return Object.entries(records).map(([id,record])=>Object.assign({id,packId:pack.id},record));
+    });
+  }
+};
+
+const getExpandedGameContent = (family,id="") =>
+  getGameContent(family,id) ||
+  VOE_EXTENSION_REGISTRY.records(family).find(record=>record.id===id) ||
+  null;
+
+const listExpandedGameContent = family =>
+  [...listGameContent(family),...VOE_EXTENSION_REGISTRY.records(family)];
+
+const runReleaseAudit = () => {
+  const base=contentLibraryAudit();
+  const checks={
+    contentLibrary:base.valid,
+    characterBuilder:typeof validateCharacterBuilder==="function",
+    npcEngine:typeof loadNpcArchetype==="function",
+    directorTools:typeof loadDirectorMission==="function",
+    requisitionCatalog:typeof requisitionCost==="function",
+    printableRecords:typeof refreshPlayerExport==="function",
+    expansionRegistry:typeof VOE_EXTENSION_REGISTRY.register==="function"
+  };
+  const failed=Object.entries(checks).filter(([,ok])=>!ok).map(([name])=>name);
+  return {
+    valid:failed.length===0,
+    failed,
+    checks,
+    contentCounts:base.counts,
+    registeredExpansions:VOE_EXTENSION_REGISTRY.list().length
+  };
+};
+
+const initializeReleaseCandidate = () => {
+  const audit=runReleaseAudit();
+  const count=Object.values(audit.contentCounts || {}).reduce((sum,value)=>sum+numberValue(value,0),0);
+  setAttrs({
+    release_channel:"Public Release Candidate",
+    release_status:audit.valid ? "Ready" : "Review Required",
+    release_schema_version:6,
+    release_audit_summary:audit.valid
+      ? `${count} core content records verified across the rules library.`
+      : `Audit issues: ${audit.failed.join(", ")}`,
+    release_migration_status:"Character data is compatible with the v2.25.0 baseline.",
+    content_schema_version:6,
+    content_library_status:audit.valid ? "Ready" : "Incomplete"
+  },{silent:true});
+};
+
+const SPECIALTY_FIELD_PROFILES = Object.freeze({
+  investigator:"Field investigator specializing in hidden truths, difficult questions, and evidence others overlook.",
+  infiltrator:"Covert operative specializing in penetration, concealment, and missions that leave no obvious footprint.",
+  vanguard:"Front-line operative specializing in decisive engagement, battlefield pressure, and holding broken plans together.",
+  scholar:"Relic scholar specializing in arcane technology, forgotten history, and the dangerous grammar of ruins.",
+  pathfinder:"Wilderness operative specializing in hostile terrain, expedition survival, and routes that should not exist.",
+  warden:"Defensive operative specializing in protection, controlled force, and keeping allies alive under impossible pressure."
+});
+
+const buildCharacterSummary = ({name,heritage,affiliation,specialty}) => {
+  const agentName=String(name || "").trim() || "Unnamed Agent";
+  const heritageName=heritage && heritage.name && heritage.name!=="None" ? heritage.name : "";
+  const specialtyName=specialty && specialty.name && specialty.name!=="None" ? specialty.name : "";
+  const identity=[heritageName,specialtyName].filter(Boolean).join(" ") || "Unassigned Agent";
+  const affiliationLine=affiliation && affiliation.name && affiliation.name!=="No Affiliation"
+    ? `${affiliation.name}, ${CITY_NAMES[affiliation.city] || "Unknown City"}`
+    : "No Affiliation Selected";
+  const profile=SPECIALTY_FIELD_PROFILES[
+    Object.keys(SPECIALTIES).find(key=>SPECIALTIES[key]===specialty)
+  ] || "Agency operative whose field profile is still taking shape.";
+  return {agentName,identity,affiliationLine,profile};
+};
+
+
+
+const REQUISITION_COSTS = Object.freeze({
+  weapons:Object.freeze({
+    utility_knife:1,service_sword:3,war_hammer:3,compact_pistol:3,
+    service_carbine:5,long_rifle:5,scattergun:5,arc_caster:7
+  }),
+  armor:Object.freeze({field_coat:3,lamellar_vest:6,bulwark_harness:9}),
+  equipment:Object.freeze({
+    agent_pack:1,commlink:2,field_rations:1,medical_kit:3,bypass_kit:3,
+    climbing_kit:3,binoculars:2,lantern:1,rope:1,disguise_kit:3,
+    protocol_toolkit:4,map_case:1
+  })
+});
+
+const REQUISITION_PACKAGES = Object.freeze({
+  field_kit:["agent_pack","commlink","field_rations","medical_kit","lantern","rope"],
+  infiltration_kit:["bypass_kit","disguise_kit","commlink","binoculars","rope"],
+  expedition_kit:["climbing_kit","map_case","field_rations","lantern","binoculars","rope"],
+  protocol_kit:["protocol_toolkit","medical_kit","commlink","agent_pack"]
+});
+
+const requisitionCost = (family,key,quantity=1) =>
+  Math.max(0,numberValue((REQUISITION_COSTS[family] || {})[key],0)) *
+  Math.max(1,Math.trunc(numberValue(quantity,1)));
+
+const updateRequisitionBudget = (delta=0,message="") => {
+  getAttrs(["requisition_budget","requisition_spent"],values=>{
+    const budget=Math.max(0,numberValue(values.requisition_budget,20));
+    const spent=Math.max(0,numberValue(values.requisition_spent,0)+numberValue(delta,0));
+    setAttrs({
+      requisition_spent:spent,
+      requisition_remaining:budget-spent,
+      requisition_status:message || `Requisition balance: ${budget-spent} points remaining.`
+    },{silent:true});
+  });
+};
+
+const consolidateEquipmentCatalogRow = (key,item,quantity=1,callback=null) => {
+  getSectionIDs("repeating_equipment",ids=>{
+    const nameFields=ids.map(id=>`repeating_equipment_${id}_item_name`);
+    getAttrs(nameFields,values=>{
+      const existing=ids.find(id=>values[`repeating_equipment_${id}_item_name`]===item.name);
+      if(existing){
+        const quantityField=`repeating_equipment_${existing}_item_quantity`;
+        getAttrs([quantityField],qv=>{
+          setAttrs({[quantityField]:numberValue(qv[quantityField],1)+quantity},callback || (()=>{}));
+        });
+        return;
+      }
+      const row=generateRowID();
+      const prefix=`repeating_equipment_${row}`;
+      setAttrs({
+        [`${prefix}_catalog_key`]:key,
+        [`${prefix}_item_name`]:item.name,
+        [`${prefix}_item_type`]:item.type,
+        [`${prefix}_item_quantity`]:quantity,
+        [`${prefix}_item_weight`]:item.weight,
+        [`${prefix}_item_notes`]:item.notes
+      },callback || (()=>{}));
+    });
+  });
+};
+
+const addRequisitionPackage = packageKey => {
+  const keys=REQUISITION_PACKAGES[packageKey] || [];
+  const total=keys.reduce((sum,key)=>sum+requisitionCost("equipment",key,1),0);
+  keys.forEach(key=>{
+    const item=getGameContent("equipment",key);
+    if(item) consolidateEquipmentCatalogRow(key,item,1);
+  });
+  updateRequisitionBudget(total,`${keys.length} items added from ${packageKey.replace(/_/g," ")}.`);
+};
+
+const refreshRequisitionPreview = family => {
+  const attr=`catalog_${family==="equipment"?"equipment":family}`;
+  getAttrs([attr],values=>{
+    const key=values[attr] || "";
+    const item=getGameContent(family==="weapon"?"weapons":family,key);
+    if(!item) return;
+    const cost=requisitionCost(family==="weapon"?"weapons":family,key,1);
+    const kind=family==="weapon"?"weapon":family;
+    const preview=catalogPreviewText(
+      family==="weapon"?GAME_DATA.weapons:family==="armor"?GAME_DATA.armor:GAME_DATA.equipment,
+      key,kind
+    );
+    setAttrs({
+      [`catalog_${family}_preview`]:`${preview} • Requisition ${cost}`,
+      requisition_status:`${item.name} selected. Base requisition cost: ${cost}.`
+    },{silent:true});
+  });
+};
+
 const addEquipmentCatalogRow = item => {
   const row = generateRowID();
   const prefix = `repeating_equipment_${row}`;
@@ -2181,55 +3003,366 @@ const catalogPreviewText = (catalog,key,kind) => {
   return `${item.name} • ${item.type} • Weight ${item.weight}`;
 };
 
-on("change:catalog_weapon",()=>{
-  getAttrs(["catalog_weapon"],v=>setAttrs({catalog_weapon_preview:catalogPreviewText(WEAPON_CATALOG,v.catalog_weapon,"weapon")},{silent:true}));
+
+on("change:catalog_weapon",()=>refreshRequisitionPreview("weapon"));
+on("change:catalog_armor",()=>refreshRequisitionPreview("armor"));
+on("change:catalog_equipment",()=>refreshRequisitionPreview("equipment"));
+
+on("change:catalog_weapon_quantity change:catalog_weapon",()=>{
+  getAttrs(["catalog_weapon","catalog_weapon_quantity"],v=>{
+    setAttrs({catalog_weapon_cost:requisitionCost("weapons",v.catalog_weapon,numberValue(v.catalog_weapon_quantity,1))},{silent:true});
+  });
 });
-on("change:catalog_armor",()=>{
-  getAttrs(["catalog_armor"],v=>setAttrs({catalog_armor_preview:catalogPreviewText(ARMOR_CATALOG,v.catalog_armor,"armor")},{silent:true}));
+on("change:catalog_armor_quantity change:catalog_armor",()=>{
+  getAttrs(["catalog_armor","catalog_armor_quantity"],v=>{
+    setAttrs({catalog_armor_cost:requisitionCost("armor",v.catalog_armor,numberValue(v.catalog_armor_quantity,1))},{silent:true});
+  });
 });
-on("change:catalog_equipment",()=>{
-  getAttrs(["catalog_equipment"],v=>setAttrs({catalog_equipment_preview:catalogPreviewText(EQUIPMENT_CATALOG,v.catalog_equipment,"equipment")},{silent:true}));
+on("change:catalog_equipment_quantity change:catalog_equipment",()=>{
+  getAttrs(["catalog_equipment","catalog_equipment_quantity"],v=>{
+    setAttrs({catalog_equipment_cost:requisitionCost("equipment",v.catalog_equipment,numberValue(v.catalog_equipment_quantity,1))},{silent:true});
+  });
+});
+
+on("change:requisition_budget",()=>{
+  getAttrs(["requisition_budget","requisition_spent"],v=>{
+    setAttrs({requisition_remaining:numberValue(v.requisition_budget,20)-numberValue(v.requisition_spent,0)},{silent:true});
+  });
 });
 
 on("clicked:add_catalog_weapon",()=>{
-  getAttrs(["catalog_weapon","close_combat","ranged_combat"],v=>{
-    const item=WEAPON_CATALOG[v.catalog_weapon] || WEAPON_CATALOG.utility_knife;
-    const row=generateRowID();
-    const prefix=`repeating_weapons_${row}`;
-    setAttrs({
-      [`${prefix}_weapon_name`]:item.name,
-      [`${prefix}_weapon_target`]:numberValue(v[item.skill],40),
-      [`${prefix}_weapon_damage`]:item.damage,
-      [`${prefix}_weapon_range`]:item.range,
-      [`${prefix}_weapon_notes`]:item.notes
-    });
+  getAttrs(["catalog_weapon","catalog_weapon_quantity","close_combat","ranged_combat"],v=>{
+    const key=v.catalog_weapon || "utility_knife";
+    const item=getGameContent("weapons",key) || WEAPON_CATALOG.utility_knife;
+    const quantity=Math.max(1,Math.trunc(numberValue(v.catalog_weapon_quantity,1)));
+    const updates={};
+    for(let i=0;i<quantity;i++){
+      const row=generateRowID();
+      const prefix=`repeating_weapons_${row}`;
+      updates[`${prefix}_catalog_key`]=key;
+      updates[`${prefix}_weapon_name`]=item.name;
+      updates[`${prefix}_weapon_target`]=numberValue(v[item.skill],40);
+      updates[`${prefix}_weapon_damage`]=item.damage;
+      updates[`${prefix}_weapon_range`]=item.range;
+      updates[`${prefix}_weapon_notes`]=item.notes;
+    }
+    setAttrs(updates);
+    const cost=requisitionCost("weapons",key,quantity);
+    updateRequisitionBudget(cost,`${quantity} × ${item.name} added to Weapons.`);
+    setAttrs({requisition_last_item:`${quantity} × ${item.name}`},{silent:true});
   });
 });
 
 on("clicked:equip_catalog_armor",()=>{
-  getAttrs(["catalog_armor"],v=>{
-    const item=ARMOR_CATALOG[v.catalog_armor] || ARMOR_CATALOG.field_coat;
-    addEquipmentCatalogRow(item);
+  getAttrs(["catalog_armor","catalog_armor_quantity"],v=>{
+    const key=v.catalog_armor || "field_coat";
+    const item=getGameContent("armor",key) || ARMOR_CATALOG.field_coat;
+    const quantity=Math.max(1,Math.trunc(numberValue(v.catalog_armor_quantity,1)));
+    consolidateEquipmentCatalogRow(key,item,quantity);
     setAttrs({armor_type:item.armor});
+    const cost=requisitionCost("armor",key,quantity);
+    updateRequisitionBudget(cost,`${item.name} equipped and added to Equipment.`);
+    setAttrs({requisition_last_item:`${quantity} × ${item.name}`},{silent:true});
   });
 });
 
 on("clicked:add_catalog_equipment",()=>{
-  getAttrs(["catalog_equipment"],v=>{
-    const item=EQUIPMENT_CATALOG[v.catalog_equipment] || EQUIPMENT_CATALOG.agent_pack;
-    addEquipmentCatalogRow(item);
+  getAttrs(["catalog_equipment","catalog_equipment_quantity"],v=>{
+    const key=v.catalog_equipment || "agent_pack";
+    const item=getGameContent("equipment",key) || EQUIPMENT_CATALOG.agent_pack;
+    const quantity=Math.max(1,Math.trunc(numberValue(v.catalog_equipment_quantity,1)));
+    consolidateEquipmentCatalogRow(key,item,quantity);
+    const cost=requisitionCost("equipment",key,quantity);
+    updateRequisitionBudget(cost,`${quantity} × ${item.name} added to Equipment.`);
+    setAttrs({requisition_last_item:`${quantity} × ${item.name}`},{silent:true});
   });
 });
 
-on("clicked:add_field_kit",()=>{
-  ["agent_pack","commlink","field_rations","medical_kit","lantern","rope"].forEach(key=>addEquipmentCatalogRow(EQUIPMENT_CATALOG[key]));
-});
+on("clicked:add_field_kit",()=>addRequisitionPackage("field_kit"));
+on("clicked:add_infiltration_kit",()=>addRequisitionPackage("infiltration_kit"));
+on("clicked:add_expedition_kit",()=>addRequisitionPackage("expedition_kit"));
+on("clicked:add_protocol_kit",()=>addRequisitionPackage("protocol_kit"));
 
 on("clicked:repeating_weapons:weapon",eventInfo=>{const m=(eventInfo.sourceAttribute||"").match(/^(repeating_weapons_[^_]+)_weapon$/);if(!m)return;const p=m[1];getAttrs([`${p}_weapon_name`,`${p}_weapon_target`,`${p}_weapon_damage`,`${p}_weapon_notes`],v=>runPercentileTest({name:v[`${p}_weapon_name`]||"Weapon Attack",target:v[`${p}_weapon_target`],kind:"Weapon Attack",damage:v[`${p}_weapon_damage`]||"",description:v[`${p}_weapon_notes`]||""}));});
 on("clicked:repeating_protocols:protocol",eventInfo=>{const m=(eventInfo.sourceAttribute||"").match(/^(repeating_protocols_[^_]+)_protocol$/);if(!m)return;const p=m[1];getAttrs([`${p}_protocol_name`,`${p}_protocol_rank`,`${p}_protocol_effect`,"character_name"],v=>startRoll(`&{template:voe} {{name=${escapeTemplate(v[`${p}_protocol_name`]||"Protocol")}}} {{agent=${escapeTemplate(v.character_name||"Unnamed Agent")}}} {{kind=Protocol • Rank ${escapeTemplate(v[`${p}_protocol_rank`]||"1")}}} {{description=${escapeTemplate(v[`${p}_protocol_effect`]||"Activated")}}}`,r=>finishRoll(r.rollId)));});
 on("change:repeating_protocols:protocol_load change:repeating_protocols:protocol_prepared remove:repeating_protocols",()=>getSectionIDs("repeating_protocols",ids=>{if(!ids.length)return setAttrs({protocol_loaded:0});const f=ids.flatMap(id=>[`repeating_protocols_${id}_protocol_load`,`repeating_protocols_${id}_protocol_prepared`]);getAttrs(f,v=>setAttrs({protocol_loaded:ids.reduce((s,id)=>s+(v[`repeating_protocols_${id}_protocol_prepared`]==="1"?numberValue(v[`repeating_protocols_${id}_protocol_load`],0):0),0)}));}));
 on("change:repeating_equipment:item_weight change:repeating_equipment:item_quantity remove:repeating_equipment",()=>getSectionIDs("repeating_equipment",ids=>{if(!ids.length)return setAttrs({carried_weight:0});const f=ids.flatMap(id=>[`repeating_equipment_${id}_item_weight`,`repeating_equipment_${id}_item_quantity`]);getAttrs(f,v=>setAttrs({carried_weight:Math.round(ids.reduce((s,id)=>s+numberValue(v[`repeating_equipment_${id}_item_weight`],0)*numberValue(v[`repeating_equipment_${id}_item_quantity`],1),0)*10)/10}));}));
 
+
+
+
+const DIRECTOR_ESCALATION_LABELS = Object.freeze([
+  "Quiet: opposition is unaware or unprepared.",
+  "Suspicion: unusual activity has been noticed.",
+  "Alert: security begins active investigation.",
+  "Mobilized: opposition coordinates a response.",
+  "Lockdown: routes close and reinforcements deploy.",
+  "Crisis: the mission becomes publicly or politically dangerous.",
+  "Catastrophe: the worst credible consequence is now unfolding."
+]);
+
+const directorClockDisplay = (current,max) => {
+  const safeMax=Math.max(1,Math.min(12,Math.trunc(numberValue(max,6))));
+  const safeCurrent=Math.max(0,Math.min(safeMax,Math.trunc(numberValue(current,0))));
+  return "■".repeat(safeCurrent)+"□".repeat(safeMax-safeCurrent);
+};
+
+const refreshDirectorClock = () => {
+  getAttrs(["director_clock_current","director_clock_max"],values=>{
+    const max=Math.max(1,Math.min(12,Math.trunc(numberValue(values.director_clock_max,6))));
+    const current=Math.max(0,Math.min(max,Math.trunc(numberValue(values.director_clock_current,0))));
+    setAttrs({
+      director_clock_current:current,
+      director_clock_max:max,
+      director_clock_display:directorClockDisplay(current,max)
+    },{silent:true});
+  });
+};
+
+const setDirectorEscalation = value => {
+  const level=Math.max(0,Math.min(6,Math.trunc(numberValue(value,0))));
+  setAttrs({
+    director_escalation:level,
+    escalation:level,
+    director_escalation_label:DIRECTOR_ESCALATION_LABELS[level]
+  },{silent:true});
+};
+
+const loadDirectorMission = key => {
+  const mission=(GAME_DATA.missions || {})[key] || DIRECTOR_MISSION_TEMPLATES[""];
+  const updates={
+    director_mission_name:mission.name,
+    director_objective:mission.objective,
+    director_location:mission.location,
+    director_stakes:mission.stakes,
+    director_clock_current:0,
+    director_clock_max:mission.clockMax,
+    director_clock_display:directorClockDisplay(0,mission.clockMax),
+    director_active_complications:(mission.complications || []).map(item=>`• ${item}`).join("\n"),
+    director_status:`${mission.name} loaded.`
+  };
+  for(let i=1;i<=5;i++) {
+    updates[`director_beat_${i}`]=(mission.beats || [])[i-1] || "";
+    updates[`director_beat_${i}_done`]=0;
+  }
+  setAttrs(updates);
+};
+
+const randomEntry = list => list[Math.floor(Math.random()*list.length)];
+
+on("clicked:load_director_mission",()=>{
+  getAttrs(["director_mission_template"],values=>loadDirectorMission(values.director_mission_template || ""));
+});
+
+on("clicked:reset_director_mission",()=>{
+  setAttrs({
+    director_clock_current:0,
+    director_clock_display:"□□□□□□",
+    director_escalation:0,
+    escalation:0,
+    director_escalation_label:DIRECTOR_ESCALATION_LABELS[0],
+    director_round:1,
+    director_threat_spent:0,
+    director_active_complications:"",
+    director_generated_complication:"A complication will appear here.",
+    director_scene_prompt:"A scene prompt will appear here.",
+    director_status:"Mission controls reset."
+  });
+});
+
+on("clicked:director_clock_plus",()=>{
+  getAttrs(["director_clock_current","director_clock_max"],v=>{
+    const max=Math.max(1,numberValue(v.director_clock_max,6));
+    const next=Math.min(max,numberValue(v.director_clock_current,0)+1);
+    setAttrs({
+      director_clock_current:next,
+      director_clock_display:directorClockDisplay(next,max),
+      director_status:next>=max ? "Mission clock filled. Apply its consequence." : `Mission clock advanced to ${next}/${max}.`
+    });
+  });
+});
+on("clicked:director_clock_minus",()=>{
+  getAttrs(["director_clock_current","director_clock_max"],v=>{
+    const next=Math.max(0,numberValue(v.director_clock_current,0)-1);
+    setAttrs({director_clock_current:next,director_clock_display:directorClockDisplay(next,v.director_clock_max)});
+  });
+});
+on("change:director_clock_max",refreshDirectorClock);
+
+on("clicked:director_escalation_plus",()=>{
+  getAttrs(["director_escalation"],v=>setDirectorEscalation(numberValue(v.director_escalation,0)+1));
+});
+on("clicked:director_escalation_minus",()=>{
+  getAttrs(["director_escalation"],v=>setDirectorEscalation(numberValue(v.director_escalation,0)-1));
+});
+
+on("clicked:director_new_round",()=>{
+  getAttrs(["director_round","npc_actions_max","npc_reactions_max","npc_name"],v=>{
+    setAttrs({
+      director_round:numberValue(v.director_round,1)+1,
+      npc_actions_current:numberValue(v.npc_actions_max,3),
+      npc_reactions_current:numberValue(v.npc_reactions_max,1),
+      director_status:`Round ${numberValue(v.director_round,1)+1} begins. ${v.npc_name || "Loaded NPC"} refreshed.`
+    });
+  });
+});
+
+on("clicked:director_add_npc_threat",()=>{
+  getAttrs(["director_threat_spent","npc_threat","npc_name"],v=>{
+    const threat=numberValue(v.npc_threat,0);
+    setAttrs({
+      director_threat_spent:numberValue(v.director_threat_spent,0)+threat,
+      director_status:`${v.npc_name || "Loaded NPC"} added for ${threat} Threat.`
+    });
+  });
+});
+
+on("clicked:director_reset_encounter",()=>{
+  getAttrs(["npc_health_max","npc_actions_max","npc_reactions_max"],v=>{
+    setAttrs({
+      director_round:1,
+      director_threat_spent:0,
+      director_active_combatant:"",
+      director_initiative_note:"",
+      npc_health:numberValue(v.npc_health_max,10),
+      npc_temp_health:0,
+      npc_actions_current:numberValue(v.npc_actions_max,3),
+      npc_reactions_current:numberValue(v.npc_reactions_max,1),
+      director_status:"Encounter reset."
+    });
+  });
+});
+
+on("clicked:generate_director_complication",()=>{
+  const complication=randomEntry(DIRECTOR_COMPLICATIONS);
+  setAttrs({director_generated_complication:complication,director_status:"Complication generated."});
+});
+on("clicked:add_director_complication",()=>{
+  getAttrs(["director_generated_complication","director_active_complications"],v=>{
+    const item=v.director_generated_complication || "";
+    const existing=v.director_active_complications || "";
+    if(!item || item==="A complication will appear here.") return;
+    setAttrs({director_active_complications:[existing,`• ${item}`].filter(Boolean).join("\n")});
+  });
+});
+
+on("clicked:generate_director_scene",()=>{
+  getAttrs(["director_scene_type"],v=>{
+    const type=v.director_scene_type || "investigation";
+    const prompt=randomEntry(DIRECTOR_SCENE_TYPES[type] || DIRECTOR_SCENE_TYPES.investigation);
+    setAttrs({director_scene_prompt:prompt,director_status:`${type.replace(/\b\w/g,c=>c.toUpperCase())} scene generated.`});
+  });
+});
+
+const loadNpcArchetype = key => {
+  const profile=getGameContent("creatures",key) || CREATURE_ARCHETYPES[""];
+  const attacks=profile.attacks || [];
+  const abilities=profile.abilities || [];
+  const updates={
+    npc_name:profile.name,
+    npc_category:profile.category,
+    npc_role:profile.role,
+    npc_threat:profile.threat,
+    npc_health:profile.health,
+    npc_health_max:profile.health,
+    npc_temp_health:0,
+    npc_armor:profile.armor,
+    npc_dr:profile.dr,
+    npc_movement:profile.movement,
+    npc_actions_current:profile.actions,
+    npc_actions_max:profile.actions,
+    npc_reactions_current:profile.reactions,
+    npc_reactions_max:profile.reactions,
+    npc_description:profile.description,
+    npc_status:`${profile.name} loaded. Threat ${profile.threat} ${profile.role}.`
+  };
+  ATTRIBUTE_KEYS.forEach(attribute=>{
+    updates[`npc_${attribute}`]=numberValue((profile.attributes || {})[attribute],0);
+  });
+  ["close_combat","ranged_combat","perception","survival","stealth","arcana","investigation"].forEach(skill=>{
+    updates[`npc_${skill}`]=numberValue((profile.skills || {})[skill],0);
+  });
+  for(let slot=1;slot<=3;slot++){
+    const attack=attacks[slot-1] || {name:"",target:0,damage:"0",range:"",traits:""};
+    updates[`npc_attack_${slot}_name`]=attack.name;
+    updates[`npc_attack_${slot}_target`]=attack.target;
+    updates[`npc_attack_${slot}_damage`]=attack.damage;
+    updates[`npc_attack_${slot}_range`]=attack.range;
+    updates[`npc_attack_${slot}_traits`]=attack.traits;
+    updates[`npc_ability_${slot}`]=abilities[slot-1] || "";
+  }
+  setAttrs(updates);
+};
+
+const runNpcSkill = (skill,label) => {
+  getAttrs(["npc_name",`npc_${skill}`],values=>{
+    runPercentileTest({
+      name:`${values.npc_name || "NPC"}: ${label}`,
+      target:numberValue(values[`npc_${skill}`],0),
+      kind:"NPC Skill",
+      description:`${label} test`
+    });
+  });
+};
+
+const runNpcAttack = slot => {
+  const prefix=`npc_attack_${slot}`;
+  getAttrs(["npc_name",`${prefix}_name`,`${prefix}_target`,`${prefix}_damage`,`${prefix}_range`,`${prefix}_traits`],values=>{
+    runPercentileTest({
+      name:values[`${prefix}_name`] || `NPC Attack ${slot}`,
+      target:numberValue(values[`${prefix}_target`],0),
+      kind:`${values.npc_name || "NPC"} Attack`,
+      damage:values[`${prefix}_damage`] || "0",
+      description:`${values[`${prefix}_range`] || "Close"} • ${values[`${prefix}_traits`] || "No traits"}`
+    });
+  });
+};
+
+on("clicked:load_npc_archetype",()=>{
+  getAttrs(["npc_archetype"],values=>loadNpcArchetype(values.npc_archetype || ""));
+});
+
+on("clicked:reset_npc_encounter",()=>{
+  getAttrs(["npc_health_max","npc_actions_max","npc_reactions_max","npc_name"],values=>{
+    setAttrs({
+      npc_health:numberValue(values.npc_health_max,10),
+      npc_temp_health:0,
+      npc_actions_current:numberValue(values.npc_actions_max,3),
+      npc_reactions_current:numberValue(values.npc_reactions_max,1),
+      npc_incoming_damage:0,
+      npc_final_damage:0,
+      npc_status:`${values.npc_name || "NPC"} reset for a new encounter.`
+    });
+  });
+});
+
+on("change:npc_incoming_damage change:npc_dr",()=>{
+  getAttrs(["npc_incoming_damage","npc_dr"],values=>{
+    setAttrs({npc_final_damage:Math.max(0,numberValue(values.npc_incoming_damage,0)-numberValue(values.npc_dr,0))},{silent:true});
+  });
+});
+
+on("clicked:apply_npc_damage",()=>{
+  getAttrs(["npc_name","npc_health","npc_temp_health","npc_incoming_damage","npc_dr"],values=>{
+    const finalDamage=Math.max(0,numberValue(values.npc_incoming_damage,0)-numberValue(values.npc_dr,0));
+    const temp=Math.max(0,numberValue(values.npc_temp_health,0));
+    const absorbed=Math.min(temp,finalDamage);
+    const remaining=finalDamage-absorbed;
+    const health=Math.max(0,numberValue(values.npc_health,0)-remaining);
+    setAttrs({
+      npc_temp_health:temp-absorbed,
+      npc_health:health,
+      npc_final_damage:finalDamage,
+      npc_status:`${values.npc_name || "NPC"} takes ${finalDamage} damage after DR.`
+    });
+  });
+});
+
+["close_combat","ranged_combat","perception","survival","stealth","arcana","investigation"].forEach(skill=>{
+  const label=skill.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+  on(`clicked:npc_${skill}`,()=>runNpcSkill(skill,label));
+});
+[1,2,3].forEach(slot=>on(`clicked:npc_attack_${slot}`,()=>runNpcAttack(slot)));
 
 const refreshPlayerExport = (callback=null) => {
   const conditionFields = CONDITION_KEYS.map(key=>`condition_${key}`);
@@ -2331,5 +3464,6 @@ on("change:sheet_tab",eventInfo=>{
 });
 
 on("sheet:opened",refreshPlayerExport);
-on("change:condition_blinded change:condition_charmed change:condition_deafened change:condition_exhausted change:condition_frightened change:condition_incapacitated change:condition_poisoned change:condition_restrained change:condition_shocked change:condition_stunned",refreshPlayerExport);
+on("change:condition_blinded change:condition_charmed change:condition_deafened change:condition_exhausted change:condition_frightened change:condition_poisoned change:condition_restrained change:condition_shocked",refreshPlayerExport);
+on("change:condition_incapacitated change:condition_stunned",()=>{enforceIncapacitatedCondition();refreshPlayerExport();});
 on("change:repeating_weapons remove:repeating_weapons change:repeating_equipment remove:repeating_equipment",refreshPlayerExport);
