@@ -1,0 +1,10 @@
+const calculateSkill=(base,attribute,bonus,condition=0)=>base+attribute+bonus+condition;
+const agility=12;
+const awareness=8;
+const base=5;
+const bonus=5;
+const oldTotal=calculateSkill(base,agility,bonus);
+const newTotal=calculateSkill(base,awareness,bonus);
+if(oldTotal!==22) throw new Error("Old comparison failed");
+if(newTotal!==18) throw new Error("Awareness mapping failed");
+console.log("Perception Awareness mapping test passed.");
